@@ -145,6 +145,22 @@
         }
       }
     },
+    "delete_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this spot?"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus tempat ini?"
+          }
+        }
+      }
+    },
     "dir_ahead": {
       "localizations": {
         "en": {
@@ -493,6 +509,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Peta"
+          }
+        }
+      }
+    },
+    "no_spots": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No spots yet. Park somewhere first."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belum ada tempat. Parkir dulu, ya."
           }
         }
       }

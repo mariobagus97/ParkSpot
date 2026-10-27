@@ -15,6 +15,7 @@ import SwiftData
     private(set) var find: FindCoordinator?
     let saver: SpotSaver
     let save: SaveCoordinator
+    let history: HistoryCoordinator
 
     let deps: AppDependencies
 
@@ -23,7 +24,13 @@ import SwiftData
         let saver = SpotSaver(deps: deps)
         self.saver = saver
         save = SaveCoordinator(deps: deps, saver: saver)
+        history = HistoryCoordinator(deps: deps, saver: saver)
         save.onSaved = { [weak self] _ in self?.refreshActiveSpot() }
+        history.onActiveChanged = { [weak self] openFind in
+            guard let self else { return }
+            refreshActiveSpot()
+            if openFind { presentFind() }
+        }
     }
 
     var activeSpotID: UUID? { activeSpot?.id }

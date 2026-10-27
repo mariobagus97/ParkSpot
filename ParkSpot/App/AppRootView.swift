@@ -9,6 +9,10 @@ struct AppRootView: View {
             HomeView(coordinator: coordinator)
                 .tabItem { Label("tab_home", systemImage: "house.fill") }
                 .tag(AppCoordinator.Tab.home)
+
+            HistoryView(coordinator: coordinator.history, deps: coordinator.deps)
+                .tabItem { Label("tab_lib", systemImage: "rectangle.stack.fill") }
+                .tag(AppCoordinator.Tab.spots)
         }
         .tint(Theme.accent)
         .safeAreaInset(edge: .bottom) {
@@ -24,6 +28,7 @@ struct AppRootView: View {
         .saveFlow(coordinator.save, deps: coordinator.deps, saver: coordinator.saver)
         .preferredColorScheme(.dark)
         .task { coordinator.launch() }
+        .onChange(of: coordinator.selectedTab) { coordinator.refreshActiveSpot() }
     }
 
     /// `find` is owned by the coordinator; dismissing the cover clears it.
