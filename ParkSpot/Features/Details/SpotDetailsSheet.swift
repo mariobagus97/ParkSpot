@@ -8,7 +8,6 @@ struct SpotDetailsSheet: View {
     let onDone: () -> Void
 
     @State private var showsMoreFloors = false
-    @State private var typedFloor = ""
     @FocusState private var noteIsFocused: Bool
     @Environment(\.openURL) private var openURL
 
@@ -37,7 +36,10 @@ struct SpotDetailsSheet: View {
                 .background(Theme.surface3)
         }
         .background(Theme.surface3)
-        .presentationDetents([.medium, .large])   // large only so a long note or big type never hides the Done button
+        // The brief asks for medium only. Large stays as a deliberate accessibility deviation: it gives the expanded
+        // "+" panel (3…10 and the text field), the location-off note and large Dynamic Type room, so they don't
+        // have to scroll. Done is pinned by the safeAreaInset above and is visible at either detent.
+        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
         .presentationBackground(Theme.surface3)
         .presentationCornerRadius(16)
@@ -116,18 +118,21 @@ struct SpotDetailsSheet: View {
                 }
                 .scrollIndicators(.hidden)
                 inputPill {
-                    TextField(text: $typedFloor, prompt: Text("floor_ph")) { Text("other_floor") }
+                    TextField(text: typedFloorBinding, prompt: Text("floor_ph")) { Text("other_floor") }
                         .textInputAutocapitalization(.characters)
                         .submitLabel(.done)
-                        .onChange(of: typedFloor) { _, text in viewModel.setTypedFloor(text) }
                 }
             }
         }
     }
 
+    /// The field reads and writes the view model, which owns the text and the floor it implies.
+    private var typedFloorBinding: Binding<String> {
+        Binding(get: { viewModel.typedFloor }, set: { viewModel.setTypedFloor($0) })
+    }
+
     private func floorChip(_ floor: String) -> some View {
         Chip(verbatim: floor, isOn: viewModel.floor == floor) {
-            typedFloor = ""
             viewModel.selectFloor(floor)
         }
     }

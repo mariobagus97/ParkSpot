@@ -79,6 +79,60 @@ import UIKit
         #expect(vm.floor == nil)
     }
 
+    @Test func typedFloorKeepsExactlyWhatWasTyped() {
+        vm.setTypedFloor("  P5 ")
+        #expect(vm.typedFloor == "  P5 ")
+        #expect(vm.floor == "P5")
+    }
+
+    @Test func choosingAQuickFloorReplacesTheTypedFloor() {
+        vm.setTypedFloor("P5")
+
+        vm.selectFloor("B2")
+
+        // The tap selects the chip and empties the field, in one step: nothing runs afterwards that could undo it.
+        #expect(vm.floor == "B2")
+        #expect(vm.typedFloor == "")
+    }
+
+    @Test func choosingAQuickFloorOverWhitespaceOnlyTextStillSelectsIt() {
+        vm.setTypedFloor("   ")
+        #expect(vm.floor == nil)
+
+        vm.selectFloor("B2")
+
+        #expect(vm.floor == "B2")
+        #expect(vm.typedFloor == "")
+    }
+
+    @Test func clearingTheTypedTextClearsTheFloor() {
+        vm.setTypedFloor("P5")
+        #expect(vm.floor == "P5")
+
+        vm.setTypedFloor("")
+
+        #expect(vm.floor == nil)
+        #expect(vm.typedFloor == "")
+    }
+
+    @Test func whitespaceOnlyTypedTextIsNoFloor() {
+        vm.selectFloor("B2")
+
+        vm.setTypedFloor("   ")
+
+        #expect(vm.floor == nil)
+    }
+
+    @Test func tappingTheSelectedQuickFloorAgainStillClearsIt() {
+        vm.selectFloor("B2")
+        #expect(vm.floor == "B2")
+
+        vm.selectFloor("B2")
+
+        #expect(vm.floor == nil)
+        #expect(vm.typedFloor == "")
+    }
+
     @Test func doneSavesFloorAndNote() throws {
         vm.selectFloor("B2")
         vm.note = "Near the blue elevator"

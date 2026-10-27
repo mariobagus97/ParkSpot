@@ -8,5 +8,6 @@ struct ThemeTests {
         #expect(Theme.Hex.accent == 0x1ED760)
         #expect(Theme.Hex.warning == 0xFFA42B)
         #expect(Theme.Hex.negative == 0xF3727F)
+        #expect(Theme.Hex.black == 0x000000)
     }
 }

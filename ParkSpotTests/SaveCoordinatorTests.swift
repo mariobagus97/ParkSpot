@@ -66,12 +66,44 @@ import UIKit
     }
 
     @Test func secondStartIsIgnoredWhileFlowRuns() async {
+        // Both permissions undecided, so a second flow would show as a second request (the fakes count them).
+        location.authorization = .notDetermined
+        camera.statusValue = .notDetermined
+
         coordinator.start()
         coordinator.start()
         await settle()
 
         #expect(location.subscriberCount == 1)
         #expect(coordinator.cover == .camera)
+        #expect(location.requestCount == 1)
+        #expect(camera.requestCount == 1)
+    }
+
+    @Test func secondStartIsIgnoredWhileTheDetailsShow() async throws {
+        coordinator.start()
+        coordinator.photoTaken(.solid())
+        let spotID = try #require(coordinator.detailsSpotID)
+
+        // The photo is stored, so a second flow would see an active spot and ask to replace it over the sheet.
+        coordinator.start()
+        await settle()
+
+        #expect(coordinator.alert == nil)
+        #expect(coordinator.cover == nil)
+        #expect(coordinator.detailsSpotID == spotID)
+    }
+
+    @Test func secondStartIsIgnoredWhileThePhotoAlertShows() async {
+        coordinator.start()
+        coordinator.cameraCancelled()
+
+        // A second flow would reopen the camera under the "photo needed" alert.
+        coordinator.start()
+        await settle()
+
+        #expect(coordinator.cover == nil)
+        #expect(coordinator.alert == .photoRequired)
     }
 
     @Test func secondStartIsIgnoredWhileReplaceAlertShows() async throws {

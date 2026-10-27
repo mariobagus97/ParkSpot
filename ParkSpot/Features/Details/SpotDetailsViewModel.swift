@@ -10,6 +10,9 @@ import Observation
     /// The spot being described; the sheet reads its photo and (once it is looked up) its place name.
     let spot: ParkingSpot
     private(set) var floor: String?
+    /// What the "+" panel's text field shows, exactly as typed. It lives here, not in the view, so a quick-floor
+    /// tap empties it in the same step that selects the chip; `setTypedFloor(_:)` is the only way to change it.
+    private(set) var typedFloor = ""
     /// Never longer than `noteLimit` characters: what is typed past it is dropped.
     var note: String {
         didSet {
@@ -40,13 +43,16 @@ import Observation
     /// Location permission is denied: the sheet explains that the spot is saved without a position.
     var locationOff: Bool { location.authorization == .denied }
 
-    /// Picks a floor; picking the selected one again clears it.
+    /// Picks a floor; picking the selected one again clears it. Also empties the free-text field, so the chip and
+    /// the typed text never both claim to be the floor.
     func selectFloor(_ value: String) {
+        typedFloor = ""
         floor = floor == value ? nil : value
     }
 
-    /// The free-text field: its trimmed text is the floor, blank clears it.
+    /// The free-text field: its trimmed text is the floor, blank clears it. `typedFloor` keeps the text as typed.
     func setTypedFloor(_ text: String) {
+        typedFloor = text
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         floor = trimmed.isEmpty ? nil : trimmed
     }

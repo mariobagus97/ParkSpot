@@ -1,8 +1,7 @@
 import SwiftUI
 
 // Shared pieces of the v3 look: pill buttons, chips, circles, cover art and the floor plate.
-// Every colour comes from `Theme`; the one exception is plain black, which the design uses on the accent and
-// as the floor plate.
+// Every colour comes from `Theme`, black included (`Theme.black`).
 
 /// Uppercase pill with 1.6 pt tracking, 48 pt tall.
 struct PillButton: View {
@@ -47,7 +46,7 @@ struct PillButton: View {
 
     private var foreground: Color {
         switch style {
-        case .primary: .black
+        case .primary: Theme.black
         case .dark, .outline: Theme.text1
         }
     }
@@ -86,7 +85,7 @@ struct Chip: View {
             label
                 .font(.footnote.weight(.semibold))
                 .lineLimit(1)
-                .foregroundStyle(isOn ? Color.black : Theme.text1)
+                .foregroundStyle(isOn ? Theme.black : Theme.text1)
                 .padding(.horizontal, 13)
                 .frame(minWidth: 40, minHeight: 30)
                 .background(isOn ? Theme.accent : Theme.surface2, in: Capsule())
@@ -175,7 +174,7 @@ struct CircleIconButton: View {
                 .font(.body.weight(.semibold))
                 .foregroundStyle(Theme.text1)
                 .frame(width: 44, height: 44)
-                .background(filled ? Theme.surface2 : Color.black.opacity(0.35), in: Circle())
+                .background(filled ? Theme.surface2 : Theme.black.opacity(0.35), in: Circle())
                 .contentShape(Circle())
         }
         .buttonStyle(.plain)
@@ -198,7 +197,7 @@ struct FloorBadge: View {
             .lineLimit(1)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(Color.black, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+            .background(Theme.black, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
     }
 }
 
@@ -207,7 +206,7 @@ struct PMark: View {
     var body: some View {
         Text(verbatim: "P")
             .font(.subheadline.weight(.black))
-            .foregroundStyle(.black)
+            .foregroundStyle(Theme.black)
             .dynamicTypeSize(...DynamicTypeSize.large)
             .frame(width: 32, height: 32)
             .background(Theme.accent, in: Circle())

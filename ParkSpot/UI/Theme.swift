@@ -15,6 +15,7 @@ enum Theme {
         static let warning: UInt32 = 0xFFA42B
         static let negative: UInt32 = 0xF3727F
         static let info: UInt32 = 0x539DF5
+        static let black: UInt32 = 0x000000
     }
 
     static let bg = Color(hex: Hex.bg)
@@ -29,6 +30,8 @@ enum Theme {
     static let warning = Color(hex: Hex.warning)
     static let negative = Color(hex: Hex.negative)
     static let info = Color(hex: Hex.info)
+    /// Text on the accent, the floor plate and the camera overlay. A token, so no view reaches for `Color.black`.
+    static let black = Color(hex: Hex.black)
 }
 
 extension Color {

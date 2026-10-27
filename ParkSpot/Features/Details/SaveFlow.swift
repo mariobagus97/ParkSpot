@@ -90,7 +90,7 @@ private struct SaveFlowModifier: ViewModifier {
         case .camera:
             CameraPicker(chipText: lockedChip, onPhoto: coordinator.photoTaken, onCancel: coordinator.cameraCancelled)
                 .ignoresSafeArea()
-                .background(Color.black)
+                .background(Theme.black)
         case .cameraDenied:
             PermissionView(titleKey: "cam_t", bodyKey: "cam_b", onNotNow: coordinator.cancel)
         }

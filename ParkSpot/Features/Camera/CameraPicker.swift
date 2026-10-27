@@ -102,13 +102,13 @@ private struct CameraOverlay: View {
                 }
                 .padding(.horizontal, 13)
                 .frame(minHeight: 30)
-                .background(Color.black.opacity(0.6), in: Capsule())
+                .background(Theme.black.opacity(0.6), in: Capsule())
             }
             Text("photo_hint")
                 .font(.callout.weight(.bold))
                 .foregroundStyle(Theme.text1)
                 .multilineTextAlignment(.center)
-                .shadow(color: .black.opacity(0.7), radius: 3, y: 1)
+                .shadow(color: Theme.black.opacity(0.7), radius: 3, y: 1)
                 .padding(.horizontal, 18)
         }
         .padding(.top, 72)   // below the system's top bar, where the preview starts
