@@ -1,0 +1,38 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSCameraUsageDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ParkSpot saves a photo with every spot so you can find your car where GPS can't."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ParkSpot menyimpan foto di setiap tempat agar mobilmu tetap ketemu walau GPS tidak sampai."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ParkSpot uses your location to save where you parked and point you back to it. It never leaves your phone."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ParkSpot memakai lokasimu untuk menyimpan tempat parkir dan menunjukkan arah kembali. Lokasi tidak pernah keluar dari ponselmu."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
