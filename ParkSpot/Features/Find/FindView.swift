@@ -126,7 +126,9 @@ struct FindView: View {
                 }
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(Text(verbatim: viewModel.accessibilityText))
+            // The block below already says the state's line in locating/photo-only; label the group only
+            // when it carries a number of its own.
+            .accessibilityLabel(Text(verbatim: hasSpokenDistance ? viewModel.accessibilityText : ""))
 
             Spacer(minLength: 8)
 
@@ -296,6 +298,14 @@ struct FindView: View {
 
     /// The short line under the big number: the direction, or "you're here". Every other state says its
     /// line once, in `stateBlock`, so nothing is printed twice.
+    /// True while the group shows a distance or a direction of its own.
+    private var hasSpokenDistance: Bool {
+        switch viewModel.display {
+        case .precise, .rough, .noHeading: true
+        case .arrived, .locating, .photoOnly: false
+        }
+    }
+
     private var caption: String {
         if let direction = viewModel.direction {
             return String(localized: String.LocalizationValue(direction.key))

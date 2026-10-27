@@ -78,7 +78,8 @@ extension LocationAuthorization {
 
     func headings() -> AsyncStream<Heading?> {
         let id = UUID()
-        let (stream, continuation) = AsyncStream.makeStream(of: Heading?.self)
+        let (stream, continuation) = AsyncStream.makeStream(of: Heading?.self,
+                                                              bufferingPolicy: .bufferingNewest(1))
         headingStreams[id] = continuation
         if headingStreams.count == 1 { manager.startUpdatingHeading() }
         continuation.onTermination = { [weak self] _ in

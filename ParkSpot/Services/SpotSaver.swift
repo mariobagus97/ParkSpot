@@ -47,9 +47,20 @@ import UIKit
             }
         }
         timeout = Task { [weak self] in
-            do { try await Task.sleep(for: .seconds(LocationRefiner.maxDuration)) } catch { return }
-            guard let self, self.captureID == id else { return }
-            self.checkTimeout()
+            // Sleep the whole window first; if the wall clock moved backwards, come back for the rest
+            // rather than leaving the screen saying "sharpening" forever.
+            var remaining = LocationRefiner.maxDuration
+            while remaining > 0 {
+                do { try await Task.sleep(for: .seconds(remaining)) } catch { return }
+                guard let self, self.captureID == id else { return }
+                let started = self.refiner?.startedAt ?? deps.now()
+                let left = LocationRefiner.maxDuration - deps.now().timeIntervalSince(started)
+                if left <= 0 {
+                    self.checkTimeout()
+                    return
+                }
+                remaining = min(left, LocationRefiner.maxDuration)
+            }
         }
     }
 

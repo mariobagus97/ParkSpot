@@ -3,6 +3,7 @@ import SwiftUI
 /// The app's screens, and everything the save and find flows present over them.
 struct AppRootView: View {
     @Bindable var coordinator: AppCoordinator
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         TabView(selection: $coordinator.selectedTab) {
@@ -30,6 +31,10 @@ struct AppRootView: View {
         .preferredColorScheme(.dark)
         .task { coordinator.launch() }
         .onChange(of: coordinator.selectedTab) { coordinator.refreshActiveSpot() }
+        .onChange(of: scenePhase) { _, phase in
+            // Returning from Settings: a permission the user just granted should take effect.
+            if phase == .active { coordinator.save.permissionsMayHaveChanged() }
+        }
     }
 
     /// `find` is owned by the coordinator; dismissing the cover clears it.

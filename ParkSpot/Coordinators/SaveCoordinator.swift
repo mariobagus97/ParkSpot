@@ -88,6 +88,13 @@ import UIKit
         alert = .photoRequired
     }
 
+    /// The app came back to the foreground: the user may have granted the camera in Settings.
+    func permissionsMayHaveChanged() {
+        guard case .cameraDenied = cover, deps.camera.status() == .authorized else { return }
+        saver.beginCapture()
+        cover = .camera
+    }
+
     func retakePhoto() {
         alert = nil
         cover = .camera

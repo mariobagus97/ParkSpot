@@ -8,7 +8,6 @@ import Observation
     private let spot: ParkingSpot
     private let location: LocationProviding
     private let now: () -> Date
-    private let locale = Locale.current
 
     private var task: Task<Void, Never>?
 
@@ -24,7 +23,7 @@ import Observation
 
     var savedAgoText: String {
         let formatter = Self.relative
-        formatter.locale = locale
+        formatter.locale = .current
         formatter.unitsStyle = .abbreviated
         let relative = formatter.localizedString(for: spot.createdAt, relativeTo: now())
         return String(format: String(localized: "saved_ago_fmt"), relative)
@@ -40,8 +39,8 @@ import Observation
                 // Roughly the same rule the Find screen uses: a poor fix gets an approximate number.
                 let worst = max(saved.accuracy, fix.horizontalAccuracy)
                 distanceText = worst > FindDisplay.arrowMaxAccuracy
-                    ? String(format: String(localized: "about_fmt"), Formatting.roughDistance(metres, locale: locale))
-                    : Formatting.distance(metres, locale: locale)
+                    ? String(format: String(localized: "about_fmt"), Formatting.roughDistance(metres, locale: .current))
+                    : Formatting.distance(metres, locale: .current)
             }
         }
     }

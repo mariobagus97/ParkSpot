@@ -6,7 +6,6 @@ import Observation
     private let spot: ParkingSpot
     private let location: LocationProviding
     private let maps: MapsOpening
-    private let locale = Locale.current
 
     private var task: Task<Void, Never>?
 
@@ -52,9 +51,9 @@ import Observation
             accuracyText = nil
             return
         }
-        accuracyText = Formatting.accuracy(fix.horizontalAccuracy, locale: locale)
+        accuracyText = Formatting.accuracy(fix.horizontalAccuracy, locale: .current)
         let distance = Geo.distance(from: fix.coordinate, to: spotCoordinate)
-        distanceText = Formatting.distance(distance, locale: locale)
+        distanceText = Formatting.distance(distance, locale: .current)
         walkMinutes = Formatting.walkMinutes(distance)
     }
 }

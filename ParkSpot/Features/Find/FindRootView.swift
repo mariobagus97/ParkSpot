@@ -11,17 +11,23 @@ struct FindRootView: View {
                 if let spot = coordinator.spot {
                     FindView(spot: spot, coordinator: coordinator, deps: deps)
                 } else {
-                    ZStack {
-                        Theme.bg.ignoresSafeArea()
-                        Button(action: coordinator.close) {
-                            Image(systemName: "chevron.down")
-                                .font(.body.weight(.semibold))
-                                .foregroundStyle(Theme.text1)
-                                .frame(width: 44, height: 44)
+                    VStack {
+                        HStack {
+                            Button(action: coordinator.close) {
+                                Image(systemName: "chevron.down")
+                                    .font(.body.weight(.semibold))
+                                    .foregroundStyle(Theme.text1)
+                                    .frame(width: 44, height: 44)
+                                    .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(Text("close"))
+                            Spacer()
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(Text("close"))
+                        .padding(.horizontal, 8)
+                        Spacer()
                     }
+                    .background(Theme.bg.ignoresSafeArea())
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
