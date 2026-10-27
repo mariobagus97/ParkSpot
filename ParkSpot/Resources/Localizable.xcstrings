@@ -1,422 +1,758 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "cam_b" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Every spot gets a photo, so you can find your car even where GPS can't. Turn it on in Settings."
+  "sourceLanguage": "en",
+  "strings": {
+    "about_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~%@"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan di Pengaturan."
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~%@"
           }
         }
       }
     },
-    "cam_t" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Camera's off"
+    "arrived": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You're here. Look around."
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kamera mati"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sudah dekat. Coba lihat sekitar."
           }
         }
       }
     },
-    "cancel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
+    "calibrate": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compass needs a sec. Wave your phone in a figure 8."
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Batal"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompas perlu kalibrasi. Gerakkan ponsel membentuk angka 8."
           }
         }
       }
     },
-    "done" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
+    "cam_b": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every spot gets a photo, so you can find your car even where GPS can't. Turn it on in Settings."
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selesai"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan di Pengaturan."
           }
         }
       }
     },
-    "floor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Floor"
+    "cam_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera's off"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lantai"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamera mati"
           }
         }
       }
     },
-    "floor_ph" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. P5 or Rooftop"
+    "cancel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "mis. P5 atau Rooftop"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
           }
         }
       }
     },
-    "hello" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Where'd you leave it?"
+    "close": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mobilmu di mana?"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutup"
           }
         }
       }
     },
-    "improving_fmt" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sharpening GPS… ±%@"
+    "dir_ahead": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahead"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mempertajam GPS… ±%@"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lurus"
           }
         }
       }
     },
-    "loc_b" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can still save spots with a photo and floor. Turn on location to get the arrow."
+    "dir_ahead_left": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahead, slightly left"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kamu tetap bisa simpan tempat dengan foto dan lantai. Nyalakan lokasi untuk panahnya."
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lurus, agak ke kiri"
           }
         }
       }
     },
-    "loc_locked_fmt" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Location locked · ±%@"
+    "dir_ahead_right": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahead, slightly right"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lokasi terkunci · ±%@"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lurus, agak ke kanan"
           }
         }
       }
     },
-    "loc_t" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Location's off"
+    "dir_behind": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behind you"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lokasi mati"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di belakangmu"
           }
         }
       }
     },
-    "not_now" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not now"
+    "dir_left": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To your left"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nanti saja"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di sebelah kirimu"
           }
         }
       }
     },
-    "note" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Note"
+    "dir_right": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To your right"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Catatan"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di sebelah kananmu"
           }
         }
       }
     },
-    "note_ph" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Near the blue elevator"
+    "directions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directions"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dekat lift biru"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rute"
           }
         }
       }
     },
-    "open_settings" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open Settings"
+    "done": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buka Pengaturan"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selesai"
           }
         }
       }
     },
-    "other_floor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other floor"
+    "finding": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finding your car"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lantai lain"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari mobilmu"
           }
         }
       }
     },
-    "photo_hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap the pillar sign or something you'll remember"
+    "floor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Floor"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto tanda pilar atau apa pun yang gampang diingat"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lantai"
           }
         }
       }
     },
-    "photo_required_t" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A photo is needed to save your spot"
+    "floor_ph": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. P5 or Rooftop"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perlu foto untuk menyimpan tempat parkir"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mis. P5 atau Rooftop"
           }
         }
       }
     },
-    "replace" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Replace"
+    "found": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Found it"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ganti"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ketemu"
           }
         }
       }
     },
-    "replace_b_fmt" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ moves to Your spots."
+    "gps_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPS ±%@"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ pindah ke Tempatmu."
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPS ±%@"
           }
         }
       }
     },
-    "replace_t" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Replace your current spot?"
+    "hello": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where'd you leave it?"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ganti tempat parkir sekarang?"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mobilmu di mana?"
           }
         }
       }
     },
-    "save_failed_b" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Free up some storage and try again."
+    "improving_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sharpening GPS… ±%@"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kosongkan sedikit penyimpanan, lalu coba lagi."
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mempertajam GPS… ±%@"
           }
         }
       }
     },
-    "save_failed_t" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't save the photo"
+    "loc_b": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can still save spots with a photo and floor. Turn on location to get the arrow."
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto gagal disimpan"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamu tetap bisa simpan tempat dengan foto dan lantai. Nyalakan lokasi untuk panahnya."
           }
         }
       }
     },
-    "spot_saved" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spot saved"
+    "loc_locked_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location locked · ±%@"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tersimpan"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lokasi terkunci · ±%@"
           }
         }
       }
     },
-    "take_photo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Take photo"
+    "loc_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location's off"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ambil foto"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lokasi mati"
           }
         }
       }
     },
-    "unnamed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saved spot"
+    "locating": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Getting your location…"
           }
         },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tempat tersimpan"
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari lokasimu…"
+          }
+        }
+      }
+    },
+    "map": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta"
+          }
+        }
+      }
+    },
+    "not_now": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not now"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nanti saja"
+          }
+        }
+      }
+    },
+    "note": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catatan"
+          }
+        }
+      }
+    },
+    "note_ph": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Near the blue elevator"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dekat lift biru"
+          }
+        }
+      }
+    },
+    "open_settings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka Pengaturan"
+          }
+        }
+      }
+    },
+    "other_floor": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other floor"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lantai lain"
+          }
+        }
+      }
+    },
+    "photo_hint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snap the pillar sign or something you'll remember"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto tanda pilar atau apa pun yang gampang diingat"
+          }
+        }
+      }
+    },
+    "photo_only": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location saved. Go by the photo."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lokasi tidak tersimpan. Ikuti fotonya."
+          }
+        }
+      }
+    },
+    "photo_required_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A photo is needed to save your spot"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perlu foto untuk menyimpan tempat parkir"
+          }
+        }
+      }
+    },
+    "replace": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ganti"
+          }
+        }
+      }
+    },
+    "replace_b_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ moves to Your spots."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ pindah ke Tempatmu."
+          }
+        }
+      }
+    },
+    "replace_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace your current spot?"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ganti tempat parkir sekarang?"
+          }
+        }
+      }
+    },
+    "rough_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrow's off in here (GPS ±%@). Go by the photo."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panah meleset di sini (GPS ±%@). Ikuti fotonya."
+          }
+        }
+      }
+    },
+    "rough_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrow's off here"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panahnya meleset di sini"
+          }
+        }
+      }
+    },
+    "save_failed_b": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free up some storage and try again."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosongkan sedikit penyimpanan, lalu coba lagi."
+          }
+        }
+      }
+    },
+    "save_failed_t": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't save the photo"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto gagal disimpan"
+          }
+        }
+      }
+    },
+    "saved_at_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved %@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disimpan %@"
+          }
+        }
+      }
+    },
+    "spot_saved": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spot saved"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tersimpan"
+          }
+        }
+      }
+    },
+    "take_photo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Take photo"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ambil foto"
+          }
+        }
+      }
+    },
+    "unnamed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved spot"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempat tersimpan"
+          }
+        }
+      }
+    },
+    "your_car": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your car"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mobilmu"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

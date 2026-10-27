@@ -43,3 +43,11 @@ struct WalkProgressTests {
     @Test func furtherThanStartIsZero() { #expect(WalkProgress.value(current: 100, start: 84) == 0) }
     @Test func zeroStartIsDone() { #expect(WalkProgress.value(current: 0, start: 0) == 1) }
 }
+
+// MARK: - Review Focus 2: location off with no fix must never stick on "Getting your location…"
+
+extension FindDisplayTests {
+    @Test func deniedWithoutFixIsPhotoOnly() {
+        #expect(make(auth: .denied, hasFix: false) == .photoOnly)
+    }
+}
