@@ -17,6 +17,22 @@
         }
       }
     },
+    "active": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Active"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktif"
+          }
+        }
+      }
+    },
     "all": {
       "localizations": {
         "en": {
@@ -141,6 +157,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tutup"
+          }
+        }
+      }
+    },
+    "delete": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus"
           }
         }
       }
@@ -529,6 +561,22 @@
         }
       }
     },
+    "noloc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanpa lokasi"
+          }
+        }
+      }
+    },
     "not_now": {
       "localizations": {
         "en": {
@@ -605,6 +653,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lantai lain"
+          }
+        }
+      }
+    },
+    "park_here": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Park here"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parkir di sini"
           }
         }
       }
@@ -817,6 +881,22 @@
         }
       }
     },
+    "search": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari"
+          }
+        }
+      }
+    },
     "spot_saved": {
       "localizations": {
         "en": {
@@ -909,6 +989,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tempat tersimpan"
+          }
+        }
+      }
+    },
+    "use_again": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use again"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pakai lagi"
           }
         }
       }

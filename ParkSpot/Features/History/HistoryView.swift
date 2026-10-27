@@ -34,6 +34,7 @@ struct HistoryView: View {
         .tint(Theme.accent)
         .task { viewModel.reload() }
         .onChange(of: viewModel.filter) { viewModel.reload() }
+        .onChange(of: coordinator.rowsVersion) { viewModel.reload() }   // a delete or reuse changed the spots
         .alert("replace_t",
                isPresented: Binding(get: { coordinator.confirmUseAgainFor != nil },
                                     set: { if !$0 { coordinator.cancelUseAgain() } })) {
@@ -118,7 +119,7 @@ struct HistoryView: View {
                 CoverArt(photos: deps.photos, fileName: spot.photoFileName, tint: spot.photoTint, cornerRadius: 4)
                     .frame(width: 52, height: 52)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(verbatim: spot.placeName ?? String(localized: "noloc"))
+                    Text(verbatim: spot.placeName ?? String(localized: "unnamed"))
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(spot.isActive ? Theme.accent : Theme.text1)
                         .lineLimit(1)
@@ -135,6 +136,11 @@ struct HistoryView: View {
                         .padding(.horizontal, 6)
                         .frame(minHeight: 24)
                         .overlay { RoundedRectangle(cornerRadius: 4).strokeBorder(Theme.line, lineWidth: 1) }
+                } else if spot.savedLocation == nil {
+                    Text("noloc")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Theme.warning)
+                        .lineLimit(1)
                 }
             }
             .contentShape(Rectangle())
@@ -142,15 +148,19 @@ struct HistoryView: View {
         .buttonStyle(.plain)
     }
 
+    /// Today shows the time, anything older shows the weekday and the time, as in the design.
     private func subtitle(_ spot: ParkingSpot) -> String {
-        let time = spot.createdAt.formatted(date: .omitted, time: .shortened)
+        let time: String
+        if Calendar.current.isDateInToday(spot.createdAt) {
+            time = spot.createdAt.formatted(date: .omitted, time: .shortened)
+        } else {
+            time = "\(spot.createdAt.formatted(.dateTime.weekday(.abbreviated))) · \(spot.createdAt.formatted(date: .omitted, time: .shortened))"
+        }
         return spot.isActive ? "\(String(localized: "active")) · \(time)" : time
     }
 
+    /// Names the spot that gets replaced (the active one), matching the save flow's alert.
     private var replaceMessage: String {
-        let name = coordinator.confirmUseAgainFor
-            .flatMap { try? deps.repository.spot(id: $0) }?
-            .placeName ?? String(localized: "unnamed")
-        return String(format: String(localized: "replace_b_fmt"), name)
+        String(format: String(localized: "replace_b_fmt"), coordinator.replacingName)
     }
 }

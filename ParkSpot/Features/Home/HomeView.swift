@@ -25,6 +25,7 @@ struct HomeView: View {
         }
         .task { viewModel.reload() }
         .onChange(of: viewModel.filter) { viewModel.reload() }
+        .onChange(of: coordinator.activeSpotID) { viewModel.reload() }   // parking again changes the shelf
     }
 
     private var header: some View {
@@ -83,7 +84,7 @@ struct HomeView: View {
                                      tint: spot.photoTint,
                                      cornerRadius: 6)
                                 .frame(width: 104, height: 104)
-                            Text(verbatim: spot.placeName ?? "")
+                            Text(verbatim: spot.placeName ?? String(localized: "unnamed"))
                                 .font(.footnote.weight(.medium))
                                 .foregroundStyle(Theme.text1)
                                 .lineLimit(1)

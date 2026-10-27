@@ -27,8 +27,9 @@ import Testing
     }
 
     @Test func rowsActiveFirst() throws {
-        try insert("Old", minutesAgo: 30)
+        // The active spot is the OLDER one, so plain newest-first ordering would fail this.
         try insert("Now", minutesAgo: 1, active: true)
+        try insert("Old", minutesAgo: 30)
 
         viewModel.reload()
 
@@ -50,6 +51,6 @@ import Testing
         viewModel.reload()
 
         #expect(viewModel.rows.count == 1)
-        #expect(photos.image(named: "NoPhoto.jpg") == nil)
+        #expect(photos.thumbnail(named: "NoPhoto.jpg", maxPixel: 320) == nil)
     }
 }

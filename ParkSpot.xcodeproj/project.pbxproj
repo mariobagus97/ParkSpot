@@ -16,6 +16,7 @@
 		1560DBFE76BCD636A4A057E6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F9C9BA302B9523BE3549 /* Components.swift */; };
 		1A0E46B02CC6ECF4D35097E1 /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E615B2369E35B8B62A58E /* FindView.swift */; };
 		25A7FFB07BD2722AB1329606 /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E424B905620332A3C90BC4 /* SpotDetailView.swift */; };
+		25ECD45ECB7E93DCA318946E /* LocalizationUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F33D70FD59B341081D936F /* LocalizationUsageTests.swift */; };
 		29828ADA1E2B5CBD571B8E11 /* SaveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F565A102DFD2492D33AF3F7 /* SaveCoordinator.swift */; };
 		2FD229338A1A92BE2DF709D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */; };
 		313DED699EE0F351B438DF1B /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BDBE328DDAB188397E74B946 /* InfoPlist.xcstrings */; };
@@ -135,6 +136,7 @@
 		67590DD715E1B46060A72890 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6C9EB97D3D9627BF12D199FE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6FF414F90BDAC21DFD27BF50 /* PlaceNameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceNameTests.swift; sourceTree = "<group>"; };
+		71F33D70FD59B341081D936F /* LocalizationUsageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationUsageTests.swift; sourceTree = "<group>"; };
 		72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpotApp.swift; sourceTree = "<group>"; };
 		72CDA667D31894B601E83B02 /* SpotMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotMapView.swift; sourceTree = "<group>"; };
 		7F565A102DFD2492D33AF3F7 /* SaveCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoordinator.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				A52B588B18167B9868112C4A /* HistoryViewModelTests.swift */,
 				30936E83D60665C1CAD40043 /* HomeViewModelTests.swift */,
 				4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */,
+				71F33D70FD59B341081D936F /* LocalizationUsageTests.swift */,
 				9A0D2536A565D4C379F5B61C /* LocationMappingTests.swift */,
 				1DBB9367163F200E71023206 /* LocationRefinerTests.swift */,
 				0A6C2A6D9E265325A3FB2176 /* MapViewModelTests.swift */,
@@ -614,6 +617,7 @@
 				8B07DC49935CF74CA6F5468F /* HistoryViewModelTests.swift in Sources */,
 				4E3518A10322060D70ECA1B9 /* HomeViewModelTests.swift in Sources */,
 				E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */,
+				25ECD45ECB7E93DCA318946E /* LocalizationUsageTests.swift in Sources */,
 				A63052DB0522B3BB9BC0B393 /* LocationMappingTests.swift in Sources */,
 				C6D56901052DF79FFE34FD2D /* LocationRefinerTests.swift in Sources */,
 				F62F48BFF2BA6C77AE95D8BE /* MapViewModelTests.swift in Sources */,

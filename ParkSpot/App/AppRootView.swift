@@ -18,6 +18,7 @@ struct AppRootView: View {
         .safeAreaInset(edge: .bottom) {
             if let spot = coordinator.activeSpot {
                 NowParkedBar(spot: spot, deps: coordinator.deps) { coordinator.presentFind() }
+                    .id(spot.id)   // a new spot gets a fresh bar, not the old one's distance
             }
         }
         .fullScreenCover(isPresented: findPresented) {

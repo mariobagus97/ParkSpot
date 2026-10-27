@@ -4,7 +4,10 @@ import Testing
 import UIKit
 @testable import ParkSpot
 
-@MainActor final class Recorder: @unchecked Sendable { var values: [Bool] = [] }
+/// Records the `openFind` flag the coordinator reports; a reference type so a closure can append to it.
+@MainActor final class Recorder: @unchecked Sendable {
+    var values: [Bool] = []
+}
 
 @MainActor struct HistoryCoordinatorTests {
     let recorder = Recorder()
@@ -15,8 +18,6 @@ import UIKit
     let deps: AppDependencies
     let saver: SpotSaver
     let coordinator: HistoryCoordinator
-
-    final class Recorder: @unchecked Sendable { var values: [Bool] = [] }
 
     init() {
         container.mainContext.autosaveEnabled = false
@@ -31,6 +32,16 @@ import UIKit
         spot.placeName = name
         if active { try deps.repository.insertActive(spot) } else { container.mainContext.insert(spot); try deps.repository.save() }
         return spot
+    }
+
+    @Test func useAgainOnTheActiveSpotDoesNothing() throws {
+        let current = try insert("Now", active: true)
+
+        coordinator.useAgain(current.id)
+
+        #expect(coordinator.confirmUseAgainFor == nil)
+        #expect(recorder.values.isEmpty)
+        #expect(try deps.repository.activeSpot()?.id == current.id)
     }
 
     @Test func useAgainWithoutActiveActivates() throws {
