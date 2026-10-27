@@ -17,6 +17,22 @@
         }
       }
     },
+    "all": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua"
+          }
+        }
+      }
+    },
     "arrived": {
       "localizations": {
         "en": {
@@ -449,6 +465,22 @@
         }
       }
     },
+    "malls": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Malls"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mal"
+          }
+        }
+      }
+    },
     "map": {
       "localizations": {
         "en": {
@@ -593,6 +625,22 @@
         }
       }
     },
+    "recent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent spots"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempat terakhir"
+          }
+        }
+      }
+    },
     "replace": {
       "localizations": {
         "en": {
@@ -705,6 +753,22 @@
         }
       }
     },
+    "saved_ago_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "saved %@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "disimpan %@"
+          }
+        }
+      }
+    },
     "saved_at_fmt": {
       "localizations": {
         "en": {
@@ -733,6 +797,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tersimpan"
+          }
+        }
+      }
+    },
+    "streets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Streets"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jalan"
+          }
+        }
+      }
+    },
+    "tab_home": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beranda"
+          }
+        }
+      }
+    },
+    "tab_lib": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your spots"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempatmu"
           }
         }
       }
