@@ -18,7 +18,9 @@
 		644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A406277A597B53A362C2B2B /* GeoTests.swift */; };
 		ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */; };
 		B55F23DE821309447C4C6F93 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */; };
+		D53230E511C15355CD2D66F5 /* FindDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */; };
 		E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */; };
+		FE7B83AC7FD30A65A7C6FDCA /* FindDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740001D1452551A20BD0E97 /* FindDisplayTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +38,13 @@
 		3A406277A597B53A362C2B2B /* GeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTests.swift; sourceTree = "<group>"; };
 		444C9D54D554174CB00FF364 /* FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTests.swift; sourceTree = "<group>"; };
 		4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplay.swift; sourceTree = "<group>"; };
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpotApp.swift; sourceTree = "<group>"; };
 		82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTypes.swift; sourceTree = "<group>"; };
 		ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B740001D1452551A20BD0E97 /* FindDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplayTests.swift; sourceTree = "<group>"; };
 		BDBE328DDAB188397E74B946 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
 		D45B53405B5A46BD62A94C31 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		BDA94452B4C8BB4354AC82C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */,
 				D638F4371E33D4C2BAE3AE52 /* Formatting.swift */,
 				D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */,
 				A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */,
@@ -119,6 +124,7 @@
 		F22D24365AADE6EBDD5122C2 /* ParkSpotTests */ = {
 			isa = PBXGroup;
 			children = (
+				B740001D1452551A20BD0E97 /* FindDisplayTests.swift */,
 				444C9D54D554174CB00FF364 /* FormattingTests.swift */,
 				3A406277A597B53A362C2B2B /* GeoTests.swift */,
 				4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */,
@@ -230,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D53230E511C15355CD2D66F5 /* FindDisplay.swift in Sources */,
 				0350C3D1BE6365833ECB5904 /* Formatting.swift in Sources */,
 				08EA722E0ABC93D711F8758C /* Geo.swift in Sources */,
 				ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */,
@@ -242,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE7B83AC7FD30A65A7C6FDCA /* FindDisplayTests.swift in Sources */,
 				0B19805FC508401766E560EC /* FormattingTests.swift in Sources */,
 				644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */,
 				E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */,
