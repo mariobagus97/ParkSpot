@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0350C3D1BE6365833ECB5904 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638F4371E33D4C2BAE3AE52 /* Formatting.swift */; };
+		08EA722E0ABC93D711F8758C /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */; };
+		0B19805FC508401766E560EC /* FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C9D54D554174CB00FF364 /* FormattingTests.swift */; };
 		2FD229338A1A92BE2DF709D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */; };
 		313DED699EE0F351B438DF1B /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BDBE328DDAB188397E74B946 /* InfoPlist.xcstrings */; };
 		3170E1D929ED92FEA2A043B4 /* ParkSpotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */; };
 		492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBA04C078C9139220388297 /* Theme.swift */; };
 		5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB303D89712660DF2F4072D9 /* ThemeTests.swift */; };
+		644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A406277A597B53A362C2B2B /* GeoTests.swift */; };
+		ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */; };
 		B55F23DE821309447C4C6F93 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */; };
 		E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */; };
 /* End PBXBuildFile section */
@@ -28,13 +33,18 @@
 
 /* Begin PBXFileReference section */
 		1CBA04C078C9139220388297 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3A406277A597B53A362C2B2B /* GeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTests.swift; sourceTree = "<group>"; };
+		444C9D54D554174CB00FF364 /* FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTests.swift; sourceTree = "<group>"; };
 		4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpotApp.swift; sourceTree = "<group>"; };
 		82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTypes.swift; sourceTree = "<group>"; };
 		ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDBE328DDAB188397E74B946 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
 		D45B53405B5A46BD62A94C31 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB303D89712660DF2F4072D9 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,10 +95,21 @@
 			);
 			sourceTree = "<group>";
 		};
+		BDA94452B4C8BB4354AC82C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D638F4371E33D4C2BAE3AE52 /* Formatting.swift */,
+				D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */,
+				A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C98F6C3B9E7C197D1167671A /* ParkSpot */ = {
 			isa = PBXGroup;
 			children = (
 				FBEA602CCD12DA4A694CCD41 /* App */,
+				BDA94452B4C8BB4354AC82C4 /* Models */,
 				3B0D5532883D5ADC220CF212 /* Resources */,
 				8316B6B6B6E0241BBF267ED2 /* UI */,
 			);
@@ -98,6 +119,8 @@
 		F22D24365AADE6EBDD5122C2 /* ParkSpotTests */ = {
 			isa = PBXGroup;
 			children = (
+				444C9D54D554174CB00FF364 /* FormattingTests.swift */,
+				3A406277A597B53A362C2B2B /* GeoTests.swift */,
 				4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */,
 				EB303D89712660DF2F4072D9 /* ThemeTests.swift */,
 			);
@@ -207,6 +230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0350C3D1BE6365833ECB5904 /* Formatting.swift in Sources */,
+				08EA722E0ABC93D711F8758C /* Geo.swift in Sources */,
+				ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */,
 				3170E1D929ED92FEA2A043B4 /* ParkSpotApp.swift in Sources */,
 				492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */,
 			);
@@ -216,6 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B19805FC508401766E560EC /* FormattingTests.swift in Sources */,
+				644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */,
 				E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */,
 				5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */,
 			);
