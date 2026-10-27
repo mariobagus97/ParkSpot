@@ -33,6 +33,22 @@
         }
       }
     },
+    "back": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kembali"
+          }
+        }
+      }
+    },
     "calibrate": {
       "localizations": {
         "en": {

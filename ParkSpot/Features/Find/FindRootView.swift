@@ -1,7 +1,6 @@
 import SwiftUI
 
-/// Find as a full-screen cover: the navigation stack, and the routes it can push.
-/// The map destination is a placeholder until the map screen lands; the coordinator already pushes `.map`.
+/// Find as a full-screen cover: the navigation stack, the map route, and the full-screen photo.
 struct FindRootView: View {
     @Bindable var coordinator: FindCoordinator
     let deps: AppDependencies

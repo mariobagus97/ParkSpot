@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 import Testing
 @testable import ParkSpot
 
@@ -7,7 +6,6 @@ import Testing
     let location = FakeLocation()
     let maps = FakeMaps()
     let clock = FakeClock()
-    let container = ModelContainer.inMemory()
 
     let here = Coordinate(latitude: 0, longitude: 0)
     var east84: Coordinate { Coordinate(latitude: 0, longitude: 84 / 111_194.93) }
@@ -48,6 +46,19 @@ import Testing
 
         #expect(viewModel.distanceText == nil)
         #expect(viewModel.walkMinutes == nil)
+        viewModel.stop()
+    }
+
+    @Test func coordinateLessSpotHasNoDistanceOrAccuracy() async {
+        let viewModel = MapViewModel(spot: spot(coordinate: nil), location: location, maps: maps)
+
+        viewModel.start()
+        location.send(fix())
+        await settle()
+
+        #expect(viewModel.distanceText == nil)
+        #expect(viewModel.walkMinutes == nil)
+        #expect(viewModel.accuracyText == nil)
         viewModel.stop()
     }
 

@@ -46,12 +46,13 @@ import Observation
     }
 
     private func receive(_ fix: LocationFix) {
-        accuracyText = Formatting.accuracy(fix.horizontalAccuracy, locale: locale)
         guard let spotCoordinate else {
             distanceText = nil
             walkMinutes = nil
+            accuracyText = nil
             return
         }
+        accuracyText = Formatting.accuracy(fix.horizontalAccuracy, locale: locale)
         let distance = Geo.distance(from: fix.coordinate, to: spotCoordinate)
         distanceText = Formatting.distance(distance, locale: locale)
         walkMinutes = Formatting.walkMinutes(distance)

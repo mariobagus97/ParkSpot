@@ -3,16 +3,11 @@ import SwiftUI
 
 /// The car on a map, with the walk back handed to Apple Maps.
 struct SpotMapView: View {
-    let spot: ParkingSpot
-    let coordinator: FindCoordinator
-    let deps: AppDependencies
-
+    private let coordinator: FindCoordinator
     @State private var viewModel: MapViewModel
 
     init(spot: ParkingSpot, coordinator: FindCoordinator, deps: AppDependencies) {
-        self.spot = spot
         self.coordinator = coordinator
-        self.deps = deps
         _viewModel = State(initialValue: MapViewModel(spot: spot, location: deps.location, maps: deps.maps))
     }
 
@@ -20,7 +15,7 @@ struct SpotMapView: View {
         ZStack(alignment: .top) {
             map
             HStack {
-                CircleIconButton(systemImage: "chevron.left", labelKey: "close") {
+                CircleIconButton(systemImage: "chevron.left", labelKey: "back") {
                     if !coordinator.path.isEmpty { coordinator.path.removeLast() }
                 }
                 Spacer()
@@ -38,14 +33,16 @@ struct SpotMapView: View {
         Map(initialPosition: .userLocation(fallback: .automatic)) {
             UserAnnotation()
             if let coordinate = viewModel.spotCoordinate {
-                Annotation("P", coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude,
-                                                                   longitude: coordinate.longitude)) {
+                Annotation(coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude,
+                                                              longitude: coordinate.longitude)) {
                     Text(verbatim: "P")
                         .font(.headline.weight(.black))
                         .foregroundStyle(Theme.black)
                         .frame(width: 38, height: 38)
                         .background(Theme.accent, in: Circle())
                         .overlay { Circle().strokeBorder(Theme.black, lineWidth: 2) }
+                } label: {
+                    Text(verbatim: "P")
                 }
             }
         }
@@ -82,7 +79,7 @@ struct SpotMapView: View {
                         .fixedSize()
                 }
             }
-            PillButton("directions_maps") { viewModel.walkInMaps() }
+            PillButton("directions_maps", systemImage: "figure.walk") { viewModel.walkInMaps() }
                 .accessibilityIdentifier("map_directions")
         }
         .padding(14)
