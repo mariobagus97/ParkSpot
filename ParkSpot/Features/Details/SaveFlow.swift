@@ -1,3 +1,4 @@
+import OSLog
 import SwiftUI
 
 extension View {
@@ -125,7 +126,12 @@ private struct SaveFlowModifier: ViewModifier {
     /// worth stopping for: they stay pending in the context and the next save retries them.
     private func finishDetails() {
         guard let viewModel = details else { return }
-        try? viewModel.done()
+        do {
+            try viewModel.done()
+        } catch {
+            Logger(subsystem: "com.mariobagus.parkspot", category: "save")
+                .error("floor/note not saved: \(error, privacy: .public); the spot itself is stored")
+        }
         details = nil
         coordinator.detailsDone()
     }

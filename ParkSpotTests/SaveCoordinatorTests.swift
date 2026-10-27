@@ -30,6 +30,33 @@ import UIKit
         return spot
     }
 
+    /// A dropped presentation must never wedge the button: the next tap starts a fresh flow.
+    @Test func flowIsUsableAgainAfterAFailedSave() async throws {
+        photos.failNextSave = true
+        coordinator.start()
+        coordinator.photoTaken(.solid())
+        await settle()
+        #expect(coordinator.alert == .saveFailed)
+
+        photos.failNextSave = false
+        coordinator.start()
+        await settle()
+
+        #expect(coordinator.cover == .camera)
+    }
+
+    @Test func flowIsUsableAgainAfterTheDetailsClose() async throws {
+        coordinator.start()
+        coordinator.photoTaken(.solid())
+        await settle()
+        coordinator.detailsDone()
+
+        coordinator.start()
+        await settle()
+
+        #expect(coordinator.cover == .camera || coordinator.alert == .confirmReplace)
+    }
+
     @Test func startWithoutActiveOpensCamera() async {
         coordinator.start()
         await settle()

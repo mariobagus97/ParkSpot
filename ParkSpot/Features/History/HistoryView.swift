@@ -98,13 +98,13 @@ struct HistoryView: View {
                         .listRowBackground(Theme.bg)
                         .listRowSeparator(.hidden)
                         .swipeActions(edge: .trailing) {
-                            Button(role: .destructive) { coordinator.delete(spot.id) } label: {
-                                Label("delete", systemImage: "trash")
-                            }
                             Button { coordinator.useAgain(spot.id) } label: {
                                 Label("use_again", systemImage: "arrow.clockwise")
                             }
                             .tint(Theme.accent)
+                            Button(role: .destructive) { coordinator.delete(spot.id) } label: {
+                                Label("delete", systemImage: "trash")
+                            }
                         }
                 }
             }
@@ -136,7 +136,8 @@ struct HistoryView: View {
                         .padding(.horizontal, 6)
                         .frame(minHeight: 24)
                         .overlay { RoundedRectangle(cornerRadius: 4).strokeBorder(Theme.line, lineWidth: 1) }
-                } else if spot.savedLocation == nil {
+                }
+                if spot.savedLocation == nil {
                     Text("noloc")
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(Theme.warning)

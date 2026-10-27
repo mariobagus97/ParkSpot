@@ -64,6 +64,16 @@ import UIKit
         #expect(vm.floor == "G")
     }
 
+    @Test func clearingTheTypedFloorDropsIt() {
+        vm.setTypedFloor("P5")
+        #expect(vm.floor == "P5")
+
+        vm.clearTypedFloor()
+
+        #expect(vm.typedFloor.isEmpty)
+        #expect(vm.floor == nil)
+    }
+
     @Test func selectingSameFloorClears() {
         vm.selectFloor("B2")
         vm.selectFloor("B2")

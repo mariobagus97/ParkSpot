@@ -59,7 +59,9 @@ private struct Slash: Shape {
     }
 }
 
+#if DEBUG
 #Preview("Camera denied") {
     PermissionView(titleKey: "cam_t", bodyKey: "cam_b") {}
         .preferredColorScheme(.dark)
 }
+#endif

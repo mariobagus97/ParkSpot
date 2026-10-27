@@ -369,22 +369,6 @@
         }
       }
     },
-    "floor_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Floor %@"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lantai %@"
-          }
-        }
-      }
-    },
     "floor_ph": {
       "localizations": {
         "en": {

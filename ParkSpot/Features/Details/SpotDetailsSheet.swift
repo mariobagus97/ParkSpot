@@ -7,7 +7,9 @@ struct SpotDetailsSheet: View {
     let photos: PhotoStoring
     let onDone: () -> Void
 
-    @State private var showsMoreFloors = false
+    @State private var showsMoreFloors = false {
+        didSet { if !showsMoreFloors { viewModel.clearTypedFloor() } }
+    }
     @FocusState private var noteIsFocused: Bool
     @Environment(\.openURL) private var openURL
 

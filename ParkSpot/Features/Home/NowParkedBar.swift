@@ -58,6 +58,9 @@ struct NowParkedBar: View {
         if let distance = viewModel.distanceText {
             return "\(distance) · \(viewModel.savedAgoText)"
         }
+        if viewModel.hasNoLocation {
+            return "\(String(localized: "noloc")) · \(viewModel.savedAgoText)"
+        }
         return viewModel.savedAgoText
     }
 

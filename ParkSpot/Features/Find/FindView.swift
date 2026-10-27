@@ -100,7 +100,7 @@ struct FindView: View {
             .contentShape(Rectangle())
             .onTapGesture { coordinator.showPhoto() }
             .accessibilityAddTraits(.isButton)
-            .accessibilityLabel(Text("spot_saved"))
+            .accessibilityLabel(Text("your_car"))
             .overlay(alignment: .bottomLeading) {
                 if let floor = spot.floor, !floor.isEmpty {
                     FloorBadge(floor)
@@ -147,6 +147,13 @@ struct FindView: View {
         switch viewModel.display {
         case .rough:
             VStack(alignment: .leading, spacing: 6) {
+                if let note = viewModel.spotNote {
+                    Text(verbatim: note)
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.text1)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, 2)
+                }
                 HStack(spacing: 9) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .accessibilityHidden(true)
@@ -165,7 +172,16 @@ struct FindView: View {
             .background(Theme.warning.opacity(0.14), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         case .photoOnly:
             VStack(alignment: .leading, spacing: 6) {
-                Text("photo_only")
+                if let note = viewModel.spotNote {
+                    Text(verbatim: note)
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.text1)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, 2)
+                }
+                // Say the true reason: a spot with coordinates loses the arrow to a denied permission,
+                // it does not lose its location.
+                Text(viewModel.offersMapAndDirections ? "loc_t" : "photo_only")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(Theme.text1.opacity(0.85))
                 if viewModel.isLocationDenied {
@@ -274,10 +290,7 @@ struct FindView: View {
 
     // MARK: Copy
 
-    private var showsMapAndDirections: Bool {
-        if case .photoOnly = viewModel.display { return false }
-        return spot.savedLocation != nil
-    }
+    private var showsMapAndDirections: Bool { viewModel.offersMapAndDirections }
 
     /// The short line under the big number: the direction, or "you're here". Every other state says its
     /// line once, in `stateBlock`, so nothing is printed twice.

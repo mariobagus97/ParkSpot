@@ -35,12 +35,20 @@ import UIKit
     /// after the user agrees.
     func start() {
         guard !isRunning else { return }
+        // Reading the store can fail. If it does, say so and leave the button usable rather than guessing.
+        let active: ParkingSpot?
+        do {
+            active = try deps.repository.activeSpot()
+        } catch {
+            alert = .saveFailed
+            return
+        }
+        replacingPlaceName = active?.placeName
         isRunning = true
-        if let active = try? deps.repository.activeSpot() {
-            replacingPlaceName = active.placeName
-            alert = .confirmReplace
-        } else {
+        if active == nil {
             beginCamera()
+        } else {
+            alert = .confirmReplace
         }
     }
 
@@ -69,6 +77,8 @@ import UIKit
         } catch {
             cover = nil
             alert = .saveFailed
+            // A dropped cover-to-alert transition must never leave "Park here" dead.
+            endFlow()
         }
     }
 
@@ -86,7 +96,7 @@ import UIKit
     /// The sheet is closed. The spot stays as saved and keeps sharpening in the background.
     func detailsDone() {
         detailsSpotID = nil
-        endFlow()
+        endFlow()               // the flow is over; the spot keeps sharpening on its own
     }
 
     // MARK: Private

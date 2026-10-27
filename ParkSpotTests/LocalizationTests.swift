@@ -22,7 +22,7 @@ struct LocalizationTests {
     static let plannedKeys = [
         "about_fmt", "active", "all", "arrived", "back", "calibrate", "cam_b", "cam_t", "cancel", "close",
         "delete", "delete_t", "dir_ahead", "dir_ahead_left", "dir_ahead_right", "dir_behind", "dir_left",
-        "dir_right", "directions", "directions_maps", "done", "finding", "floor", "floor_fmt", "floor_ph",
+        "dir_right", "directions", "directions_maps", "done", "finding", "floor", "floor_ph",
         "found", "gps_fmt", "hello", "improving_fmt", "loc_b", "loc_locked_fmt", "loc_t", "locating", "malls",
         "map", "no_spots", "noloc", "not_now", "note", "note_ph", "open_settings", "other_floor", "park_here",
         "photo_hint", "photo_only", "photo_required_t", "recent", "replace", "replace_b_fmt", "replace_t",

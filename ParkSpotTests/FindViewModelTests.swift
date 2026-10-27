@@ -121,6 +121,66 @@ import Testing
         viewModel.stop()
     }
 
+    @Test func noteIsOfferedForTheGarage() {
+        let spot = spot(accuracy: 45)
+        spot.note = "Dekat lift biru"
+
+        let viewModel = FindViewModel(spot: spot, location: location)
+
+        #expect(viewModel.spotNote == "Dekat lift biru")
+    }
+
+    @Test func blankNoteIsNotOffered() {
+        let spot = spot(accuracy: 45)
+        spot.note = "   "
+
+        #expect(FindViewModel(spot: spot, location: location).spotNote == nil)
+    }
+
+    /// R9: the coordinate is what Map and Directions need; a denied permission must not take them away.
+    @Test func deniedStillOffersMapWhenTheSpotHasCoordinates() async {
+        location.authorization = .denied
+        let viewModel = FindViewModel(spot: spot(), location: location)
+
+        viewModel.start()
+        await settle()
+
+        #expect(viewModel.display == .photoOnly)
+        #expect(viewModel.offersMapAndDirections)
+    }
+
+    @Test func spotWithoutCoordinatesOffersNothing() {
+        let viewModel = FindViewModel(spot: ParkingSpot(createdAt: clock.now, photoFileName: "a.jpg"),
+                                      location: location)
+
+        #expect(!viewModel.offersMapAndDirections)
+    }
+
+    /// A refinement that lands after Find opens must upgrade the screen, not sit stale.
+    @Test func refinementAfterOpenUpgradesTheDisplay() async {
+        let spot = spot(accuracy: 45)
+        let viewModel = FindViewModel(spot: spot, location: location)
+
+        viewModel.start()
+        location.send(fix(5))
+        await settle()
+        guard case .rough = viewModel.display else {
+            Issue.record("expected a rough display first, got \(viewModel.display)")
+            return
+        }
+
+        spot.accuracy = 8          // the saver sharpened the stored spot while Find was open
+        location.send(fix(5))
+        location.sendHeading(Heading(degrees: 0))   // a heading is needed for the arrow state
+        await settle()
+
+        guard case .precise = viewModel.display else {
+            Issue.record("expected the display to sharpen, got \(viewModel.display)")
+            return
+        }
+        viewModel.stop()
+    }
+
     @Test func accessibilityTextCombinesDistanceAndDirection() async {
         let viewModel = FindViewModel(spot: spot(), location: location)
         viewModel.start()

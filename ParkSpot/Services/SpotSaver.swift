@@ -72,7 +72,7 @@ import UIKit
         do {
             try deps.repository.insertActive(newSpot)
         } catch {
-            deps.photos.delete(named: fileName)   // the repository has no rollback
+            deps.photos.delete(named: fileName)   // the repository rolled the insert back
             stopRefining()
             throw error
         }

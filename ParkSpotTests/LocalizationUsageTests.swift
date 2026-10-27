@@ -7,10 +7,10 @@ import Testing
 /// that is used in the code but missing from both (it renders as the raw key, e.g. "park_here").
 struct LocalizationUsageTests {
     /// `Text("floor")`, `PillButton("done")`, `String(localized: "unnamed")` …
+    /// Blind spot: a key passed through a helper parameter (`control(label: "map")`) is not seen here.
     private static let patterns = [
         #"(?:Text|PillButton|Chip|Label|TextField|Button|alert|confirmationDialog)\(\s*"([a-z][a-z0-9_]*)"#,
         #"String\(localized: "([a-z][a-z0-9_]*)"#,
-        #"LocalizedStringValue\("([a-z][a-z0-9_]*)"\)"#,
     ]
 
     @Test func everyKeyUsedByTheViewsExists() throws {

@@ -1,3 +1,4 @@
+import OSLog
 import SwiftData
 import SwiftUI
 
@@ -16,9 +17,17 @@ struct ParkSpotApp: App {
             return
         }
         #endif
-        let container = (try? ModelContainer(for: ParkingSpot.self)) ?? {
-            fatalError("ParkSpot could not open its store")
-        }()
+        let container: ModelContainer
+        do {
+            container = try ModelContainer(for: ParkingSpot.self)
+        } catch {
+            // A corrupt store would otherwise be a launch crash loop with no clue in the logs.
+            Logger(subsystem: "com.mariobagus.parkspot", category: "store")
+                .error("could not open the spot store: \(error, privacy: .public); starting with an empty one")
+            container = (try? ModelContainer(for: ParkingSpot.self,
+                                             configurations: ModelConfiguration(isStoredInMemoryOnly: true)))
+                ?? { fatalError("ParkSpot could not open any store") }()
+        }
         self.container = container
         let deps = AppDependencies.live(container: container)
         _coordinator = State(initialValue: AppCoordinator(deps: deps))

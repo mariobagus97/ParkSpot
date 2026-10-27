@@ -6,7 +6,7 @@ import Observation
 /// The rules live in `FindDisplay.make`; this type only feeds it the saved spot, the live fix, the compass
 /// and the permission, and turns the answer into the strings the screen renders.
 @MainActor @Observable final class FindViewModel {
-    private let saved: SavedLocation?
+    private let spot: ParkingSpot
     private let location: LocationProviding
     private let locale = Locale.current
 
@@ -24,7 +24,7 @@ import Observation
     private var tasks: [Task<Void, Never>] = []
 
     init(spot: ParkingSpot, location: LocationProviding) {
-        self.saved = spot.savedLocation
+        self.spot = spot
         self.location = location
         display = FindDisplay.make(saved: spot.savedLocation, current: nil, heading: nil,
                                    authorization: location.authorization)
@@ -46,6 +46,15 @@ import Observation
         guard let accuracy else { return nil }
         return Formatting.accuracy(accuracy, locale: locale)
     }
+
+    /// The note the user wrote in the garage, shown while the arrow cannot be trusted (or at all, without coordinates).
+    var spotNote: String? {
+        guard let note = spot.note?.trimmingCharacters(in: .whitespacesAndNewlines), !note.isEmpty else { return nil }
+        return note
+    }
+
+    /// Map and Apple Maps walking directions need the spot's coordinate, not the location permission.
+    var offersMapAndDirections: Bool { spot.savedLocation != nil }
 
     /// True while iOS only knows roughly where the user is (reduced accuracy).
     var isApproximateLocation: Bool { location.isApproximate }
@@ -122,13 +131,14 @@ import Observation
     }
 
     private func refresh() {
-        let next = FindDisplay.make(saved: saved, current: current, heading: heading,
+        // Read the spot's saved location every time: the saver may have sharpened it since Find opened.
+        let next = FindDisplay.make(saved: spot.savedLocation, current: current, heading: heading,
                                     authorization: location.authorization)
         display = next
         if case let .precise(_, angle) = next {
             arrowAngle = Geo.unwrap(previous: arrowAngle, target: angle)
         }
-        guard let saved, let current else { return }
+        guard let saved = spot.savedLocation, let current else { return }
         let distance = Geo.distance(from: current.coordinate, to: saved.coordinate)
         if startDistance == nil { startDistance = distance }
         if let startDistance {

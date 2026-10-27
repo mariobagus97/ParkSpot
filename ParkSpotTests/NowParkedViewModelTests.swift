@@ -43,6 +43,23 @@ import Testing
         viewModel.stop()
     }
 
+    @Test func noLocationIsReported() {
+        let viewModel = NowParkedViewModel(spot: spot(coordinate: nil), location: location, now: { clock.now })
+
+        #expect(viewModel.hasNoLocation)
+    }
+
+    @Test func poorAccuracyGivesAnApproximateDistance() async {
+        let viewModel = NowParkedViewModel(spot: spot(coordinate: east84), location: location, now: { clock.now })
+
+        viewModel.start()
+        location.send(LocationFix(coordinate: here, horizontalAccuracy: 45, timestamp: clock.now))
+        await settle()
+
+        #expect(viewModel.distanceText?.contains("~") == true)
+        viewModel.stop()
+    }
+
     @Test func savedAgoMentionsHours() {
         let viewModel = NowParkedViewModel(spot: spot(coordinate: east84), location: location, now: { clock.now })
 

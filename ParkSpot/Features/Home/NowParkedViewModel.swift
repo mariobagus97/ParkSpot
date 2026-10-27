@@ -13,6 +13,8 @@ import Observation
     private var task: Task<Void, Never>?
 
     private(set) var distanceText: String?
+    /// True when the spot has no coordinate at all, so the bar can say so instead of showing nothing.
+    var hasNoLocation: Bool { spot.savedLocation == nil }
 
     init(spot: ParkingSpot, location: LocationProviding, now: @escaping () -> Date) {
         self.spot = spot
@@ -29,13 +31,17 @@ import Observation
     }
 
     func start() {
-        guard task == nil, let saved = spot.savedLocation else { return }
+        guard task == nil, spot.savedLocation != nil else { return }
         let fixes = location.fixes()
         task = Task { [weak self] in
             for await fix in fixes {
-                guard let self else { return }
-                distanceText = Formatting.distance(Geo.distance(from: fix.coordinate, to: saved.coordinate),
-                                                   locale: locale)
+                guard let self, let saved = spot.savedLocation else { return }
+                let metres = Geo.distance(from: fix.coordinate, to: saved.coordinate)
+                // Roughly the same rule the Find screen uses: a poor fix gets an approximate number.
+                let worst = max(saved.accuracy, fix.horizontalAccuracy)
+                distanceText = worst > FindDisplay.arrowMaxAccuracy
+                    ? String(format: String(localized: "about_fmt"), Formatting.roughDistance(metres, locale: locale))
+                    : Formatting.distance(metres, locale: locale)
             }
         }
     }

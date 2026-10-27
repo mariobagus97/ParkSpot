@@ -37,7 +37,7 @@ struct PhotoViewer: View {
                                 lastScale = scale
                             }
                         }
-                        .accessibilityLabel(Text("spot_saved"))
+                        .accessibilityLabel(Text("your_car"))
                 } else {
                     CoverArt(photos: photos, fileName: fileName, tint: nil, cornerRadius: 0)
                         .padding(.horizontal, 16)
