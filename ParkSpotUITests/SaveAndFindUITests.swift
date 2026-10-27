@@ -29,7 +29,7 @@ final class SaveAndFindUITests: XCTestCase {
         XCTAssertFalse(barGone.exists, "The now-parked bar should be gone after Found it")
 
         app.tabBars.buttons["Your spots"].tap()
-        XCTAssertTrue(app.staticTexts["Jl. Sudirman"].waitForExistence(timeout: 10),
-                      "The ended spot should be listed in Your spots")
+        let row = app.cells.containing(.staticText, identifier: "Jl. Sudirman").firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 10), "The ended spot should be listed in Your spots")
     }
 }

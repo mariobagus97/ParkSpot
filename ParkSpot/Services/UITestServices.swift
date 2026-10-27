@@ -6,6 +6,8 @@ import UIKit
 /// Everything the app talks to, faked for UI tests: a scripted location, no camera UI, an in-memory store.
 /// Only `-ui-testing` uses it, and it is compiled out of release builds.
 @MainActor enum UITestServices {
+    /// The plan calls this `AppDependencies.uiTesting()`; it returns the container too, because the
+    /// dependencies only keep it alive through the `now` closure (R-o1).
     static func dependencies() -> (AppDependencies, ModelContainer) {
         let container = (try? ModelContainer(for: ParkingSpot.self,
                                             configurations: ModelConfiguration(isStoredInMemoryOnly: true)))
@@ -26,7 +28,7 @@ import UIKit
 }
 
 /// A plain 1200x1200 image in the mockup's blue, so the photo step needs no camera.
-func solidImage() -> UIImage {
+private func solidImage() -> UIImage {
     let size = CGSize(width: 1200, height: 1200)
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1

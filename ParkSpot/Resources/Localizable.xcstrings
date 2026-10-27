@@ -369,6 +369,22 @@
         }
       }
     },
+    "floor_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Floor %@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lantai %@"
+          }
+        }
+      }
+    },
     "floor_ph": {
       "localizations": {
         "en": {
@@ -797,22 +813,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Panah meleset di sini (GPS ±%@). Ikuti fotonya."
-          }
-        }
-      }
-    },
-    "rough_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrow's off here"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Panahnya meleset di sini"
           }
         }
       }

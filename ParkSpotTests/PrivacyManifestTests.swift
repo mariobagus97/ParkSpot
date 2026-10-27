@@ -11,5 +11,7 @@ struct PrivacyManifestTests {
         #expect(plist["NSPrivacyTracking"] as? Bool == false)
         #expect((plist["NSPrivacyTrackingDomains"] as? [Any])?.isEmpty == true)
         #expect((plist["NSPrivacyCollectedDataTypes"] as? [Any])?.isEmpty == true)
+        // No UserDefaults, no file timestamps, no boot-time reads: nothing needs a required-reason API.
+        #expect((plist["NSPrivacyAccessedAPITypes"] as? [Any])?.isEmpty == true)
     }
 }
