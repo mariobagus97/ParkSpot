@@ -179,11 +179,13 @@ struct FindView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 2)
                 }
-                // Say the true reason: a spot with coordinates loses the arrow to a denied permission,
-                // it does not lose its location.
-                Text(viewModel.offersMapAndDirections ? "loc_t" : "photo_only")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(Theme.text1.opacity(0.85))
+                // A spot with coordinates keeps Map and Directions; the block below explains the denial,
+                // so this line only speaks for a spot that really has no location.
+                if !viewModel.offersMapAndDirections {
+                    Text("photo_only")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.text1.opacity(0.85))
+                }
                 if viewModel.isLocationDenied {
                     Text("loc_t")
                         .font(.footnote.weight(.bold))

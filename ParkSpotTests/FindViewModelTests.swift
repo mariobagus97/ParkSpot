@@ -147,6 +147,7 @@ import Testing
 
         #expect(viewModel.display == .photoOnly)
         #expect(viewModel.offersMapAndDirections)
+        viewModel.stop()
     }
 
     @Test func spotWithoutCoordinatesOffersNothing() {

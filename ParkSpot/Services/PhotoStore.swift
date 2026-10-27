@@ -68,9 +68,10 @@ enum PhotoStoreError: Error {
         let width = image.size.width * image.scale
         let height = image.size.height * image.scale
         let factor = min(1, maxPixel / max(width, height))
-        let size = CGSize(width: (width * factor).rounded(), height: (height * factor).rounded())
+        let size = CGSize(width: max(1, (width * factor).rounded()), height: max(1, (height * factor).rounded()))
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
+        format.preferredRange = .standard     // an 8-bit JPEG does not need an extended-range bitmap
         return UIGraphicsImageRenderer(size: size, format: format).image { _ in
             image.draw(in: CGRect(origin: .zero, size: size))
         }

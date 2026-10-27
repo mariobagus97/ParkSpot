@@ -45,10 +45,11 @@ import Observation
 
     /// Picks a floor; picking the selected one again clears it. Also empties the free-text field, so the chip and
     /// the typed text never both claim to be the floor.
-    /// Collapsing the "+" panel drops a typed floor the user can no longer see.
+    /// Collapsing the "+" panel drops a floor that came from the text field, which is now out of sight.
+    /// A floor picked from the always-visible quick chips stays.
     func clearTypedFloor() {
+        if floor == typedFloor { floor = nil }
         typedFloor = ""
-        floor = nil
     }
 
     func selectFloor(_ value: String) {

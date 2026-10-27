@@ -74,6 +74,15 @@ import UIKit
         #expect(vm.floor == nil)
     }
 
+    /// A floor chosen from the always-visible quick chips must survive collapsing the "+" panel.
+    @Test func collapsingThePanelKeepsAQuickChipFloor() {
+        vm.selectFloor("B2")
+
+        vm.clearTypedFloor()
+
+        #expect(vm.floor == "B2")
+    }
+
     @Test func selectingSameFloorClears() {
         vm.selectFloor("B2")
         vm.selectFloor("B2")
