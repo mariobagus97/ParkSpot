@@ -47,26 +47,28 @@ import Observation
         return Formatting.accuracy(accuracy, locale: locale)
     }
 
+    /// True while iOS only knows roughly where the user is (reduced accuracy).
+    var isApproximateLocation: Bool { location.isApproximate }
+
+    /// True when location access is refused, so the photo-only screen explains how to restore it.
+    var isLocationDenied: Bool { location.authorization == .denied }
+
     /// One sentence for VoiceOver: the distance and the direction, or the state's own copy.
     var accessibilityText: String {
-        let key: String = switch display {
-        case .precise: "dir_ahead"
-        case .rough: "photo_only"
-        case .arrived: "arrived"
-        case .noHeading: "calibrate"
-        case .locating: "locating"
-        case .photoOnly: "photo_only"
-        }
         switch display {
         case let .precise(distance, _):
-            let spoken = direction.map { copy($0.key) } ?? copy(key)
+            let spoken = direction.map { copy($0.key) } ?? copy("dir_ahead")
             return "\(Formatting.distance(distance, locale: locale)), \(spoken)"
         case let .rough(distance, _):
             return copy("rough_fmt", Formatting.roughDistance(distance, locale: locale))
         case let .noHeading(distance):
-            return "\(Formatting.distance(distance, locale: locale)). \(copy(key))"
-        default:
-            return copy(key)
+            return "\(Formatting.distance(distance, locale: locale)). \(copy("calibrate"))"
+        case .arrived:
+            return copy("arrived")
+        case .locating:
+            return copy("locating")
+        case .photoOnly:
+            return copy(isLocationDenied ? "loc_b" : "photo_only")
         }
     }
 
@@ -91,12 +93,16 @@ import Observation
             refresh()
         })
         tasks.append(Task { [weak self] in
-            guard let self else { return }
-            for await fix in fixes { receive(fix) }
+            for await fix in fixes {
+                guard let self else { return }
+                receive(fix)
+            }
         })
         tasks.append(Task { [weak self] in
-            guard let self else { return }
-            for await value in headings { receive(heading: value) }
+            for await value in headings {
+                guard let self else { return }
+                receive(heading: value)
+            }
         })
     }
 

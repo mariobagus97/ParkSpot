@@ -10,7 +10,7 @@ struct CompassView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(Theme.surface1.opacity(0.55))
+                .fill(Theme.black.opacity(0.001))
             ForEach(0..<Self.tickCount, id: \.self) { index in
                 let isMajor = index % 15 == 0
                 Capsule()

@@ -84,6 +84,23 @@ import UIKit
         #expect(maps.opened.isEmpty)
     }
 
+    @Test func idIsTheSpotID() throws {
+        let spot = try storedSpot()
+        let coordinator = FindCoordinator(spotID: spot.id, deps: deps, saver: saver)
+
+        #expect(coordinator.id == spot.id)
+    }
+
+    @Test func foundItWithAMissingSpotStillCallsBack() {
+        let coordinator = FindCoordinator(spotID: UUID(), deps: deps, saver: saver)
+        var ended = 0
+        coordinator.onEnded = { ended += 1 }
+
+        #expect(coordinator.spot == nil)
+        coordinator.foundIt()
+        #expect(ended == 1)
+    }
+
     @Test func closeKeepsSpotActive() throws {
         let spot = try storedSpot()
         let coordinator = FindCoordinator(spotID: spot.id, deps: deps, saver: saver)

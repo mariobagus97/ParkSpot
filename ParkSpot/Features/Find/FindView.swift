@@ -68,15 +68,15 @@ struct FindView: View {
                     .textCase(.uppercase)
                     .tracking(1.4)
                     .foregroundStyle(Theme.text2)
-                Text(verbatim: spot.placeName ?? "")
-                    .font(.footnote.weight(.semibold))
-                    .lineLimit(1)
-                    .opacity(spot.placeName == nil ? 0 : 1)
-                if spot.placeName == nil {
+                if let name = spot.placeName, !name.isEmpty {
+                    Text(verbatim: name)
+                        .font(.footnote.weight(.semibold))
+                        .lineLimit(1)
+                } else {
                     Text("unnamed")
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(Theme.text2)
-                        .offset(y: -18)
+                        .lineLimit(1)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -110,14 +110,16 @@ struct FindView: View {
             VStack(alignment: .leading, spacing: 2) {
                 if let distance = viewModel.distanceText {
                     Text(verbatim: distance)
-                        .font(.system(size: 46, weight: .black))
+                        .font(.largeTitle.weight(.black))
                         .monospacedDigit()
                         .foregroundStyle(Theme.text1)
                 }
-                Text(verbatim: caption)
-                    .font(.subheadline)
-                    .foregroundStyle(Theme.text2)
-                    .fixedSize(horizontal: false, vertical: true)
+                if !caption.isEmpty {
+                    Text(verbatim: caption)
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.text2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text(verbatim: viewModel.accessibilityText))
@@ -144,13 +146,12 @@ struct FindView: View {
                 HStack(spacing: 9) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .accessibilityHidden(true)
-                    Text("rough_t")
-                        .font(.footnote.weight(.bold))
+                    Text(String(format: String(localized: "rough_fmt"),
+                                viewModel.accuracyText ?? ""))
+                        .font(.footnote.weight(.semibold))
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                Text(verbatim: viewModel.accessibilityText)
-                    .font(.footnote)
-                    .foregroundStyle(Theme.text1.opacity(0.8))
-                if deps.location.isApproximate {
+                if viewModel.isApproximateLocation {
                     settingsLink
                 }
             }
@@ -163,7 +164,7 @@ struct FindView: View {
                 Text("photo_only")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(Theme.text1.opacity(0.85))
-                if deps.location.authorization == .denied {
+                if viewModel.isLocationDenied {
                     Text("loc_t")
                         .font(.footnote.weight(.bold))
                         .foregroundStyle(Theme.warning)
@@ -272,18 +273,16 @@ struct FindView: View {
         return spot.savedLocation != nil
     }
 
+    /// The short line under the big number: the direction, or "you're here". Every other state says its
+    /// line once, in `stateBlock`, so nothing is printed twice.
     private var caption: String {
-        if case .rough = viewModel.display { return "" }
         if let direction = viewModel.direction {
             return String(localized: String.LocalizationValue(direction.key))
         }
-        return switch viewModel.display {
-        case .arrived: String(localized: "arrived")
-        case .noHeading: String(localized: "calibrate")
-        case .locating: String(localized: "locating")
-        case .photoOnly: String(localized: "photo_only")
-        case .precise, .rough: ""
+        if case .arrived = viewModel.display {
+            return String(localized: "arrived")
         }
+        return ""
     }
 
     private var savedAt: String {

@@ -12,7 +12,17 @@ struct FindRootView: View {
                 if let spot = coordinator.spot {
                     FindView(spot: spot, coordinator: coordinator, deps: deps)
                 } else {
-                    Theme.bg.ignoresSafeArea()
+                    ZStack {
+                        Theme.bg.ignoresSafeArea()
+                        Button(action: coordinator.close) {
+                            Image(systemName: "chevron.down")
+                                .font(.body.weight(.semibold))
+                                .foregroundStyle(Theme.text1)
+                                .frame(width: 44, height: 44)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(Text("close"))
+                    }
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
