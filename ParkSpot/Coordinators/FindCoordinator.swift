@@ -12,6 +12,8 @@ import SwiftData
     let id: UUID
     private(set) var spot: ParkingSpot?
     var path: [Route] = []
+    /// The full-screen photo of the spot.
+    private(set) var isPhotoPresented = false
 
     /// Called after the session ended, so the caller can drop its reference.
     var onEnded: () -> Void = {}
@@ -47,6 +49,14 @@ import SwiftData
         saver.stopRefining()
         try? deps.repository.endSession(spot)
         onEnded()
+    }
+
+    func showPhoto() {
+        isPhotoPresented = true
+    }
+
+    func hidePhoto() {
+        isPhotoPresented = false
     }
 
     func close() {

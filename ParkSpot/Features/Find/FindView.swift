@@ -97,6 +97,10 @@ struct FindView: View {
                         .padding(28)
                 }
             }
+            .contentShape(Rectangle())
+            .onTapGesture { coordinator.showPhoto() }
+            .accessibilityAddTraits(.isButton)
+            .accessibilityLabel(Text("spot_saved"))
             .overlay(alignment: .bottomLeading) {
                 if let floor = spot.floor, !floor.isEmpty {
                     FloorBadge(floor)

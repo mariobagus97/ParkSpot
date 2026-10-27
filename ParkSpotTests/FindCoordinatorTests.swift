@@ -101,6 +101,17 @@ import UIKit
         #expect(ended == 1)
     }
 
+    @Test func photoOpensAndCloses() throws {
+        let spot = try storedSpot()
+        let coordinator = FindCoordinator(spotID: spot.id, deps: deps, saver: saver)
+
+        coordinator.showPhoto()
+        #expect(coordinator.isPhotoPresented)
+
+        coordinator.hidePhoto()
+        #expect(!coordinator.isPhotoPresented)
+    }
+
     @Test func closeKeepsSpotActive() throws {
         let spot = try storedSpot()
         let coordinator = FindCoordinator(spotID: spot.id, deps: deps, saver: saver)

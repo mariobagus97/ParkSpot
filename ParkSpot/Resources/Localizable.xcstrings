@@ -225,6 +225,22 @@
         }
       }
     },
+    "directions_maps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walk there in Maps"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jalan ke sana di Peta"
+          }
+        }
+      }
+    },
     "done": {
       "localizations": {
         "en": {
@@ -733,6 +749,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tempat tersimpan"
+          }
+        }
+      }
+    },
+    "walk_fmt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min walk"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mnt jalan"
           }
         }
       }

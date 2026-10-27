@@ -29,8 +29,16 @@ struct FindRootView: View {
             .navigationDestination(for: FindCoordinator.Route.self) { route in
                 switch route {
                 case .map:
-                    Text(verbatim: "Map")
+                    if let spot = coordinator.spot {
+                        SpotMapView(spot: spot, coordinator: coordinator, deps: deps)
+                    }
                 }
+            }
+        }
+        .fullScreenCover(isPresented: Binding(get: { coordinator.isPhotoPresented },
+                                              set: { if !$0 { coordinator.hidePhoto() } })) {
+            if let spot = coordinator.spot {
+                PhotoViewer(photos: deps.photos, fileName: spot.photoFileName) { coordinator.hidePhoto() }
             }
         }
     }
