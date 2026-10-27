@@ -92,6 +92,13 @@ import UIKit
     // MARK: Private
 
     private func beginCamera() {
+        #if DEBUG
+        if let testPhoto = deps.testPhoto {
+            saver.beginCapture()
+            photoTaken(testPhoto)
+            return
+        }
+        #endif
         if deps.location.authorization == .notDetermined {
             Task { [location = deps.location] in _ = await location.requestAuthorization() }   // never waited for
         }

@@ -34,6 +34,17 @@ targets:
         NSCameraUsageDescription: "ParkSpot saves a photo with every spot so you can find your car where GPS can't."
         NSLocationWhenInUseUsageDescription: "ParkSpot uses your location to save where you parked and point you back to it. It never leaves your phone."
         ITSAppUsesNonExemptEncryption: false
+  ParkSpotUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [ParkSpotUITests]
+    dependencies: [{ target: ParkSpot }]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mariobagus.parkspot.uitests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TEST_TARGET_NAME: ParkSpot
+        TARGETED_DEVICE_FAMILY: "1"
   ParkSpotTests:
     type: bundle.unit-test
     platform: iOS
@@ -42,5 +53,5 @@ targets:
     settings: { base: { PRODUCT_BUNDLE_IDENTIFIER: com.mariobagus.parkspot.tests, GENERATE_INFOPLIST_FILE: "YES", TARGETED_DEVICE_FAMILY: "1" } }
 schemes:
   ParkSpot:
-    build: { targets: { ParkSpot: all, ParkSpotTests: [test] } }
-    test: { targets: [ParkSpotTests] }
+    build: { targets: { ParkSpot: all, ParkSpotTests: [test], ParkSpotUITests: [test] } }
+    test: { targets: [ParkSpotTests, ParkSpotUITests] }

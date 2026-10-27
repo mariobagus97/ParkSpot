@@ -44,6 +44,7 @@
 		7617179F180BFBB637121E50 /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DAED4BD9BF09EBF363C8FD /* ParkingSpot.swift */; };
 		7A3F504B44E9034A7D431AA9 /* TestImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */; };
 		7A547E796C61EF46F4BE6486 /* CameraAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9177C1A40BC368E94C1AE /* CameraAccess.swift */; };
+		802EB2EE630B28BE8B3C180D /* SaveAndFindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE2B54228C5B9AE83E867B /* SaveAndFindUITests.swift */; };
 		8161E7123A8879D8E94523E7 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DB1B1A99EB934131EAA5 /* CompassView.swift */; };
 		82989EAC9F1F63B9FB3E00B3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8DB1817610B8F58367481 /* AppDependencies.swift */; };
 		8981FFCC5E07B410F4E06C09 /* MapsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC402D9C5C9174C6EB4F662B /* MapsLauncher.swift */; };
@@ -52,6 +53,7 @@
 		8B07DC49935CF74CA6F5468F /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52B588B18167B9868112C4A /* HistoryViewModelTests.swift */; };
 		8CC9CF39C07CAA5C922A671D /* SpotFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0CEC893C63E5F638F4AD8 /* SpotFilter.swift */; };
 		8D1B8CD0934F4C9404B7FA92 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFE53956B899624953C1D9 /* AppRootView.swift */; };
+		8D715F91C8AF3AB29D58C7AB /* UITestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E789BACFEBDABCFFF95BE /* UITestServices.swift */; };
 		8DBC03D9F52351EF4A93B809 /* LocationRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33FB4647CDFB917B9F321C /* LocationRefiner.swift */; };
 		946F5700AA2EFD968086D54D /* FindCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0EAF5BFFB6A4CBDE7D94E /* FindCoordinator.swift */; };
 		96278CA75F63AF4D07345ECE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBE78FD1436CE386A5DF11D /* LocationService.swift */; };
@@ -84,6 +86,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		00CF66F01A58A220F5B9E05D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96856D97073C9779A0BA0301 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20B55B6E3C03D0B64DADEA82;
+			remoteInfo = ParkSpot;
+		};
 		7C2C26A9AED758F8091271DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 96856D97073C9779A0BA0301 /* Project object */;
@@ -99,6 +108,7 @@
 		07E70509B76B7D4598BD5DF5 /* PhotoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStoreTests.swift; sourceTree = "<group>"; };
 		0A6C2A6D9E265325A3FB2176 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 		122B14DAE83515C18E756A52 /* PhotoTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTint.swift; sourceTree = "<group>"; };
+		197F067819687902AFC52337 /* ParkSpotUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA44A6252F1EF1F92B80150 /* NowParkedBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowParkedBar.swift; sourceTree = "<group>"; };
 		1C7C10DCF3DF9C8319CC0E76 /* SpotDetailsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailsSheet.swift; sourceTree = "<group>"; };
 		1CBA04C078C9139220388297 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -144,6 +154,7 @@
 		A52B588B18167B9868112C4A /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTypes.swift; sourceTree = "<group>"; };
 		ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1DE2B54228C5B9AE83E867B /* SaveAndFindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAndFindUITests.swift; sourceTree = "<group>"; };
 		B6E424B905620332A3C90BC4 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		B71FF0A54D9C249970DFCB26 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B740001D1452551A20BD0E97 /* FindDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplayTests.swift; sourceTree = "<group>"; };
@@ -155,6 +166,7 @@
 		CF65722596D930A09C40A513 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D07F2F6CC42A2D7D7E839AA9 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
 		D45B53405B5A46BD62A94C31 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		D46E789BACFEBDABCFFF95BE /* UITestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestServices.swift; sourceTree = "<group>"; };
 		D511F9C9BA302B9523BE3549 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		D6C0EAF5BFFB6A4CBDE7D94E /* FindCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCoordinator.swift; sourceTree = "<group>"; };
@@ -174,11 +186,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		11F1B2FB49F19E5255056859 /* ParkSpotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE2B54228C5B9AE83E867B /* SaveAndFindUITests.swift */,
+			);
+			path = ParkSpotUITests;
+			sourceTree = "<group>";
+		};
 		2EF64C4C213073D90BA4D5C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				DD272554094424E1FD09D88A /* ParkSpot.app */,
 				60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */,
+				197F067819687902AFC52337 /* ParkSpotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +234,7 @@
 				122B14DAE83515C18E756A52 /* PhotoTint.swift */,
 				F7E648C24B0373670B8B6A5B /* SpotRepository.swift */,
 				E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */,
+				D46E789BACFEBDABCFFF95BE /* UITestServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -261,6 +283,7 @@
 				32D238BEF290A4E87118FDB1 /* Config */,
 				C98F6C3B9E7C197D1167671A /* ParkSpot */,
 				F22D24365AADE6EBDD5122C2 /* ParkSpotTests */,
+				11F1B2FB49F19E5255056859 /* ParkSpotUITests */,
 				2EF64C4C213073D90BA4D5C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -422,6 +445,24 @@
 			productReference = DD272554094424E1FD09D88A /* ParkSpot.app */;
 			productType = "com.apple.product-type.application";
 		};
+		37154BBF33FB452DE387D0D5 /* ParkSpotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC5741544651376D1C6F4C5D /* Build configuration list for PBXNativeTarget "ParkSpotUITests" */;
+			buildPhases = (
+				4FDAF8C72BFEAD9954A3CB74 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3548DD0E2172CAF673317524 /* PBXTargetDependency */,
+			);
+			name = ParkSpotUITests;
+			packageProductDependencies = (
+			);
+			productName = ParkSpotUITests;
+			productReference = 197F067819687902AFC52337 /* ParkSpotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		66C365B0C84D5B1B529BEEC5 /* ParkSpotTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A46622DD532543216EC301B /* Build configuration list for PBXNativeTarget "ParkSpotTests" */;
@@ -452,6 +493,10 @@
 					20B55B6E3C03D0B64DADEA82 = {
 						ProvisioningStyle = Automatic;
 					};
+					37154BBF33FB452DE387D0D5 = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = 20B55B6E3C03D0B64DADEA82;
+					};
 					66C365B0C84D5B1B529BEEC5 = {
 						ProvisioningStyle = Automatic;
 					};
@@ -473,6 +518,7 @@
 			projectRoot = "";
 			targets = (
 				20B55B6E3C03D0B64DADEA82 /* ParkSpot */,
+				37154BBF33FB452DE387D0D5 /* ParkSpotUITests */,
 				66C365B0C84D5B1B529BEEC5 /* ParkSpotTests */,
 			);
 		};
@@ -540,6 +586,15 @@
 				37939324AA89DA288EAB49F2 /* SpotRepository.swift in Sources */,
 				720CDBDD2B727ECD002583E0 /* SpotSaver.swift in Sources */,
 				492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */,
+				8D715F91C8AF3AB29D58C7AB /* UITestServices.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FDAF8C72BFEAD9954A3CB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802EB2EE630B28BE8B3C180D /* SaveAndFindUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +635,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3548DD0E2172CAF673317524 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20B55B6E3C03D0B64DADEA82 /* ParkSpot */;
+			targetProxy = 00CF66F01A58A220F5B9E05D /* PBXContainerItemProxy */;
+		};
 		CCE9824EF5D1AA456B9259CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 20B55B6E3C03D0B64DADEA82 /* ParkSpot */;
@@ -622,6 +682,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariobagus.parkspot;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3ECE447A39CB165425899BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mariobagus.parkspot.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ParkSpot;
 			};
 			name = Release;
 		};
@@ -722,6 +799,23 @@
 			};
 			name = Release;
 		};
+		9561E3A6FF5CC1D4B41D8F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mariobagus.parkspot.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ParkSpot;
+			};
+			name = Debug;
+		};
 		B01006E6EBFF8FB239637C12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -806,6 +900,15 @@
 			buildConfigurations = (
 				6268C4371A3CE1B787E10234 /* Debug */,
 				0E7EA72199F154122E05674B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DC5741544651376D1C6F4C5D /* Build configuration list for PBXNativeTarget "ParkSpotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9561E3A6FF5CC1D4B41D8F0E /* Debug */,
+				3ECE447A39CB165425899BD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

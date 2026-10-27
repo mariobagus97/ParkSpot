@@ -8,6 +8,14 @@ struct ParkSpotApp: App {
     @State private var coordinator: AppCoordinator
 
     init() {
+        #if DEBUG
+        if CommandLine.arguments.contains("-ui-testing") {
+            let (deps, container) = UITestServices.dependencies()
+            self.container = container
+            _coordinator = State(initialValue: AppCoordinator(deps: deps))
+            return
+        }
+        #endif
         let container = (try? ModelContainer(for: ParkingSpot.self)) ?? {
             fatalError("ParkSpot could not open its store")
         }()

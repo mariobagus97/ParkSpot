@@ -35,6 +35,20 @@
                ReferencedContainer = "container:ParkSpot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "37154BBF33FB452DE387D0D5"
+               BuildableName = "ParkSpotUITests.xctest"
+               BlueprintName = "ParkSpotUITests"
+               ReferencedContainer = "container:ParkSpot.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -61,6 +75,17 @@
                BlueprintIdentifier = "66C365B0C84D5B1B529BEEC5"
                BuildableName = "ParkSpotTests.xctest"
                BlueprintName = "ParkSpotTests"
+               ReferencedContainer = "container:ParkSpot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "37154BBF33FB452DE387D0D5"
+               BuildableName = "ParkSpotUITests.xctest"
+               BlueprintName = "ParkSpotUITests"
                ReferencedContainer = "container:ParkSpot.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import UIKit
 
 /// Everything the view models reach the outside world through. Built once at launch; tests swap in fakes.
 @MainActor struct AppDependencies {
@@ -10,6 +11,10 @@ import SwiftData
     let geocoder: Geocoding
     let maps: MapsOpening
     let now: () -> Date
+    #if DEBUG
+    /// Set by `UITestServices`: when present, the save flow uses this photo instead of the camera.
+    var testPhoto: UIImage?
+    #endif
 
     static func live(container: ModelContainer) -> AppDependencies {
         let photos = PhotoStore.live()
