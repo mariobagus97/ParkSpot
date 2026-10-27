@@ -89,6 +89,77 @@ import Testing
         #expect(try other.fetch(FetchDescriptor<ParkingSpot>()).map(\.photoFileName) == ["b"])
     }
 
+    /// A repository whose store already holds the spots `seed` saved through a writable container, then refuses every save.
+    /// Keep the rig alive while it is used: it owns the store file and both containers.
+    @MainActor struct FailingStoreRig {
+        let store: FileBackedStore
+        let readOnly: ModelContainer
+        let repository: SpotRepository
+        var context: ModelContext { readOnly.mainContext }
+    }
+
+    func failingRig(seeding seed: (SpotRepository) throws -> Void) throws -> FailingStoreRig {
+        let store = try FileBackedStore()
+        try seed(SpotRepository(context: store.writable.mainContext, photos: photos))
+        let readOnly = try store.openReadOnly()
+        return FailingStoreRig(store: store, readOnly: readOnly,
+                               repository: SpotRepository(context: readOnly.mainContext, photos: photos))
+    }
+
+    @Test func failedInsertActiveRollsBack() throws {
+        let old = spot("old.jpg", minutesAgo: 5)
+        let rig = try failingRig { try $0.insertActive(old) }
+        try withExtendedLifetime(rig) {
+            #expect(throws: (any Error).self) { try rig.repository.insertActive(spot("new.jpg")) }
+
+            let spots = try rig.repository.allSpots()
+            #expect(spots.map(\.photoFileName) == ["old.jpg"])   // the new spot is gone
+            #expect(spots.map(\.isActive) == [true])             // the old one kept its flag
+            #expect(try rig.repository.activeSpot()?.id == old.id)
+            #expect(!rig.context.hasChanges)
+        }
+    }
+
+    @Test func failedActivateRollsBack() throws {
+        let previous = spot("previous.jpg"), target = spot("target.jpg", minutesAgo: 5)
+        let rig = try failingRig { try $0.insertActive(target); try $0.insertActive(previous) }
+        try withExtendedLifetime(rig) {
+            let stored = try #require(try rig.repository.spot(id: target.id))
+            #expect(throws: (any Error).self) { try rig.repository.activate(stored) }
+
+            #expect(try rig.repository.activeSpot()?.id == previous.id)
+            #expect(stored.isActive == false)
+            #expect(try rig.repository.allSpots().filter(\.isActive).map(\.id) == [previous.id])
+            #expect(!rig.context.hasChanges)
+        }
+    }
+
+    @Test func failedEndSessionRollsBack() throws {
+        let active = spot("a.jpg")
+        let rig = try failingRig { try $0.insertActive(active) }
+        try withExtendedLifetime(rig) {
+            let stored = try #require(try rig.repository.activeSpot())
+            #expect(throws: (any Error).self) { try rig.repository.endSession(stored) }
+
+            #expect(stored.isActive == true)
+            #expect(try rig.repository.activeSpot()?.id == active.id)
+            #expect(!rig.context.hasChanges)
+        }
+    }
+
+    @Test func failedDeleteRollsBack() throws {
+        let kept = spot("a.jpg")
+        let rig = try failingRig { try $0.insertActive(kept) }
+        try withExtendedLifetime(rig) {
+            let stored = try #require(try rig.repository.spot(id: kept.id))
+            #expect(throws: (any Error).self) { try rig.repository.delete(stored) }
+
+            #expect(try rig.repository.allSpots().map(\.id) == [kept.id])
+            #expect(try rig.repository.spot(id: kept.id) != nil)
+            #expect(!rig.context.hasChanges)
+        }
+    }
+
     @Test func savedLocationNeedsAllThreeValues() {
         let s = spot("a"); s.latitude = 1; s.longitude = 2; #expect(s.savedLocation == nil)
         s.accuracy = 5; #expect(s.savedLocation?.accuracy == 5)

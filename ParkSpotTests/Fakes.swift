@@ -42,6 +42,31 @@ extension ModelContainer {
     }
 }
 
+/// A store file on disk that a test seeds through `writable` and then reopens with `openReadOnly()`:
+/// reads work and every save throws. (An in-memory store cannot be made read-only.)
+/// The directory is removed with the object, so keep it alive for as long as its containers are used.
+@MainActor final class FileBackedStore {
+    let writable: ModelContainer
+    private let directory: URL
+    private let url: URL
+
+    init() throws {
+        directory = URL.temporaryDirectory.appending(path: "ParkSpotTests-\(UUID().uuidString)", directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        url = directory.appending(path: "store.sqlite")
+        writable = try ModelContainer(for: ParkingSpot.self, configurations: ModelConfiguration(url: url))
+        _ = try ModelContext(writable).fetchCount(FetchDescriptor<ParkingSpot>())   // creates the file
+    }
+
+    func openReadOnly() throws -> ModelContainer {
+        try ModelContainer(for: ParkingSpot.self, configurations: ModelConfiguration(url: url, allowsSave: false))
+    }
+
+    deinit {
+        try? FileManager.default.removeItem(at: directory)
+    }
+}
+
 /// Scripted location source. Every open `fixes()`/`headings()` stream counts in `subscriberCount` until it terminates.
 @MainActor final class FakeLocation: LocationProviding {
     var authorization: LocationAuthorization = .authorized

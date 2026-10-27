@@ -279,17 +279,14 @@ import UIKit
         #expect(try stored(spot.id)?.placeName == nil)
     }
 
-    /// R-o: the repository has no rollback, so the saver removes the photo it just wrote and stops.
+    /// R-o: the repository rolls the failed save back, then the saver removes the photo it just wrote and stops.
     @Test func repositoryFailureDeletesThePhotoAndStops() async throws {
         // A store opened read-only: reading works, so `insertActive` fails only when it saves.
-        let directory = URL.temporaryDirectory.appending(path: "SpotSaverTests-\(UUID().uuidString)", directoryHint: .isDirectory)
-        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let url = directory.appending(path: "store.sqlite")
-        let writable = try ModelContainer(for: ParkingSpot.self, configurations: ModelConfiguration(url: url))
-        _ = try ModelContext(writable).fetchCount(FetchDescriptor<ParkingSpot>())   // creates the file
-        let readOnly = try ModelContainer(for: ParkingSpot.self, configurations: ModelConfiguration(url: url, allowsSave: false))
-        withExtendedLifetime((writable, readOnly)) {
+        let store = try FileBackedStore()
+        let old = ParkingSpot(createdAt: clock.now.addingTimeInterval(-3600), photoFileName: "old.jpg")
+        try SpotRepository(context: store.writable.mainContext, photos: photos).insertActive(old)
+        let readOnly = try store.openReadOnly()
+        try withExtendedLifetime((store, readOnly)) {
             let failing = AppDependencies.test(location: location, photos: photos, container: readOnly,
                                                geocoder: geocoder, clock: clock)
             let saver = SpotSaver(deps: failing)
@@ -299,6 +296,11 @@ import UIKit
             #expect(photos.files.isEmpty)
             #expect(photos.deleted == ["fake-1.jpg"])
             #expect(!saver.isRefining)
+            // No ghost spot, and the previous spot keeps its flag: the failed save left nothing behind.
+            let spots = try failing.repository.allSpots()
+            #expect(spots.map(\.photoFileName) == ["old.jpg"])
+            #expect(spots.map(\.isActive) == [true])
+            #expect(!readOnly.mainContext.hasChanges)
         }
         await settle()
         #expect(location.subscriberCount == 0)

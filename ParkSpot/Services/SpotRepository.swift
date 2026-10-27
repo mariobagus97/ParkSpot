@@ -43,26 +43,26 @@ import SwiftData
         try deactivateAll(except: spot)
         spot.isActive = true
         context.insert(spot)
-        try save()
+        try saveOrRollBack()
     }
 
     /// Makes `spot` the active one; the previously active spot becomes inactive.
     func activate(_ spot: ParkingSpot) throws {
         try deactivateAll(except: spot)
         spot.isActive = true
-        try save()
+        try saveOrRollBack()
     }
 
     func endSession(_ spot: ParkingSpot) throws {
         spot.isActive = false
-        try save()
+        try saveOrRollBack()
     }
 
     /// Removes the photo file first, then the record.
     func delete(_ spot: ParkingSpot) throws {
         photos.delete(named: spot.photoFileName)
         context.delete(spot)
-        try save()
+        try saveOrRollBack()
     }
 
     func save() throws {
@@ -70,6 +70,18 @@ import SwiftData
     }
 
     private static let newestFirst = SortDescriptor(\ParkingSpot.createdAt, order: .reverse)
+
+    /// Saves a mutator's changes. If the save throws, they are discarded (insert, flag flips, delete) and the error is
+    /// rethrown, so a failed mutator never leaves a half-applied state to be flushed by a later save or autosave.
+    /// The plain `save()` does not roll back: its callers keep in-memory changes they want to retry.
+    private func saveOrRollBack() throws {
+        do {
+            try context.save()
+        } catch {
+            context.rollback()
+            throw error
+        }
+    }
 
     private func deactivateAll(except spot: ParkingSpot) throws {
         let active = try context.fetch(FetchDescriptor<ParkingSpot>(predicate: #Predicate { $0.isActive == true }))
