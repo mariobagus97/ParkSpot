@@ -20,6 +20,8 @@
 		5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB303D89712660DF2F4072D9 /* ThemeTests.swift */; };
 		630881F0F5F59BA02318E73D /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */; };
 		644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A406277A597B53A362C2B2B /* GeoTests.swift */; };
+		6E2E46A67B1FB64AA3ED632A /* SpotSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548398F8DF8B2050716B8612 /* SpotSaverTests.swift */; };
+		720CDBDD2B727ECD002583E0 /* SpotSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */; };
 		7617179F180BFBB637121E50 /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DAED4BD9BF09EBF363C8FD /* ParkingSpot.swift */; };
 		7A3F504B44E9034A7D431AA9 /* TestImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */; };
 		7A547E796C61EF46F4BE6486 /* CameraAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9177C1A40BC368E94C1AE /* CameraAccess.swift */; };
@@ -67,6 +69,7 @@
 		4AE0CEC893C63E5F638F4AD8 /* SpotFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotFilter.swift; sourceTree = "<group>"; };
 		4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplay.swift; sourceTree = "<group>"; };
+		548398F8DF8B2050716B8612 /* SpotSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaverTests.swift; sourceTree = "<group>"; };
 		557DBEFAFB2A263F642F11C9 /* FakesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakesTests.swift; sourceTree = "<group>"; };
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF414F90BDAC21DFD27BF50 /* PlaceNameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceNameTests.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		D45B53405B5A46BD62A94C31 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaver.swift; sourceTree = "<group>"; };
 		EB303D89712660DF2F4072D9 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
 		ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		F7E648C24B0373670B8B6A5B /* SpotRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotRepository.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */,
 				122B14DAE83515C18E756A52 /* PhotoTint.swift */,
 				F7E648C24B0373670B8B6A5B /* SpotRepository.swift */,
+				E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				6FF414F90BDAC21DFD27BF50 /* PlaceNameTests.swift */,
 				F9611B66B571C842FA2C4F0D /* SpotFilterTests.swift */,
 				48F95A01B84CDF0F9260F9F1 /* SpotRepositoryTests.swift */,
+				548398F8DF8B2050716B8612 /* SpotSaverTests.swift */,
 				02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */,
 				EB303D89712660DF2F4072D9 /* ThemeTests.swift */,
 			);
@@ -323,6 +329,7 @@
 				8AA3ED10388E4C8B08998C81 /* PhotoTint.swift in Sources */,
 				8CC9CF39C07CAA5C922A671D /* SpotFilter.swift in Sources */,
 				37939324AA89DA288EAB49F2 /* SpotRepository.swift in Sources */,
+				720CDBDD2B727ECD002583E0 /* SpotSaver.swift in Sources */,
 				492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +351,7 @@
 				E88C5B4A4975B5C4AF50CB2F /* PlaceNameTests.swift in Sources */,
 				EBA0DFE14F4040999DA4DE48 /* SpotFilterTests.swift in Sources */,
 				110D1126139567EB9A02D6EF /* SpotRepositoryTests.swift in Sources */,
+				6E2E46A67B1FB64AA3ED632A /* SpotSaverTests.swift in Sources */,
 				7A3F504B44E9034A7D431AA9 /* TestImages.swift in Sources */,
 				5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */,
 			);
