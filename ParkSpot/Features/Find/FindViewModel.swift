@@ -59,8 +59,8 @@ import Observation
         case let .precise(distance, _):
             let spoken = direction.map { copy($0.key) } ?? copy("dir_ahead")
             return "\(Formatting.distance(distance, locale: locale)), \(spoken)"
-        case let .rough(distance, _):
-            return copy("rough_fmt", Formatting.roughDistance(distance, locale: locale))
+        case let .rough(_, worst):
+            return copy("rough_fmt", Formatting.accuracy(worst, locale: locale))
         case let .noHeading(distance):
             return "\(Formatting.distance(distance, locale: locale)). \(copy("calibrate"))"
         case .arrived:

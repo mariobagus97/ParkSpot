@@ -247,6 +247,7 @@ struct FindView: View {
                 Text("found")
                     .font(.caption2.weight(.bold))
                     .foregroundStyle(Theme.text1)
+                    .accessibilityHidden(true)
             }
 
             if showsMapAndDirections {
@@ -263,6 +264,7 @@ struct FindView: View {
             Text(LocalizedStringKey(label))
                 .font(.caption2)
                 .foregroundStyle(Theme.text2)
+                .accessibilityHidden(true)
         }
     }
 
