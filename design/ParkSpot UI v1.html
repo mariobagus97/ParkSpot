@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParkSpot · UI design v1</title>
+<style>
+  :root{
+    --page:#E7E5DF; --screen:#F6F5F1; --ink:#16181C; --mute:#6B6F76; --line:#DEDBD3; --card:#FFFFFF;
+    --accent:#F5B700; --accent-ink:#16181C; --ok:#1E9E5A; --warn:#B86200; --blue:#2F7BF6; --chrome:#111;
+    --map1:#E4E2DA; --map2:#FFFFFF; --mapw:#CFE3F2; --mapg:#D6E8CF;
+  }
+  [data-theme=dark]{
+    --page:#0D0E10; --screen:#15171A; --ink:#F2F1EC; --mute:#9A9EA6; --line:#2A2D33; --card:#1F2226;
+    --accent:#FFC21A; --accent-ink:#15171A; --ok:#3CC57E; --warn:#FFA53A; --blue:#4B8DFF; --chrome:#000;
+    --map1:#1C1F23; --map2:#2B2F35; --mapw:#1B2A38; --mapg:#1E2A20;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--ink);font:14px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif;padding:20px 18px 40px;transition:background .3s,color .3s}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:6px;max-width:1300px}
+  h1{font:700 22px/1.1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-.02em}
+  h1 small{display:block;font-size:12px;font-weight:500;color:var(--mute);letter-spacing:0;margin-top:4px}
+  .toggles{display:flex;gap:8px}
+  .seg{display:flex;background:var(--line);border-radius:9px;padding:2px}
+  .seg button{border:0;background:none;color:var(--ink);font:600 12px -apple-system,sans-serif;padding:6px 11px;border-radius:7px;cursor:pointer}
+  .seg button.on{background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .system{font-size:12px;color:var(--mute);max-width:1300px;margin:6px 0 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+  .sw{display:inline-flex;align-items:center;gap:6px}
+  .sw i{width:14px;height:14px;border-radius:4px;border:1px solid var(--line);display:inline-block}
+  .grid{display:flex;flex-wrap:wrap;gap:28px 22px;max-width:1300px}
+  figure{width:280px}
+  figcaption{font-size:12px;color:var(--mute);margin-bottom:8px;min-height:54px}
+  figcaption b{color:var(--ink);font-weight:650;display:block;font-size:13px}
+
+  /* phone */
+  .phone{width:280px;height:590px;border-radius:44px;background:var(--chrome);padding:9px;box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
+  .scr{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:var(--screen);display:flex;flex-direction:column}
+  .status{height:40px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 24px 0;font:600 12px -apple-system,sans-serif}
+  .status .isl{width:84px;height:24px;background:#000;border-radius:14px;position:absolute;left:50%;top:9px;transform:translateX(-50%)}
+  .status.light{color:#fff}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 0;min-height:36px}
+  .nav .t{font:700 26px/1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-.02em}
+  .link{color:var(--ink);font-weight:600;font-size:14px;display:inline-flex;gap:5px;align-items:center;cursor:pointer}
+  .link.acc{color:var(--warn)}
+  .body{flex:1;display:flex;flex-direction:column;padding:8px 16px 18px;gap:12px;min-height:0}
+  .home-ind{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:96px;height:4px;border-radius:3px;background:var(--ink);opacity:.8}
+
+  /* parts */
+  .card{background:var(--card);border-radius:16px;padding:12px}
+  .row{display:flex;gap:10px;align-items:center}
+  .mute{color:var(--mute)}
+  .xs{font-size:11px}
+  .sm{font-size:12.5px}
+  .btn{border:0;border-radius:14px;padding:13px;font:650 15px -apple-system,sans-serif;cursor:pointer;width:100%;color:var(--ink);background:var(--card)}
+  .btn.p{background:var(--accent);color:var(--accent-ink)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--line)}
+  .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .photo{border-radius:12px;background:
+      repeating-linear-gradient(135deg,rgba(127,127,127,.18) 0 10px,rgba(127,127,127,.08) 10px 20px);
+      display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase;position:relative;overflow:hidden}
+  .chip{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:600;background:var(--card)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+  .dot.warn{background:var(--warn)}
+  .pulse{animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.35}}
+
+  /* park */
+  .pbtn{margin:auto;width:196px;height:196px;border-radius:44px;background:var(--accent);color:var(--accent-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(245,183,0,.7);transition:transform .15s}
+  .pbtn:active{transform:scale(.96)}
+  .pbtn .P{font:800 96px/0.9 -apple-system,"SF Pro Rounded",sans-serif;letter-spacing:-.04em}
+  .pbtn .l{font:700 16px -apple-system,sans-serif}
+
+  /* camera */
+  .cam{background:#000;color:#fff}
+  .vf{flex:1;margin:0;border-radius:0;background:linear-gradient(180deg,#2c2f33,#4a4d50 55%,#2a2b2d);position:relative}
+  .vf .pillar{position:absolute;left:50%;top:18%;transform:translateX(-50%);width:70px;height:62%;background:linear-gradient(90deg,#6f7275,#8b8e91 50%,#6a6d70)}
+  .vf .sign{position:absolute;left:50%;top:30%;transform:translateX(-50%);background:#F5B700;color:#111;font:800 22px -apple-system,sans-serif;padding:6px 10px;border-radius:6px}
+  .vf .tag{position:absolute;bottom:8px;right:10px;font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase}
+  .camtop{position:absolute;top:48px;left:0;right:0;display:flex;justify-content:center}
+  .camtop .chip{background:rgba(0,0,0,.55);color:#fff}
+  .hint{position:absolute;bottom:128px;left:16px;right:16px;text-align:center;font-size:12px;color:#fff;text-shadow:0 1px 3px #000}
+  .shutterbar{height:110px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px;background:#000}
+  .shutter{width:66px;height:66px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .shutter i{width:52px;height:52px;border-radius:50%;background:#fff;display:block}
+
+  /* sheet */
+  .dim{position:absolute;inset:0;background:rgba(0,0,0,.42)}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--screen);border-radius:22px 22px 0 0;padding:8px 16px 22px;display:flex;flex-direction:column;gap:11px}
+  .grab{width:36px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 4px}
+  .floors{display:flex;flex-wrap:wrap;gap:6px}
+  .floors span{min-width:38px;text-align:center;padding:7px 8px;border-radius:10px;background:var(--card);font-weight:650;font-size:13px;cursor:pointer}
+  .floors span.on{background:var(--accent);color:var(--accent-ink)}
+  .field{background:var(--card);border-radius:12px;padding:11px 12px;font-size:13.5px;color:var(--mute)}
+
+  /* find */
+  .compass{position:relative;width:212px;height:212px;margin:4px auto 0}
+  .compass svg{width:100%;height:100%;overflow:visible}
+  .dist{text-align:center;margin-top:-4px}
+  .dist .n{font:700 54px/1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .dist .n small{font-size:22px;font-weight:600;margin-left:2px}
+  .mini{display:flex;gap:10px;align-items:center}
+  .mini .photo{width:52px;height:52px;flex:none;font-size:8px}
+  .floorbig{font:800 46px/1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-.02em}
+  .warnbar{display:flex;gap:8px;align-items:center;background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn);border-radius:12px;padding:9px 11px;font-size:12px;font-weight:600}
+
+  /* alert */
+  .alert{position:absolute;left:34px;right:34px;top:36%;background:var(--card);border-radius:16px;text-align:center;overflow:hidden}
+  .alert .a{padding:16px 14px 12px}
+  .alert .a b{display:block;font-size:15px;margin-bottom:4px}
+  .alert .acts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  .alert .acts span{padding:11px;font-size:15px;color:var(--blue);cursor:pointer}
+  .alert .acts span+span{border-left:1px solid var(--line);font-weight:650}
+
+  /* map */
+  .map{flex:1;position:relative;background:var(--map1)}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .mapcard{position:absolute;left:12px;right:12px;bottom:22px;background:var(--screen);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
+  .back{position:absolute;top:48px;left:12px;background:var(--screen);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+
+  /* history */
+  .list{background:var(--card);border-radius:16px;overflow:hidden}
+  .item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);position:relative;background:var(--card)}
+  .item:last-child{border-bottom:0}
+  .item .photo{width:44px;height:44px;flex:none;font-size:7px}
+  .item .tx{flex:1;min-width:0}
+  .item .tx b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .badge{font-size:11px;font-weight:700;padding:3px 7px;border-radius:7px;background:var(--line)}
+  .badge.act{background:var(--accent);color:var(--accent-ink)}
+  .swipe{display:flex;margin:0;position:relative}
+  .swipe .item{transform:translateX(-128px);width:100%;flex:none;animation:sw 4s ease-in-out infinite}
+  @keyframes sw{0%,15%{transform:none}35%,80%{transform:translateX(-128px)}100%{transform:none}}
+  .swipe .acts{position:absolute;right:0;top:0;bottom:0;display:flex}
+  .swipe .acts span{width:64px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:650;color:#fff;text-align:center;line-height:1.15}
+  .swipe .acts .use{background:var(--blue)} .swipe .acts .del{background:#E5484D}
+  .sect{font-size:11.5px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin:2px 4px -6px}
+
+  /* permission */
+  .perm{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;text-align:left}
+  .perm .ic{width:64px;height:64px;border-radius:18px;background:var(--card);display:flex;align-items:center;justify-content:center}
+  .perm h2{font:700 24px/1.15 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-.02em}
+
+  .notes{max-width:1300px;margin-top:30px;font-size:12.5px;color:var(--mute);columns:2 300px;column-gap:28px}
+  .notes p{break-inside:avoid;margin-bottom:8px}
+  .notes b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-theme="light">
+
+<header>
+  <h1>ParkSpot · UI design v1<small>9 screens from the approved PRD v2 · iPhone, iOS 17+</small></h1>
+  <div class="toggles">
+    <div class="seg" id="themeSeg"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></div>
+    <div class="seg" id="langSeg"><button data-v="en" class="on">EN</button><button data-v="id">ID</button></div>
+  </div>
+</header>
+<div class="system">
+  <span><b style="color:var(--ink)">Idea:</b> asphalt and line paint, like a garage floor. One bright accent, the rest stays quiet.</span>
+  <span class="sw"><i style="background:#F5B700"></i>Line yellow (accent)</span>
+  <span class="sw"><i style="background:#16181C"></i>Asphalt</span>
+  <span class="sw"><i style="background:#F6F5F1"></i>Concrete</span>
+  <span class="sw"><i style="background:#B86200"></i>Warning</span>
+  <span>Type: SF Pro (system), so it follows Dynamic Type</span>
+</div>
+
+<div class="grid">
+
+<!-- 1 PARK -->
+<figure>
+  <figcaption><b>1 · Park (home)</b><span data-t="c1"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="t">ParkSpot</span><span class="link" data-t="history"></span></div>
+    <div class="body">
+      <div class="pbtn"><span class="P">P</span><span class="l" data-t="park_here"></span></div>
+      <p class="sm mute" style="text-align:center;margin-top:-4px" data-t="park_sub"></p>
+      <div class="card mini" style="margin-top:auto">
+        <div class="photo">photo</div>
+        <div style="flex:1"><div class="xs mute" data-t="last_spot"></div><b style="font-size:13.5px">Grand Indonesia · B2</b><div class="xs mute" data-t="yesterday"></div></div>
+      </div>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 2 CAMERA -->
+<figure>
+  <figcaption><b>2 · Camera (photo required)</b><span data-t="c2"></span></figcaption>
+  <div class="phone"><div class="scr cam">
+    <div class="status light"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="vf"><div class="pillar"></div><div class="sign">B2 · C4</div><span class="tag">camera preview</span></div>
+    <div class="camtop"><span class="chip"><span class="dot pulse"></span><span data-t="loc_locked"></span></span></div>
+    <div class="hint" data-t="photo_hint"></div>
+    <div class="shutterbar"><span class="sm" data-t="cancel"></span><div class="shutter"><i></i></div><span style="width:40px"></span></div>
+  </div></div>
+</figure>
+
+<!-- 3 DETAILS SHEET -->
+<figure>
+  <figcaption><b>3 · Saved + details sheet</b><span data-t="c3"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="t">ParkSpot</span></div>
+    <div class="dim"></div>
+    <div class="sheet">
+      <div class="grab"></div>
+      <div class="row">
+        <div class="photo" style="width:64px;height:64px;font-size:8px">photo</div>
+        <div><b style="font-size:17px;display:flex;gap:6px;align-items:center"><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="var(--ok)"/><path d="M5.5 10.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><span data-t="spot_saved"></span></b>
+          <div class="sm mute" style="display:flex;gap:6px;align-items:center;margin-top:3px"><span class="dot warn pulse"></span><span data-t="improving"></span></div></div>
+      </div>
+      <div class="sm" style="font-weight:600" data-t="floor"></div>
+      <div class="floors" id="floors"></div>
+      <div class="sm" style="font-weight:600" data-t="note"></div>
+      <div class="field" data-t="note_ph"></div>
+      <button class="btn p" data-t="done"></button>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 4 FIND OUTDOOR -->
+<figure>
+  <figcaption><b>4 · Find, good GPS</b><span data-t="c4"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="link" data-t="history"></span><span class="link acc"><b>P</b><span data-t="park_here"></span></span></div>
+    <div class="body" style="gap:8px">
+      <div class="mini"><div class="photo">photo</div><div><b style="font-size:15px">Jl. Sudirman</b><div class="xs mute" data-t="saved_ago"></div></div></div>
+      <div class="compass">
+        <svg viewBox="-110 -110 220 220">
+          <circle r="100" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <g id="ticks"></g>
+          <g id="arrow"><path d="M0,-78 L34,30 L0,12 L-34,30 Z" fill="var(--accent)" stroke="var(--accent-ink)" stroke-width="2" stroke-linejoin="round"/></g>
+          <circle r="5" fill="var(--ink)"/>
+        </svg>
+      </div>
+      <div class="dist"><div class="n"><span id="dnum">84</span><small>m</small></div><div class="sm mute" style="display:flex;gap:6px;justify-content:center;align-items:center"><span class="dot"></span>GPS ±6 m</div></div>
+      <div class="btns" style="margin-top:auto"><button class="btn" data-t="map"></button><button class="btn" data-t="directions"></button></div>
+      <button class="btn p" data-t="found"></button>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 5 FIND INDOOR -->
+<figure>
+  <figcaption><b>5 · Find, weak GPS (mall)</b><span data-t="c5"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="link" data-t="history"></span><span class="link acc"><b>P</b><span data-t="park_here"></span></span></div>
+    <div class="body" style="gap:9px;padding-bottom:22px">
+      <div class="photo" style="height:150px;flex:none">photo · tap to zoom</div>
+      <div class="row" style="align-items:flex-end;justify-content:space-between">
+        <div><div class="xs mute" data-t="floor"></div><div class="floorbig">B2</div></div>
+        <div style="text-align:right"><div class="sm mute">Grand Indonesia</div><div style="font-weight:650" data-t="about"></div></div>
+      </div>
+      <div class="card sm">“<span data-t="note_ph"></span>”</div>
+      <div class="warnbar"><svg width="16" height="16" viewBox="0 0 20 20"><path d="M10 2l9 16H1z" fill="currentColor"/><rect x="9" y="7" width="2" height="6" fill="var(--screen)"/><rect x="9" y="14.5" width="2" height="2" fill="var(--screen)"/></svg><span data-t="rough"></span></div>
+      <button class="btn p" style="margin-top:auto" data-t="found"></button>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 6 MAP -->
+<figure>
+  <figcaption><b>6 · Map</b><span data-t="c6"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="map">
+      <svg viewBox="0 0 262 572" preserveAspectRatio="xMidYMid slice">
+        <rect x="150" y="60" width="140" height="120" fill="var(--mapg)"/>
+        <path d="M-10,410 C 80,380 160,420 290,380 L290,440 C 170,470 90,440 -10,470Z" fill="var(--mapw)"/>
+        <g stroke="var(--map2)" stroke-width="16" fill="none"><path d="M-10,250 H290"/><path d="M100,-10 V600"/></g>
+        <g stroke="var(--map2)" stroke-width="7" fill="none"><path d="M-10,130 H290"/><path d="M-10,340 H290"/><path d="M200,-10 V600"/><path d="M30,-10 V600"/></g>
+        <path id="route" d="M60,330 C 60,300 100,280 100,250 S 150,180 196,152" stroke="var(--blue)" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round" fill="none"/>
+        <circle cx="60" cy="330" r="18" fill="var(--blue)" opacity=".18"/><circle cx="60" cy="330" r="7" fill="var(--blue)" stroke="#fff" stroke-width="3"/>
+        <g transform="translate(196,152)"><path d="M0,0 C -14,-16 -16,-24 -16,-30 A16,16 0 1 1 16,-30 C 16,-24 14,-16 0,0Z" fill="var(--accent)" stroke="var(--accent-ink)" stroke-width="1.5"/><text x="0" y="-24" text-anchor="middle" font-size="16" font-weight="800" fill="var(--accent-ink)" font-family="-apple-system,sans-serif">P</text></g>
+        <text x="8" y="244" font-size="9" fill="var(--mute)" font-family="-apple-system,sans-serif">JL. JEND. SUDIRMAN</text>
+      </svg>
+      <span class="back">‹ <span data-t="your_car"></span></span>
+      <div class="mapcard">
+        <div class="row" style="justify-content:space-between"><div><b>Jl. Sudirman</b><div class="xs mute">84 m · <span data-t="walk"></span></div></div><span class="chip" style="background:var(--card)"><span class="dot"></span>±6 m</span></div>
+        <button class="btn p" data-t="directions_maps"></button>
+      </div>
+    </div>
+    <div class="status" style="position:absolute;top:0;left:0;right:0"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 7 REPLACE -->
+<figure>
+  <figcaption><b>7 · Replace confirmation</b><span data-t="c7"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="link" data-t="history"></span><span class="link acc"><b>P</b><span data-t="park_here"></span></span></div>
+    <div class="body"><div class="mini"><div class="photo">photo</div><div><b>Jl. Sudirman</b><div class="xs mute" data-t="saved_ago"></div></div></div>
+      <div class="dist" style="margin-top:120px"><div class="n">84<small>m</small></div></div></div>
+    <div class="dim"></div>
+    <div class="alert"><div class="a"><b data-t="replace_t"></b><span class="sm" data-t="replace_b"></span></div><div class="acts"><span data-t="cancel"></span><span data-t="replace"></span></div></div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 8 HISTORY -->
+<figure>
+  <figcaption><b>8 · History</b><span data-t="c8"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="nav"><span class="link">‹ ParkSpot</span></div>
+    <div class="nav" style="padding-top:0"><span class="t" data-t="history"></span></div>
+    <div class="body" style="gap:12px">
+      <div class="sect" data-t="today"></div>
+      <div class="list"><div class="item"><div class="photo">photo</div><div class="tx"><b>Jl. Sudirman</b><span class="xs mute">09:12</span></div><span class="badge act" data-t="active"></span></div></div>
+      <div class="sect" data-t="earlier"></div>
+      <div class="list">
+        <div class="swipe"><div class="item"><div class="photo">photo</div><div class="tx"><b>Grand Indonesia</b><span class="xs mute" data-t="yesterday"></span></div><span class="badge">B2</span></div>
+          <div class="acts"><span class="use" data-t="use_again"></span><span class="del" data-t="delete"></span></div></div>
+        <div class="item"><div class="photo">photo</div><div class="tx"><b>Plaza Senayan</b><span class="xs mute" data-t="sat"></span></div><span class="badge">P3</span></div>
+        <div class="item"><div class="photo">photo</div><div class="tx"><b>Jl. Kemang Raya</b><span class="xs mute" data-t="fri"></span></div></div>
+        <div class="item"><div class="photo">photo</div><div class="tx"><b data-t="noloc"></b><span class="xs mute" data-t="thu"></span></div><span class="badge">B1</span></div>
+      </div>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+<!-- 9 PERMISSION -->
+<figure>
+  <figcaption><b>9 · Camera access denied</b><span data-t="c9"></span></figcaption>
+  <div class="phone"><div class="scr">
+    <div class="status"><span>9:41</span><span class="isl"></span><span>100</span></div>
+    <div class="body">
+      <div class="perm">
+        <div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.7" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.6"/></svg></div>
+        <h2 data-t="cam_t"></h2>
+        <p class="mute" data-t="cam_b"></p>
+      </div>
+      <button class="btn p" data-t="open_settings"></button>
+      <button class="btn ghost" data-t="not_now"></button>
+    </div>
+    <div class="home-ind"></div>
+  </div></div>
+</figure>
+
+</div>
+
+<div class="notes">
+  <p><b>Sample data.</b> Place names, distances and times are examples only. Grey striped boxes stand in for the user's own photos.</p>
+  <p><b>One accent.</b> Line yellow marks the actions that matter: Park here, Done, Found it, Directions. Everything else is neutral, so the yellow always means "do this".</p>
+  <p><b>Find decides its own layout.</b> With good GPS (screen 4) the arrow leads. With weak GPS (screen 5) the photo and floor lead, and the arrow is gone instead of being wrong.</p>
+  <p><b>Navigation (MVVM + C).</b> Park → Camera → Details is the Save coordinator. Find → Map / Photo is the Find coordinator. History is its own. The views never navigate themselves.</p>
+  <p><b>Accessibility.</b> Buttons are at least 44 pt tall, text uses system styles for Dynamic Type, and the distance is read out by VoiceOver as "84 meters, ahead to the right".</p>
+  <p><b>Not designed yet.</b> App icon, location-denied screen (same pattern as screen 9), and the photo viewer. They come with the build.</p>
+</div>
+
+<script>
+const T={
+ en:{history:"History",park_here:"Park here",park_sub:"Opens the camera and saves where you are",last_spot:"Last spot",yesterday:"Yesterday · 18:22",
+  loc_locked:"Location saved · ±8 m",photo_hint:"Get the pillar sign or a landmark in the photo",cancel:"Cancel",spot_saved:"Spot saved",improving:"Improving position… ±12 m",
+  floor:"Floor",note:"Note (optional)",note_ph:"Near the blue elevator",done:"Done",saved_ago:"Saved 2 h ago",map:"Map",directions:"Directions",found:"Found it",
+  about:"about 40 m",rough:"Arrow is rough here · GPS ±45 m",your_car:"Your car",walk:"1 min walk",directions_maps:"Walking directions in Maps",
+  replace_t:"Replace your current spot?",replace_b:"Your current spot moves to History.",replace:"Replace",today:"Today",earlier:"Earlier",active:"Active",
+  use_again:"Use again",delete:"Delete",cam_t:"ParkSpot needs the camera",cam_b:"Every spot is saved with a photo, so you can find your car even where GPS can't reach.",
+  open_settings:"Open Settings",not_now:"Not now",sat:"Sat · 19:40",fri:"Fri · 12:05",thu:"Thu · 08:30",noloc:"No location",
+  c1:"One big target. The last spot sits below for a quick look back.",c2:"Location is captured at the tap; the chip shows it's done while you frame the photo.",
+  c3:"The spot is already saved. Floor and note are optional; GPS keeps sharpening.",c4:"Arrow turns with the phone, distance counts down live.",
+  c5:"Both fixes under 30 m fail, so the photo and floor lead and the arrow hides.",c6:"Both pins plus a hand-off to Apple Maps walking directions.",
+  c7:"Only shown when an active spot exists. First save is one tap.",c8:"Swipe a row to reuse or delete it. Spots without GPS still show.",c9:"The photo is required, so saving waits for access."},
+ id:{history:"Riwayat",park_here:"Parkir di sini",park_sub:"Membuka kamera dan menyimpan posisimu",last_spot:"Tempat terakhir",yesterday:"Kemarin · 18.22",
+  loc_locked:"Lokasi tersimpan · ±8 m",photo_hint:"Foto tanda pilar atau patokan di sekitar",cancel:"Batal",spot_saved:"Tempat tersimpan",improving:"Memperbaiki posisi… ±12 m",
+  floor:"Lantai",note:"Catatan (opsional)",note_ph:"Dekat lift biru",done:"Selesai",saved_ago:"Disimpan 2 jam lalu",map:"Peta",directions:"Rute",found:"Ketemu",
+  about:"sekitar 40 m",rough:"Panah kurang akurat · GPS ±45 m",your_car:"Mobilmu",walk:"1 mnt jalan kaki",directions_maps:"Rute jalan kaki di Peta",
+  replace_t:"Ganti tempat parkir sekarang?",replace_b:"Tempat sekarang pindah ke Riwayat.",replace:"Ganti",today:"Hari ini",earlier:"Sebelumnya",active:"Aktif",
+  use_again:"Pakai lagi",delete:"Hapus",cam_t:"ParkSpot butuh kamera",cam_b:"Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai.",
+  open_settings:"Buka Pengaturan",not_now:"Nanti saja",sat:"Sab · 19.40",fri:"Jum · 12.05",thu:"Kam · 08.30",noloc:"Tanpa lokasi",
+  c1:"Satu tombol besar. Tempat terakhir ada di bawah.",c2:"Lokasi diambil saat tombol ditekan; chip menunjukkan sudah tersimpan.",
+  c3:"Tempat sudah tersimpan. Lantai dan catatan opsional; GPS terus diperbaiki.",c4:"Panah berputar mengikuti ponsel, jarak berkurang langsung.",
+  c5:"Akurasi di atas 30 m, jadi foto dan lantai di depan, panah disembunyikan.",c6:"Dua pin dan rute jalan kaki lewat Apple Maps.",
+  c7:"Hanya muncul jika ada tempat aktif. Simpan pertama cukup satu ketuk.",c8:"Geser baris untuk pakai lagi atau hapus.",c9:"Foto wajib, jadi penyimpanan menunggu izin kamera."}
+};
+function setLang(l){document.documentElement.lang=l;document.querySelectorAll('[data-t]').forEach(e=>{const v=T[l][e.dataset.t];if(v!==undefined)e.textContent=v;});}
+function seg(id,fn){const s=document.getElementById(id);s.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v);});}
+seg('themeSeg',v=>document.body.dataset.theme=v);
+seg('langSeg',setLang);
+setLang('en');
+
+// floor chips
+const fl=document.getElementById('floors');
+['B3','B2','B1','G','1','2','3','…'].forEach(f=>{const s=document.createElement('span');s.textContent=f;if(f==='B2')s.className='on';s.onclick=()=>{fl.querySelectorAll('span').forEach(x=>x.classList.remove('on'));s.classList.add('on')};fl.appendChild(s);});
+
+// compass ticks
+const tk=document.getElementById('ticks');
+for(let i=0;i<72;i++){const a=i*5,big=i%18===0,l=document.createElementNS('http://www.w3.org/2000/svg','line');
+ l.setAttribute('x1',0);l.setAttribute('x2',0);l.setAttribute('y1',-100);l.setAttribute('y2',big?-88:-94);
+ l.setAttribute('stroke',big?'var(--ink)':'var(--mute)');l.setAttribute('stroke-width',big?2:1);l.setAttribute('opacity',big?1:.5);
+ l.setAttribute('transform','rotate('+a+')');tk.appendChild(l);}
+
+// live arrow + distance
+const arrow=document.getElementById('arrow'),dn=document.getElementById('dnum');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let t0=performance.now();
+function loop(now){
+  const t=(now-t0)/1000;
+  const ang=32+Math.sin(t*0.9)*22+Math.sin(t*2.3)*4;
+  arrow.setAttribute('transform','rotate('+ang.toFixed(1)+')');
+  const d=Math.max(9,Math.round(84-((t%14)/14)*75));
+  dn.textContent=d;
+  if(!reduce)requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

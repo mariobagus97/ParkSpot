@@ -1,0 +1,5 @@
+xcuserdata/
+DerivedData/
+Config/Signing.xcconfig
+.DS_Store
+.superpowers/

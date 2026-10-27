@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParkSpot · UI design v2 (Gen-Z, HIG)</title>
+<style>
+  :root{
+    --page:#ECECF0; --bg:#F2F2F7; --bg2:#FFFFFF; --label:#000; --label2:rgba(60,60,67,.6); --sep:rgba(60,60,67,.18); --fill:rgba(120,120,128,.12);
+    --volt:#C8F031; --volt-ink:#0B0B0C; --green:#34C759; --orange:#FF9500; --red:#FF3B30; --blue:#007AFF; --glass:rgba(255,255,255,.72);
+    --map1:#EDEBE6; --map2:#FFFFFF; --mapw:#BFDDF5; --mapg:#CFE8C6;
+  }
+  [data-theme=dark]{
+    --page:#050506; --bg:#000; --bg2:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6); --sep:rgba(84,84,88,.6); --fill:rgba(120,120,128,.24);
+    --volt:#D4FF3A; --volt-ink:#0B0B0C; --green:#30D158; --orange:#FF9F0A; --red:#FF453A; --blue:#0A84FF; --glass:rgba(44,44,46,.72);
+    --map1:#1E2024; --map2:#33363C; --mapw:#18304A; --mapg:#1D2E1F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--label);font:15px/1.35 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;padding:20px 18px 40px;transition:background .3s,color .3s}
+  .rd{font-family:ui-rounded,"SF Pro Rounded",-apple-system,sans-serif}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;max-width:1300px}
+  h1{font:800 24px/1.1 ui-rounded,"SF Pro Rounded",-apple-system,sans-serif;letter-spacing:-.02em}
+  h1 small{display:block;font:500 12px -apple-system,sans-serif;color:var(--label2);margin-top:4px}
+  .toggles{display:flex;gap:8px}
+  .seg{display:flex;background:var(--fill);border-radius:9px;padding:2px}
+  .seg button{border:0;background:none;color:var(--label);font:600 13px -apple-system,sans-serif;padding:6px 12px;border-radius:7px;cursor:pointer}
+  .seg button.on{background:var(--bg2);box-shadow:0 3px 8px rgba(0,0,0,.12),0 1px 1px rgba(0,0,0,.04)}
+  .system{font-size:12px;color:var(--label2);max-width:1300px;margin:8px 0 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+  .system b{color:var(--label)}
+  .sw{display:inline-flex;align-items:center;gap:6px}
+  .sw i{width:14px;height:14px;border-radius:50%;border:1px solid var(--sep);display:inline-block}
+  .grid{display:flex;flex-wrap:wrap;gap:28px 22px;max-width:1300px}
+  figure{width:280px}
+  figcaption{font-size:12px;color:var(--label2);margin-bottom:8px;min-height:54px}
+  figcaption b{color:var(--label);display:block;font-size:13px}
+
+  .phone{width:280px;height:590px;border-radius:46px;background:#0B0B0C;padding:9px;box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+  .scr{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+  .status{height:42px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 26px 0;font:600 13px -apple-system,sans-serif;position:relative;z-index:3}
+  .status .isl{width:86px;height:25px;background:#000;border-radius:14px;position:absolute;left:50%;top:9px;transform:translateX(-50%)}
+  .status.on-dark{color:#fff}
+  .home{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:98px;height:4px;border-radius:3px;background:var(--label);opacity:.85;z-index:5}
+  .home.w{background:#fff}
+
+  /* nav */
+  .tb{display:flex;justify-content:space-between;align-items:center;padding:2px 14px 0;min-height:40px}
+  .gbtn{width:36px;height:36px;border-radius:50%;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.08),inset 0 0 0 .5px rgba(255,255,255,.4)}
+  .gpill{height:36px;border-radius:18px;padding:0 13px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:inline-flex;gap:6px;align-items:center;font-weight:600;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .large{font:800 32px/1.05 ui-rounded,"SF Pro Rounded",-apple-system,sans-serif;letter-spacing:-.02em;padding:4px 16px 0}
+  .sub{font-size:13px;color:var(--label2);padding:2px 16px 0}
+  .body{flex:1;display:flex;flex-direction:column;padding:10px 16px 22px;gap:12px;min-height:0}
+  svg.s{width:18px;height:18px;flex:none}
+  .mute{color:var(--label2)} .xs{font-size:11.5px} .sm{font-size:13px}
+
+  /* controls */
+  .cap{border:0;border-radius:999px;height:50px;font:650 16px ui-rounded,"SF Pro Rounded",-apple-system,sans-serif;width:100%;cursor:pointer;display:flex;gap:7px;align-items:center;justify-content:center}
+  .cap.p{background:var(--volt);color:var(--volt-ink)}
+  .cap.t{background:var(--fill);color:var(--label)}
+  .cap.plain{background:none;color:var(--label);height:40px;font-weight:600}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .card{background:var(--bg2);border-radius:22px;padding:12px}
+  .photo{border-radius:14px;background:repeating-linear-gradient(135deg,rgba(127,127,127,.2) 0 9px,rgba(127,127,127,.08) 9px 18px);display:flex;align-items:center;justify-content:center;color:var(--label2);font-size:10px;letter-spacing:.06em;text-transform:uppercase;flex:none}
+  .chip{white-space:nowrap;flex:none;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600;background:var(--fill)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green)} .dot.o{background:var(--orange)}
+  .pulse{animation:pulse 1.4s ease-in-out infinite} @keyframes pulse{50%{opacity:.3}}
+  .sticker{display:inline-flex;align-items:center;justify-content:center;font:900 15px ui-rounded,"SF Pro Rounded",sans-serif;background:var(--volt);color:var(--volt-ink);border-radius:10px;padding:4px 8px;transform:rotate(-6deg);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+
+  /* home */
+  .hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+  .pbig{width:200px;height:200px;border-radius:50%;background:var(--volt);color:var(--volt-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:transform .15s}
+  .pbig:active{transform:scale(.95)}
+  .pbig::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:2px solid var(--volt);opacity:.5;animation:ring 2.4s ease-out infinite}
+  @keyframes ring{0%{transform:scale(.92);opacity:.6}100%{transform:scale(1.12);opacity:0}}
+  .pbig .P{font:900 92px/.9 ui-rounded,"SF Pro Rounded",sans-serif;letter-spacing:-.04em}
+  .pbig .l{font:750 15px ui-rounded,"SF Pro Rounded",sans-serif}
+
+  /* camera */
+  .vf{position:absolute;inset:0;background:linear-gradient(180deg,#2b2e33,#4b4e52 55%,#26272a)}
+  .vf .pillar{position:absolute;left:50%;top:20%;transform:translateX(-50%);width:72px;height:58%;background:linear-gradient(90deg,#6f7275,#8d9093 50%,#6a6d70)}
+  .vf .sign{position:absolute;left:50%;top:31%;transform:translateX(-50%);background:#FFD43B;color:#111;font:800 21px -apple-system,sans-serif;padding:6px 10px;border-radius:6px}
+  .vf .grid3{position:absolute;inset:0;background:linear-gradient(90deg,transparent 33%,rgba(255,255,255,.18) 33.3%,transparent 33.6%,transparent 66.4%,rgba(255,255,255,.18) 66.6%,transparent 67%),linear-gradient(180deg,transparent 33%,rgba(255,255,255,.18) 33.3%,transparent 33.6%,transparent 66.4%,rgba(255,255,255,.18) 66.6%,transparent 67%)}
+  .camtop{position:absolute;top:50px;left:0;right:0;display:flex;justify-content:center;z-index:2}
+  .camtop .chip{background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(10px)}
+  .hint{position:absolute;bottom:140px;left:18px;right:18px;text-align:center;color:#fff;font:700 15px ui-rounded,"SF Pro Rounded",sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:2}
+  .shutterbar{position:absolute;left:0;right:0;bottom:0;height:120px;display:flex;align-items:center;justify-content:space-between;padding:0 28px 14px;background:rgba(0,0,0,.55);color:#fff;z-index:2}
+  .shutter{width:70px;height:70px;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center}
+  .shutter i{width:56px;height:56px;border-radius:50%;background:#fff}
+
+  /* sheet */
+  .dim{position:absolute;inset:0;background:rgba(0,0,0,.28);z-index:3}
+  .sheet{position:absolute;left:6px;right:6px;bottom:6px;background:var(--bg2);border-radius:34px;padding:8px 16px 22px;display:flex;flex-direction:column;gap:12px;z-index:4;box-shadow:0 -4px 30px rgba(0,0,0,.18)}
+  [data-theme=dark] .sheet{background:#1C1C1E}
+  .grab{width:36px;height:5px;border-radius:3px;background:var(--sep);margin:0 auto}
+  .sheethd{display:flex;justify-content:space-between;align-items:center}
+  .seg2{display:flex;gap:6px;overflow:hidden}
+  .seg2 span{flex:1;text-align:center;padding:9px 0;border-radius:12px;background:var(--fill);font:700 14px ui-rounded,"SF Pro Rounded",sans-serif;cursor:pointer}
+  .seg2 span.on{background:var(--volt);color:var(--volt-ink)}
+  .tf{background:var(--fill);border-radius:12px;padding:11px 12px;font-size:14px;color:var(--label2)}
+  .lbl{font-size:13px;font-weight:600;color:var(--label2);text-transform:none}
+
+  /* find */
+  .compass{position:relative;width:216px;height:216px;margin:2px auto 0}
+  .compass svg{width:100%;height:100%;overflow:visible}
+  .dist{text-align:center}
+  .dist .n{font:900 64px/1 ui-rounded,"SF Pro Rounded",sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+  .dist .n small{font-size:24px;font-weight:700;margin-left:2px}
+  .mini{display:flex;gap:10px;align-items:center}
+  .warn{display:flex;gap:9px;align-items:flex-start;background:color-mix(in srgb,var(--orange) 16%,transparent);border-radius:16px;padding:10px 12px;font-size:12.5px}
+  .warn b{display:block;font-size:13px}
+  .floorbig{font:900 46px/1 ui-rounded,"SF Pro Rounded",sans-serif;letter-spacing:-.03em}
+
+  /* alert (HIG) */
+  .alert{position:absolute;left:30px;right:30px;top:34%;background:var(--glass);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border-radius:26px;text-align:center;z-index:4;padding:18px 16px 14px}
+  [data-theme=light] .alert{background:rgba(255,255,255,.92)}
+  .alert b{display:block;font-size:16px;margin-bottom:4px}
+  .alert .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .alert .acts span{height:42px;border-radius:21px;display:flex;align-items:center;justify-content:center;font-weight:600;background:var(--fill)}
+  .alert .acts span.d{background:var(--red);color:#fff}
+
+  /* map */
+  .map{position:absolute;inset:0;background:var(--map1)}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .mapctl{position:absolute;right:12px;top:100px;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:var(--glass);backdrop-filter:blur(14px);z-index:2}
+  .mapctl span{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+  .mapctl span+span{border-top:.5px solid var(--sep)}
+
+  /* list */
+  .ig{background:var(--bg2);border-radius:22px;overflow:hidden}
+  .it{display:flex;gap:11px;align-items:center;padding:9px 12px;position:relative;background:var(--bg2)}
+  .it+.it::before,.swipe+.it::before,.it+.swipe .it::before{content:"";position:absolute;top:0;right:0;left:67px;border-top:.5px solid var(--sep)}
+  .it .photo{width:44px;height:44px;border-radius:11px;font-size:7px}
+  .it .tx{flex:1;min-width:0}
+  .it .tx b{display:block;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tag{font:800 12px ui-rounded,"SF Pro Rounded",sans-serif;padding:4px 8px;border-radius:8px;background:var(--fill)}
+  .tag.v{background:var(--volt);color:var(--volt-ink)}
+  .sect{font-size:13px;font-weight:600;color:var(--label2);margin:4px 14px -6px}
+  .swipe{position:relative;overflow:hidden}
+  .swipe .it{animation:sw 4.2s ease-in-out infinite;z-index:1}
+  @keyframes sw{0%,15%{transform:none}35%,80%{transform:translateX(-132px)}100%{transform:none}}
+  .swipe .acts{position:absolute;right:0;top:0;bottom:0;display:flex;gap:6px;padding:6px 8px;align-items:center}
+  .swipe .acts span{width:56px;height:50px;border-radius:25px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#fff;gap:2px}
+  .swipe .acts .u{background:var(--blue)} .swipe .acts .d{background:var(--red)}
+  .search{margin:8px 16px 0;height:36px;border-radius:12px;background:var(--fill);display:flex;align-items:center;gap:6px;padding:0 10px;color:var(--label2);font-size:15px}
+
+  /* unavailable */
+  .cuv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:0 10px}
+  .cuv h2{font:800 22px/1.15 ui-rounded,"SF Pro Rounded",sans-serif;letter-spacing:-.01em}
+
+  .notes{max-width:1300px;margin-top:30px;font-size:12.5px;color:var(--label2);columns:2 300px;column-gap:28px}
+  .notes p{break-inside:avoid;margin-bottom:9px} .notes b{color:var(--label)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-theme="light">
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5.5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M5.5 18.5l2.1-2.1M16.4 7.6l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z M9 4v13.5 M15 6.5V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="2" fill="currentColor"/><path d="M10 21l2.5-6.5L10 11l1-4 3 2 3 1M12.5 14.5l2.5 2.5 1 4M11 7l-3 2-1 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M7 12.4l3.2 3.1L17 8.7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-loc" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7.5 3 3 7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="currentColor"/><rect x="11" y="9" width="2" height="6" rx="1" fill="#fff"/><circle cx="12" cy="17.6" r="1.2" fill="#fff"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 7v5h-5M19.5 12A8 8 0 1 1 17 6.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header>
+  <h1>ParkSpot · UI design v2<small>Gen-Z look on Apple's Human Interface Guidelines · 9 screens from PRD v2 · iPhone, iOS 17+</small></h1>
+  <div class="toggles">
+    <div class="seg" id="themeSeg"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></div>
+    <div class="seg" id="langSeg"><button data-v="en" class="on">EN</button><button data-v="id">ID</button></div>
+  </div>
+</header>
+<div class="system">
+  <span><b>Idea:</b> standard iOS everywhere, with one loud "volt" colour, big rounded type and casual copy for the personality.</span>
+  <span class="sw"><i style="background:#C8F031"></i>Volt (brand, primary actions)</span>
+  <span class="sw"><i style="background:#34C759"></i>systemGreen (good GPS)</span>
+  <span class="sw"><i style="background:#FF9500"></i>systemOrange (weak GPS)</span>
+  <span class="sw"><i style="background:#FF3B30"></i>systemRed (destructive)</span>
+  <span>Type: SF Pro + SF Pro Rounded (<code>.fontDesign(.rounded)</code>), Dynamic Type</span>
+</div>
+
+<div class="grid">
+
+<!-- 1 HOME -->
+<figure><figcaption><b>1 · Park (home)</b><span data-t="c1"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb"><span class="gbtn"><svg class="s"><use href="#i-gear"/></svg></span><span class="gbtn"><svg class="s"><use href="#i-clock"/></svg></span></div>
+  <div class="large" data-t="hello"></div>
+  <div class="sub" data-t="hello_sub"></div>
+  <div class="body">
+    <div class="hero"><div class="pbig"><span class="P">P</span><span class="l" data-t="park_here"></span></div></div>
+    <div class="card mini"><div class="photo" style="width:50px;height:50px;font-size:8px">photo</div>
+      <div style="flex:1"><div class="xs mute" data-t="last_spot"></div><b style="font-size:15px">Grand Indonesia</b><div class="xs mute" data-t="yesterday"></div></div><span class="sticker">B2</span></div>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 2 CAMERA -->
+<figure><figcaption><b>2 · Camera (photo required)</b><span data-t="c2"></span></figcaption>
+<div class="phone"><div class="scr" style="background:#000">
+  <div class="vf"><div class="pillar"></div><div class="sign">B2 · C4</div><div class="grid3"></div></div>
+  <div class="status on-dark"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="camtop"><span class="chip"><span class="dot pulse"></span><span data-t="loc_locked"></span></span></div>
+  <div class="hint" data-t="photo_hint"></div>
+  <div class="shutterbar"><span class="sm" style="font-weight:600" data-t="cancel"></span><div class="shutter"><i></i></div><span class="gbtn" style="background:rgba(255,255,255,.15)"><svg class="s" style="color:#fff"><use href="#i-flash"/></svg></span></div>
+  <div class="home w"></div>
+</div></div></figure>
+
+<!-- 3 SHEET -->
+<figure><figcaption><b>3 · Saved + details sheet</b><span data-t="c3"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="large" style="padding-top:44px" data-t="hello"></div>
+  <div class="dim"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="sheethd"><span class="gbtn" style="background:var(--fill)"><svg class="s" style="width:14px"><use href="#i-x"/></svg></span><b style="font-size:16px" data-t="details"></b><span class="gpill" style="background:var(--volt);color:var(--volt-ink)" data-t="done"></span></div>
+    <div class="mini"><div class="photo" style="width:60px;height:60px;font-size:8px">photo</div>
+      <div><b class="rd" style="font-size:19px;display:flex;gap:6px;align-items:center"><svg class="s" style="color:var(--green);width:20px;height:20px"><use href="#i-check"/></svg><span data-t="spot_saved"></span></b>
+      <div class="sm mute" style="display:flex;gap:6px;align-items:center;margin-top:3px"><span class="dot o pulse"></span><span data-t="improving"></span></div></div></div>
+    <div class="lbl" data-t="floor"></div>
+    <div class="seg2" id="floors"></div>
+    <div class="lbl" data-t="note"></div>
+    <div class="tf" data-t="note_ph"></div>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 4 FIND GOOD -->
+<figure><figcaption><b>4 · Find, good GPS</b><span data-t="c4"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb"><span class="gbtn"><svg class="s"><use href="#i-clock"/></svg></span><span class="gpill"><b class="rd">P</b><span data-t="park_new"></span></span></div>
+  <div class="body" style="gap:8px;padding-top:6px">
+    <div class="mini"><div class="photo" style="width:46px;height:46px;font-size:7px">photo</div><div style="flex:1"><b style="font-size:16px">Jl. Sudirman</b><div class="xs mute" data-t="saved_ago"></div></div><span class="chip"><span class="dot"></span>±6 m</span></div>
+    <div class="compass"><svg viewBox="-110 -110 220 220">
+      <circle r="102" fill="var(--bg2)"/><g id="ticks"></g>
+      <g id="arrow"><path d="M0,-80 L36,32 L0,14 L-36,32 Z" fill="var(--volt)" stroke="var(--volt-ink)" stroke-width="3" stroke-linejoin="round"/></g>
+      <circle r="5" fill="var(--label)"/></svg></div>
+    <div class="dist"><div class="n"><span id="dnum">84</span><small>m</small></div><div class="sm mute" data-t="ahead"></div></div>
+    <div class="pair" style="margin-top:auto"><button class="cap t"><svg class="s"><use href="#i-map"/></svg><span data-t="map"></span></button><button class="cap t"><svg class="s"><use href="#i-walk"/></svg><span data-t="directions"></span></button></div>
+    <button class="cap p" data-t="found"></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 5 FIND WEAK -->
+<figure><figcaption><b>5 · Find, weak GPS (mall)</b><span data-t="c5"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb"><span class="gbtn"><svg class="s"><use href="#i-clock"/></svg></span><span class="gpill"><b class="rd">P</b><span data-t="park_new"></span></span></div>
+  <div class="body" style="gap:8px;padding-top:4px">
+    <div class="photo" style="height:118px;position:relative">photo · tap to zoom<span class="sticker" style="position:absolute;left:10px;bottom:10px;font-size:22px;padding:6px 10px">B2</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <div><div class="xs mute" data-t="floor"></div><div class="floorbig">B2</div></div>
+      <div style="text-align:right"><div class="sm mute">Grand Indonesia</div><b class="rd" data-t="about"></b></div></div>
+    <div class="card sm" style="border-radius:16px;padding:10px 12px">“<span data-t="note_ph"></span>”</div>
+    <div class="warn"><svg class="s" style="color:var(--orange)"><use href="#i-warn"/></svg><div><b data-t="rough_t"></b><span class="mute" data-t="rough"></span></div></div>
+    <button class="cap p" style="margin-top:auto" data-t="found"></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 6 MAP -->
+<figure><figcaption><b>6 · Map</b><span data-t="c6"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="map"><svg viewBox="0 0 262 572" preserveAspectRatio="xMidYMid slice">
+    <rect x="150" y="60" width="140" height="120" fill="var(--mapg)"/>
+    <path d="M-10,410 C 80,380 160,420 290,380 L290,440 C 170,470 90,440 -10,470Z" fill="var(--mapw)"/>
+    <g stroke="var(--map2)" stroke-width="16" fill="none"><path d="M-10,250 H290"/><path d="M100,-10 V600"/></g>
+    <g stroke="var(--map2)" stroke-width="7" fill="none"><path d="M-10,130 H290"/><path d="M-10,340 H290"/><path d="M200,-10 V600"/><path d="M30,-10 V600"/></g>
+    <path d="M60,330 C 60,300 100,280 100,250 S 150,180 196,152" stroke="var(--blue)" stroke-width="4" stroke-dasharray="1 9" stroke-linecap="round" fill="none"/>
+    <circle cx="60" cy="330" r="20" fill="var(--blue)" opacity=".18"/><circle cx="60" cy="330" r="7.5" fill="var(--blue)" stroke="#fff" stroke-width="3"/>
+    <g transform="translate(196,152)"><circle r="19" fill="var(--volt)" stroke="#0B0B0C" stroke-width="2.5"/><text y="7" text-anchor="middle" font-size="20" font-weight="900" fill="#0B0B0C" font-family="ui-rounded,-apple-system,sans-serif">P</text><path d="M-6,18 L0,27 L6,18Z" fill="#0B0B0C"/></g>
+    <text x="8" y="244" font-size="9" fill="var(--label2)" font-family="-apple-system,sans-serif">JL. JEND. SUDIRMAN</text></svg></div>
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb" style="position:relative;z-index:2"><span class="gbtn"><svg class="s"><use href="#i-back"/></svg></span></div>
+  <div class="mapctl"><span><svg class="s" style="color:var(--blue)"><use href="#i-loc"/></svg></span><span><svg class="s"><use href="#i-map"/></svg></span></div>
+  <div class="sheet" style="gap:10px;padding-bottom:26px">
+    <div class="grab"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><div><b class="rd" style="font-size:19px" data-t="your_car"></b><div class="sm mute">84 m · <span data-t="walk"></span></div></div><span class="chip"><span class="dot"></span>±6 m</span></div>
+    <button class="cap p"><svg class="s"><use href="#i-walk"/></svg><span data-t="directions_maps"></span></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 7 REPLACE -->
+<figure><figcaption><b>7 · Replace confirmation</b><span data-t="c7"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb"><span class="gbtn"><svg class="s"><use href="#i-clock"/></svg></span><span class="gpill"><b class="rd">P</b><span data-t="park_new"></span></span></div>
+  <div class="body"><div class="mini"><div class="photo" style="width:46px;height:46px;font-size:7px">photo</div><div><b>Jl. Sudirman</b><div class="xs mute" data-t="saved_ago"></div></div></div>
+    <div class="dist" style="margin-top:130px"><div class="n">84<small>m</small></div></div></div>
+  <div class="dim"></div>
+  <div class="alert"><b data-t="replace_t"></b><span class="sm mute" data-t="replace_b"></span>
+    <div class="acts"><span data-t="cancel"></span><span class="d" data-t="replace"></span></div></div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 8 HISTORY -->
+<figure><figcaption><b>8 · History</b><span data-t="c8"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="tb"><span class="gbtn"><svg class="s"><use href="#i-back"/></svg></span></div>
+  <div class="large" data-t="history"></div>
+  <div class="search"><svg class="s" style="width:15px"><use href="#i-search"/></svg><span data-t="search"></span></div>
+  <div class="body" style="gap:12px">
+    <div class="sect" data-t="today"></div>
+    <div class="ig"><div class="it"><div class="photo">photo</div><div class="tx"><b>Jl. Sudirman</b><span class="xs mute">09:12</span></div><span class="tag v" data-t="active"></span></div></div>
+    <div class="sect" data-t="earlier"></div>
+    <div class="ig">
+      <div class="swipe"><div class="acts"><span class="u"><svg class="s" style="width:16px"><use href="#i-redo"/></svg><span data-t="use_again"></span></span><span class="d"><svg class="s" style="width:16px"><use href="#i-trash"/></svg><span data-t="delete"></span></span></div>
+        <div class="it"><div class="photo">photo</div><div class="tx"><b>Grand Indonesia</b><span class="xs mute" data-t="yesterday"></span></div><span class="tag">B2</span></div></div>
+      <div class="it"><div class="photo">photo</div><div class="tx"><b>Plaza Senayan</b><span class="xs mute" data-t="sat"></span></div><span class="tag">P3</span></div>
+      <div class="it"><div class="photo">photo</div><div class="tx"><b>Jl. Kemang Raya</b><span class="xs mute" data-t="fri"></span></div></div>
+      <div class="it"><div class="photo">photo</div><div class="tx"><b data-t="noloc"></b><span class="xs mute" data-t="thu"></span></div><span class="tag">B1</span></div>
+    </div>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 9 PERMISSION -->
+<figure><figcaption><b>9 · Camera access denied</b><span data-t="c9"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="body">
+    <div class="cuv"><svg style="width:54px;height:54px;color:var(--label2)"><use href="#i-cam"/></svg>
+      <h2 data-t="cam_t"></h2><p class="sm mute" data-t="cam_b"></p></div>
+    <button class="cap p" data-t="open_settings"></button>
+    <button class="cap plain" data-t="not_now"></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+</div>
+
+<div class="notes">
+  <p><b>What changed from v1.</b> The custom pieces are gone. Navigation, sheets, the alert, the list and the empty state are now the standard iOS ones, so the app feels native and SwiftUI builds them almost for free. The personality comes from three things only: the volt colour, SF Pro Rounded headlines, and casual copy.</p>
+  <p><b>HIG components used.</b> Large titles · toolbar icon buttons (SF Symbols: clock, gearshape, map, figure.walk, location.fill) · capsule <code>.borderedProminent</code> buttons, 50 pt tall · sheet with grabber and medium detent · system alert with a red destructive button · inset grouped list with trailing swipe actions and a search field · <code>ContentUnavailableView</code> for denied access · MapKit with the standard map controls.</p>
+  <p><b>Colour rule.</b> Volt marks the one main action on each screen. Status uses system colours (green good GPS, orange weak, red delete), so they mean the same thing as in every other iOS app. Light and dark mode follow the system.</p>
+  <p><b>Gen-Z touches.</b> Floor numbers are tilted "stickers" so they're easy to spot at a glance. Copy is casual ("Where'd you leave it?", "Got it"), in both languages. The Park button pulses softly so it's the obvious thing to tap.</p>
+  <p><b>Accessibility.</b> All targets are 44 pt or more. Text uses system text styles, so Dynamic Type works. Volt is only used as a fill behind dark text (contrast above 13:1), never as text on white. VoiceOver reads the distance as "84 meters, ahead to the right".</p>
+  <p><b>Sample data.</b> Places, distances and times are examples. Grey striped boxes stand in for your photos. Icons are drawn approximations of SF Symbols; the app uses the real ones.</p>
+  <p><b>Navigation (MVVM + C).</b> Park → Camera → Details sheet is the Save coordinator. Find → Map / Photo is the Find coordinator. History is its own. Views never navigate themselves.</p>
+  <p><b>Not designed yet.</b> App icon, location-denied screen (same pattern as screen 9), photo viewer, Settings. They come with the build.</p>
+</div>
+
+<script>
+const T={
+ en:{history:"History",hello:"Where'd you leave it?",hello_sub:"Tap once, snap a pic, done.",park_here:"Park here",park_new:"New spot",last_spot:"Last spot",yesterday:"Yesterday · 18:22",
+  loc_locked:"Location locked · ±8 m",photo_hint:"Snap the pillar sign or something you'll remember",cancel:"Cancel",details:"Details",spot_saved:"Spot saved",improving:"Sharpening GPS… ±12 m",
+  floor:"Floor",note:"Note (optional)",note_ph:"Near the blue elevator",done:"Done",saved_ago:"Saved 2 h ago",ahead:"Ahead, slightly right",map:"Map",directions:"Directions",found:"Got it, found my car",
+  about:"about 40 m away",rough_t:"Arrow's off here",rough:"GPS is ±45 m in this building, so go by the photo and floor.",your_car:"Your car",walk:"1 min walk",directions_maps:"Walk there in Maps",
+  replace_t:"Replace your current spot?",replace_b:"Your current spot moves to History.",replace:"Replace",today:"Today",earlier:"Earlier",active:"Active",search:"Search",
+  use_again:"Use again",delete:"Delete",cam_t:"Camera's off",cam_b:"Every spot gets a photo, so you can find your car even where GPS can't. Turn on camera access in Settings.",
+  open_settings:"Open Settings",not_now:"Not now",sat:"Sat · 19:40",fri:"Fri · 12:05",thu:"Thu · 08:30",noloc:"No location",
+  c1:"Large title + one huge button. Last spot sits below as a card.",c2:"Location locks at the tap; the chip says so while you frame the shot.",
+  c3:"Standard sheet with grabber. Already saved; floor and note are optional.",c4:"Arrow turns with the phone, distance counts down live.",
+  c5:"GPS worse than 30 m, so the photo and floor sticker lead and the arrow hides.",c6:"MapKit with standard controls and a bottom sheet hand-off to Maps.",
+  c7:"System alert, red destructive button. Only when a spot is active.",c8:"Inset grouped list, search, swipe to reuse or delete.",c9:"ContentUnavailableView pattern. Photo is required, so saving waits."},
+ id:{history:"Riwayat",hello:"Mobilmu di mana?",hello_sub:"Ketuk sekali, foto, beres.",park_here:"Parkir di sini",park_new:"Tempat baru",last_spot:"Tempat terakhir",yesterday:"Kemarin · 18.22",
+  loc_locked:"Lokasi terkunci · ±8 m",photo_hint:"Foto tanda pilar atau apa pun yang gampang diingat",cancel:"Batal",details:"Detail",spot_saved:"Tersimpan",improving:"Mempertajam GPS… ±12 m",
+  floor:"Lantai",note:"Catatan (opsional)",note_ph:"Dekat lift biru",done:"Selesai",saved_ago:"Disimpan 2 jam lalu",ahead:"Lurus, agak ke kanan",map:"Peta",directions:"Rute",found:"Oke, mobil ketemu",
+  about:"sekitar 40 m lagi",rough_t:"Panahnya meleset di sini",rough:"GPS ±45 m di gedung ini, jadi ikuti foto dan lantainya.",your_car:"Mobilmu",walk:"1 mnt jalan",directions_maps:"Jalan ke sana di Peta",
+  replace_t:"Ganti tempat parkir sekarang?",replace_b:"Tempat sekarang pindah ke Riwayat.",replace:"Ganti",today:"Hari ini",earlier:"Sebelumnya",active:"Aktif",search:"Cari",
+  use_again:"Pakai lagi",delete:"Hapus",cam_t:"Kamera mati",cam_b:"Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan akses kamera di Pengaturan.",
+  open_settings:"Buka Pengaturan",not_now:"Nanti saja",sat:"Sab · 19.40",fri:"Jum · 12.05",thu:"Kam · 08.30",noloc:"Tanpa lokasi",
+  c1:"Judul besar + satu tombol besar. Tempat terakhir di bawah.",c2:"Lokasi terkunci saat ketuk; chip menunjukkannya.",
+  c3:"Sheet standar dengan grabber. Sudah tersimpan; lantai dan catatan opsional.",c4:"Panah berputar mengikuti ponsel, jarak berkurang langsung.",
+  c5:"GPS di atas 30 m, jadi foto dan stiker lantai di depan, panah disembunyikan.",c6:"MapKit dengan kontrol standar, lanjut ke Peta.",
+  c7:"Alert sistem, tombol merah. Hanya jika ada tempat aktif.",c8:"Daftar inset grouped, cari, geser untuk pakai lagi atau hapus.",c9:"Pola ContentUnavailableView. Foto wajib, jadi menunggu izin."}
+};
+function setLang(l){document.documentElement.lang=l;document.querySelectorAll('[data-t]').forEach(e=>{const v=T[l][e.dataset.t];if(v!==undefined)e.textContent=v;});}
+function seg(id,fn){const s=document.getElementById(id);s.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v);});}
+seg('themeSeg',v=>document.body.dataset.theme=v); seg('langSeg',setLang); setLang('en');
+
+const fl=document.getElementById('floors');
+['B3','B2','B1','G','1','2','+'].forEach(f=>{const s=document.createElement('span');s.textContent=f;if(f==='B2')s.className='on';s.onclick=()=>{fl.querySelectorAll('span').forEach(x=>x.classList.remove('on'));s.classList.add('on')};fl.appendChild(s);});
+
+const tk=document.getElementById('ticks');
+for(let i=0;i<60;i++){const big=i%15===0,l=document.createElementNS('http://www.w3.org/2000/svg','line');
+ l.setAttribute('x1',0);l.setAttribute('x2',0);l.setAttribute('y1',-96);l.setAttribute('y2',big?-84:-90);
+ l.setAttribute('stroke','var(--label)');l.setAttribute('stroke-width',big?2.5:1.2);l.setAttribute('stroke-linecap','round');l.setAttribute('opacity',big?.9:.3);
+ l.setAttribute('transform','rotate('+(i*6)+')');tk.appendChild(l);}
+
+const arrow=document.getElementById('arrow'),dn=document.getElementById('dnum');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;const t0=performance.now();
+function loop(now){const t=(now-t0)/1000;arrow.setAttribute('transform','rotate('+(32+Math.sin(t*.9)*22+Math.sin(t*2.3)*4).toFixed(1)+')');
+ dn.textContent=Math.max(9,Math.round(84-((t%14)/14)*75));if(!reduce)requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParkSpot · UI design v3 (Spotify style)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#0A0A0A; --bg:#121212; --s1:#181818; --s2:#1f1f1f; --s3:#252525; --s4:#2a2a2a;
+    --t1:#ffffff; --t2:#b3b3b3; --t3:#7c7c7c; --line:#4d4d4d;
+    --green:#1ed760; --green2:#1db954; --red:#f3727f; --orange:#ffa42b; --blue:#539df5;
+    --sh2:rgba(0,0,0,.3) 0 8px 8px; --sh3:rgba(0,0,0,.5) 0 8px 24px;
+    --art1:#3b5b7a; --art2:#7a4b2e; --art3:#2f6b52; --art4:#6b2f5e; --art5:#5c5f2a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--t1);font:14px/1.35 'DM Sans',system-ui,-apple-system,sans-serif;padding:20px 18px 40px}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;max-width:1300px}
+  h1{font:800 24px/1.1 'DM Sans',sans-serif;letter-spacing:-.02em}
+  h1 small{display:block;font-size:12px;font-weight:400;color:var(--t2);margin-top:5px;letter-spacing:0}
+  .seg{display:flex;background:var(--s2);border-radius:9999px;padding:3px}
+  .seg button{border:0;background:none;color:var(--t2);font:700 12px 'DM Sans',sans-serif;padding:6px 14px;border-radius:9999px;cursor:pointer;letter-spacing:1.2px}
+  .seg button.on{background:var(--t1);color:#000}
+  .system{font-size:12px;color:var(--t2);max-width:1300px;margin:10px 0 20px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+  .system b{color:var(--t1)}
+  .sw{display:inline-flex;align-items:center;gap:6px}
+  .sw i{width:14px;height:14px;border-radius:50%;display:inline-block;box-shadow:0 0 0 1px #4d4d4d inset}
+  .grid{display:flex;flex-wrap:wrap;gap:28px 22px;max-width:1300px}
+  figure{width:280px}
+  figcaption{font-size:12px;color:var(--t2);margin-bottom:8px;min-height:54px}
+  figcaption b{color:var(--t1);display:block;font-size:13px}
+
+  .phone{width:280px;height:590px;border-radius:46px;background:#000;padding:9px;box-shadow:0 0 0 1px #262626,0 18px 40px -18px rgba(0,0,0,.8)}
+  .scr{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+  .status{height:42px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 26px 0;font:700 13px -apple-system,'DM Sans',sans-serif;position:relative;z-index:6}
+  .status .isl{width:86px;height:25px;background:#000;border-radius:14px;position:absolute;left:50%;top:9px;transform:translateX(-50%)}
+  .home{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:98px;height:4px;border-radius:3px;background:#fff;opacity:.9;z-index:11}
+  svg.s{width:18px;height:18px;flex:none}
+  .t2{color:var(--t2)} .xs{font-size:11px} .sm{font-size:12.5px}
+  .b{font-weight:700}
+
+  /* photo placeholder that carries colour, like album art */
+  .art{position:relative;overflow:hidden;flex:none;border-radius:6px;background:
+       linear-gradient(135deg,color-mix(in srgb,var(--c) 85%,#fff 15%),color-mix(in srgb,var(--c) 70%,#000 30%));box-shadow:var(--sh2)}
+  .art::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 8px,transparent 8px 16px)}
+  .art span{position:absolute;left:6px;bottom:5px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);z-index:1}
+
+  /* buttons */
+  .pill{border:0;border-radius:9999px;height:48px;width:100%;font:700 13px 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:1.6px;display:flex;gap:8px;align-items:center;justify-content:center;cursor:pointer}
+  .pill.g{background:var(--green);color:#000}
+  .pill.d{background:var(--s2);color:var(--t1)}
+  .pill.o{background:transparent;color:var(--t1);box-shadow:0 0 0 1px var(--t3) inset}
+  .pill.w{background:#fff;color:#000}
+  .chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 13px;border-radius:9999px;background:var(--s2);font-size:12.5px;font-weight:600;white-space:nowrap;flex:none;color:var(--t1)}
+  .chip.on{background:var(--green);color:#000}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green)} .dot.o{background:var(--orange)}
+  .pulse{animation:pulse 1.4s ease-in-out infinite} @keyframes pulse{50%{opacity:.3}}
+  .circ{width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;flex:none}
+  .circ.solid{background:var(--s2)}
+
+  /* top bar */
+  .top{display:flex;align-items:center;gap:10px;padding:4px 16px 0}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--green);color:#000;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .h-sec{font:800 22px/1.15 'DM Sans',sans-serif;letter-spacing:-.01em}
+  .h-feat{font:700 17px/1.3 'DM Sans',sans-serif}
+
+  /* tab bar + now-parked bar */
+  .tabbar{position:absolute;left:0;right:0;bottom:0;height:78px;padding:8px 30px 22px;display:flex;justify-content:space-around;background:linear-gradient(transparent,rgba(0,0,0,.92) 35%);z-index:7}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--t2)}
+  .tab.on{color:var(--t1);font-weight:700}
+  .np{position:absolute;left:8px;right:8px;bottom:80px;height:56px;border-radius:8px;display:flex;align-items:center;gap:10px;padding:0 10px 0 8px;z-index:8;overflow:hidden;
+      background:color-mix(in srgb,var(--art1) 70%,#000 30%);box-shadow:var(--sh3)}
+  .np .art{width:40px;height:40px;border-radius:4px;box-shadow:none}
+  .np .tx{flex:1;min-width:0;font-size:12.5px}
+  .np .tx b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .np .prog{position:absolute;left:8px;right:8px;bottom:0;height:2px;background:rgba(255,255,255,.25);border-radius:1px}
+  .np .prog i{display:block;height:100%;width:62%;background:#fff;border-radius:1px}
+
+  /* home */
+  .bigp{width:150px;height:150px;border-radius:50%;background:var(--green);color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px auto 0;box-shadow:0 12px 34px -8px rgba(30,215,96,.55);cursor:pointer;transition:transform .15s}
+  .bigp:active{transform:scale(.95)}
+  .bigp .P{font:900 72px/.85 'DM Sans',sans-serif;letter-spacing:-.05em}
+  .bigp .l{font:700 11px 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:1.6px;margin-top:4px}
+  .shelf{display:flex;gap:10px;overflow:hidden;padding:0 16px}
+  .tile{width:104px;flex:none}
+  .tile .art{width:104px;height:104px}
+  .tile b{display:block;font-size:13px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* camera */
+  .vf{position:absolute;inset:0;background:linear-gradient(180deg,#2b2e33,#4b4e52 55%,#26272a)}
+  .vf .pillar{position:absolute;left:50%;top:20%;transform:translateX(-50%);width:72px;height:58%;background:linear-gradient(90deg,#6f7275,#8d9093 50%,#6a6d70)}
+  .vf .sign{position:absolute;left:50%;top:31%;transform:translateX(-50%);background:#FFD43B;color:#111;font:800 21px -apple-system,sans-serif;padding:6px 10px;border-radius:6px}
+  .camtop{position:absolute;top:52px;left:0;right:0;display:flex;justify-content:center;z-index:2}
+  .camtop .chip{background:rgba(0,0,0,.6)}
+  .hint{position:absolute;bottom:142px;left:18px;right:18px;text-align:center;font:700 15px 'DM Sans',sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.7);z-index:2}
+  .shutterbar{position:absolute;left:0;right:0;bottom:0;height:122px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 16px;background:rgba(0,0,0,.6);z-index:2}
+  .shutter{width:72px;height:72px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(30,215,96,.3)}
+
+  /* sheet */
+  .dim{position:absolute;inset:0;background:rgba(0,0,0,.6);z-index:9}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--s3);border-radius:16px 16px 0 0;padding:8px 16px 26px;display:flex;flex-direction:column;gap:12px;z-index:10;box-shadow:var(--sh3)}
+  .grab{width:36px;height:4px;border-radius:2px;background:var(--t3);margin:0 auto 2px}
+  .lbl{font-size:12px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:1.4px}
+  .row{display:flex;gap:8px;flex-wrap:nowrap;overflow:hidden}
+  .inp{height:44px;border-radius:9999px;background:var(--s2);box-shadow:rgb(18,18,18) 0 1px 0,rgb(124,124,124) 0 0 0 1px inset;display:flex;align-items:center;padding:0 18px;color:var(--t2);font-size:14px}
+
+  /* find: now playing */
+  .npbg{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 75%,#000) 0%,color-mix(in srgb,var(--c) 30%,#121212) 45%,#121212 80%)}
+  .ftop{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:2px 14px 0}
+  .ftop .ctr{text-align:center;font-size:10.5px;text-transform:uppercase;letter-spacing:1.4px;color:var(--t2)}
+  .ftop .ctr b{display:block;color:var(--t1);letter-spacing:0;text-transform:none;font-size:12.5px}
+  .fbody{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:12px 18px 26px;gap:12px;min-height:0}
+  .hero{width:100%;aspect-ratio:1/1;border-radius:8px;position:relative;overflow:hidden;box-shadow:var(--sh3)}
+  .hero .art{position:absolute;inset:0;border-radius:0}
+  .hero .compass{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .hero svg{width:82%;height:82%;overflow:visible}
+  .meta{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+  .meta .ttl{font:800 21px/1.1 'DM Sans',sans-serif;letter-spacing:-.01em}
+  .bar{height:4px;border-radius:2px;background:rgba(255,255,255,.25);position:relative}
+  .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:#fff}
+  .bar i::after{content:"";position:absolute;right:-6px;top:-4px;width:12px;height:12px;border-radius:50%;background:#fff}
+  .barl{display:flex;justify-content:space-between;font-size:11px;color:var(--t2);margin-top:-6px}
+  .ctrls{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+  .ctrls .ic{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--t2);width:60px}
+  .play{width:64px;height:64px;border-radius:50%;background:var(--green);color:#000;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -6px rgba(30,215,96,.5)}
+  .dist{font:900 46px/1 'DM Sans',sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+  .dist small{font-size:18px;font-weight:700;margin-left:2px}
+  .floorbadge{position:absolute;left:10px;bottom:10px;background:#000;color:var(--green);font:900 26px/1 'DM Sans',sans-serif;padding:8px 12px;border-radius:6px;letter-spacing:-.02em;z-index:2}
+  .warn{display:flex;gap:9px;align-items:center;background:rgba(255,164,43,.14);color:var(--orange);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:600}
+
+  /* alert */
+  .dlg{position:absolute;left:24px;right:24px;top:30%;background:var(--s3);border-radius:8px;padding:22px 18px 16px;text-align:center;z-index:10;box-shadow:var(--sh3);display:flex;flex-direction:column;gap:8px}
+  .dlg h3{font:800 18px/1.2 'DM Sans',sans-serif}
+
+  /* map */
+  .map{position:absolute;inset:0;background:#191b1e}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* library */
+  .lib{display:flex;flex-direction:column;gap:2px;padding:0 16px}
+  .li{display:flex;gap:11px;align-items:center;padding:6px 0;position:relative;background:var(--bg)}
+  .li .art{width:52px;height:52px;border-radius:4px;box-shadow:none}
+  .li .tx{flex:1;min-width:0}
+  .li .tx b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .li .tx b.g{color:var(--green)}
+  .fl{font:800 12px 'DM Sans',sans-serif;color:var(--t2);box-shadow:0 0 0 1px var(--line) inset;border-radius:4px;padding:2px 6px}
+  .swipe{position:relative;overflow:hidden;margin:0 -16px;padding:0 16px}
+  .swipe .li{animation:sw 4.2s ease-in-out infinite;z-index:1}
+  @keyframes sw{0%,15%{transform:none}35%,80%{transform:translateX(-120px)}100%{transform:none}}
+  .swipe .acts{position:absolute;right:0;top:0;bottom:0;display:flex}
+  .swipe .acts span{width:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:700}
+  .swipe .acts .u{background:var(--green);color:#000} .swipe .acts .d{background:var(--red);color:#000}
+
+  .notes{max-width:1300px;margin-top:30px;font-size:12.5px;color:var(--t2);columns:2 300px;column-gap:28px}
+  .notes p{break-inside:avoid;margin-bottom:9px} .notes b{color:var(--t1)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V21h-6v-6H9v6H3z" fill="currentColor"/></symbol>
+  <symbol id="i-lib" viewBox="0 0 24 24"><path d="M4 3v18M9 3v18M14 4l6 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z M9 4v13.5 M15 6.5V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="2" fill="currentColor"/><path d="M10 21l2.5-6.5L10 11l1-4 3 2 3 1M12.5 14.5l2.5 2.5 1 4M11 7l-3 2-1 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-camoff" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 7v5h-5M19.5 12A8 8 0 1 1 17 6.3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-loc" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7.5 3 3 7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="currentColor"/><rect x="11" y="9" width="2" height="6" rx="1" fill="#121212"/><circle cx="12" cy="17.6" r="1.2" fill="#121212"/></symbol>
+  <symbol id="i-flash" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v7h14v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header>
+  <h1>ParkSpot · UI design v3<small>Spotify's design system on iOS · 9 screens from PRD v2 · dark only</small></h1>
+  <div class="seg" id="langSeg"><button data-v="en" class="on">EN</button><button data-v="id">ID</button></div>
+</header>
+<div class="system">
+  <span><b>Idea:</b> your parking photo is the album art. The app treats your car like the song that's playing: a "now parked" bar follows you everywhere, and Find is the Now Playing screen.</span>
+  <span class="sw"><i style="background:#121212"></i>#121212 base</span>
+  <span class="sw"><i style="background:#181818"></i>#181818 / #1f1f1f surfaces</span>
+  <span class="sw"><i style="background:#1ed760"></i>#1ed760 green (actions only)</span>
+  <span class="sw"><i style="background:#ffa42b"></i>#ffa42b warning</span>
+  <span class="sw"><i style="background:#f3727f"></i>#f3727f negative</span>
+</div>
+
+<div class="grid">
+
+<!-- 1 HOME -->
+<figure><figcaption><b>1 · Home</b><span data-t="c1"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="top"><span class="avatar">M</span><span class="chip on" data-t="all"></span><span class="chip" data-t="malls"></span><span class="chip" data-t="streets"></span></div>
+  <div style="padding:14px 16px 0"><div class="h-sec" data-t="hello"></div></div>
+  <div class="bigp"><span class="P">P</span><span class="l" data-t="park_here"></span></div>
+  <div style="padding:16px 16px 8px" class="h-feat" data-t="recent"></div>
+  <div class="shelf">
+    <div class="tile"><div class="art" style="--c:var(--art2)"><span>photo</span></div><b>Grand Indonesia</b><span class="xs t2" data-t="t_gi"></span></div>
+    <div class="tile"><div class="art" style="--c:var(--art3)"><span>photo</span></div><b>Plaza Senayan</b><span class="xs t2" data-t="t_ps"></span></div>
+    <div class="tile"><div class="art" style="--c:var(--art4)"><span>photo</span></div><b>Kemang Raya</b><span class="xs t2" data-t="t_kr"></span></div>
+  </div>
+  <div class="tabbar"><span class="tab on"><svg class="s"><use href="#i-home"/></svg><span data-t="tab_home"></span></span><span class="tab"><svg class="s"><use href="#i-lib"/></svg><span data-t="tab_lib"></span></span></div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 2 CAMERA -->
+<figure><figcaption><b>2 · Camera (photo required)</b><span data-t="c2"></span></figcaption>
+<div class="phone"><div class="scr" style="background:#000">
+  <div class="vf"><div class="pillar"></div><div class="sign">B2 · C4</div></div>
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="camtop"><span class="chip"><span class="dot pulse"></span><span data-t="loc_locked"></span></span></div>
+  <div class="hint" data-t="photo_hint"></div>
+  <div class="shutterbar"><span class="b sm" style="text-transform:uppercase;letter-spacing:1.4px" data-t="cancel"></span><div class="shutter"><svg class="s" style="width:30px;height:30px;color:#000"><use href="#i-cam"/></svg></div><span class="circ"><svg class="s"><use href="#i-flash"/></svg></span></div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 3 SHEET -->
+<figure><figcaption><b>3 · Saved + details sheet</b><span data-t="c3"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div style="padding:30px 16px 0"><div class="h-sec" data-t="hello"></div></div>
+  <div class="dim"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="art" style="--c:var(--art1);width:64px;height:64px"><span>photo</span></div>
+      <div style="flex:1"><div style="display:flex;gap:6px;align-items:center;color:var(--green)" class="b"><svg class="s" style="width:16px"><use href="#i-check"/></svg><span data-t="spot_saved"></span></div>
+        <div class="h-feat" style="font-size:16px">Jl. Sudirman</div>
+        <div class="xs t2" style="display:flex;gap:6px;align-items:center"><span class="dot o pulse"></span><span data-t="improving"></span></div></div>
+    </div>
+    <div class="lbl" data-t="floor"></div>
+    <div class="row" id="floors"></div>
+    <div class="lbl" data-t="note"></div>
+    <div class="inp" data-t="note_ph"></div>
+    <button class="pill g" data-t="done"></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 4 FIND GOOD -->
+<figure><figcaption><b>4 · Find, good GPS (Now Playing)</b><span data-t="c4"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="npbg" style="--c:var(--art1)"></div>
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="ftop"><svg class="s"><use href="#i-down"/></svg><div class="ctr"><span data-t="finding"></span><b>Jl. Sudirman</b></div><svg class="s"><use href="#i-more"/></svg></div>
+  <div class="fbody">
+    <div class="hero"><div class="art" style="--c:var(--art1)"><span>photo</span></div>
+      <div class="compass"><svg viewBox="-110 -110 220 220"><g id="ticks"></g>
+        <g id="arrow"><path d="M0,-78 L34,30 L0,12 L-34,30 Z" fill="var(--green)"/></g><circle r="5" fill="#fff"/></svg></div></div>
+    <div class="meta"><div><div class="dist"><span id="dnum">84</span><small>m</small></div><div class="sm t2" data-t="ahead"></div></div>
+      <span class="chip"><span class="dot"></span>GPS ±6 m</span></div>
+    <div class="bar"><i id="prog" style="width:30%"></i></div>
+    <div class="barl"><span data-t="saved_0912"></span><span data-t="your_car"></span></div>
+    <div class="ctrls">
+      <span class="ic"><span class="circ solid"><svg class="s"><use href="#i-map"/></svg></span><span data-t="map"></span></span>
+      <span class="ic" style="width:auto"><span class="play"><svg class="s" style="width:28px;height:28px"><use href="#i-check"/></svg></span><span style="color:var(--t1);font-weight:700" data-t="found"></span></span>
+      <span class="ic"><span class="circ solid"><svg class="s"><use href="#i-walk"/></svg></span><span data-t="directions"></span></span>
+    </div>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 5 FIND WEAK -->
+<figure><figcaption><b>5 · Find, weak GPS (mall)</b><span data-t="c5"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="npbg" style="--c:var(--art2)"></div>
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="ftop"><svg class="s"><use href="#i-down"/></svg><div class="ctr"><span data-t="finding"></span><b>Grand Indonesia</b></div><svg class="s"><use href="#i-more"/></svg></div>
+  <div class="fbody">
+    <div class="hero"><div class="art" style="--c:var(--art2)"><span style="left:auto;right:8px">photo · tap to zoom</span></div><span class="floorbadge">B2</span></div>
+    <div class="meta"><div><div class="ttl" data-t="floor_b2"></div><div class="sm t2">“<span data-t="note_ph"></span>”</div></div><span class="sm b" data-t="about"></span></div>
+    <div class="warn"><svg class="s" style="width:16px"><use href="#i-warn"/></svg><span data-t="rough"></span></div>
+    <div class="ctrls">
+      <span class="ic"><span class="circ solid"><svg class="s"><use href="#i-share"/></svg></span><span data-t="share"></span></span>
+      <span class="ic" style="width:auto"><span class="play"><svg class="s" style="width:28px;height:28px"><use href="#i-check"/></svg></span><span style="color:var(--t1);font-weight:700" data-t="found"></span></span>
+      <span class="ic"><span class="circ solid"><svg class="s"><use href="#i-walk"/></svg></span><span data-t="directions"></span></span>
+    </div>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 6 MAP -->
+<figure><figcaption><b>6 · Map</b><span data-t="c6"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="map"><svg viewBox="0 0 262 572" preserveAspectRatio="xMidYMid slice">
+    <rect x="150" y="60" width="140" height="120" fill="#1c2a1f"/>
+    <path d="M-10,410 C 80,380 160,420 290,380 L290,440 C 170,470 90,440 -10,470Z" fill="#17263a"/>
+    <g stroke="#2c2f34" stroke-width="16" fill="none"><path d="M-10,250 H290"/><path d="M100,-10 V600"/></g>
+    <g stroke="#26292d" stroke-width="7" fill="none"><path d="M-10,130 H290"/><path d="M-10,340 H290"/><path d="M200,-10 V600"/><path d="M30,-10 V600"/></g>
+    <path d="M60,330 C 60,300 100,280 100,250 S 150,180 196,152" stroke="var(--green)" stroke-width="4" stroke-dasharray="1 9" stroke-linecap="round" fill="none"/>
+    <circle cx="60" cy="330" r="20" fill="var(--blue)" opacity=".2"/><circle cx="60" cy="330" r="7.5" fill="var(--blue)" stroke="#fff" stroke-width="3"/>
+    <g transform="translate(196,152)"><circle r="19" fill="var(--green)"/><text y="7" text-anchor="middle" font-size="20" font-weight="900" fill="#000" font-family="DM Sans,sans-serif">P</text></g>
+    <text x="8" y="244" font-size="9" fill="#7c7c7c" font-family="DM Sans,sans-serif">JL. JEND. SUDIRMAN</text></svg></div>
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="top" style="position:relative;z-index:2"><span class="circ" style="background:rgba(18,18,18,.85)"><svg class="s"><use href="#i-back"/></svg></span><span style="flex:1"></span><span class="circ" style="background:rgba(18,18,18,.85)"><svg class="s" style="color:var(--blue)"><use href="#i-loc"/></svg></span></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><div><div class="h-feat" data-t="your_car"></div><div class="sm t2">84 m · <span data-t="walk"></span></div></div><span class="chip"><span class="dot"></span>±6 m</span></div>
+    <button class="pill g"><svg class="s"><use href="#i-walk"/></svg><span data-t="directions_maps"></span></button>
+  </div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 7 REPLACE -->
+<figure><figcaption><b>7 · Replace confirmation</b><span data-t="c7"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="top"><span class="avatar">M</span></div>
+  <div style="padding:14px 16px 0"><div class="h-sec" data-t="hello"></div></div>
+  <div class="bigp"><span class="P">P</span><span class="l" data-t="park_here"></span></div>
+  <div class="np" style="--x:0"><div class="art" style="--c:var(--art1)"></div><div class="tx"><b>Jl. Sudirman</b><span class="t2">84 m · <span data-t="saved_ago"></span></span></div><svg class="s" style="color:var(--green)"><use href="#i-walk"/></svg><div class="prog"><i></i></div></div>
+  <div class="tabbar"><span class="tab on"><svg class="s"><use href="#i-home"/></svg><span data-t="tab_home"></span></span><span class="tab"><svg class="s"><use href="#i-lib"/></svg><span data-t="tab_lib"></span></span></div>
+  <div class="dim"></div>
+  <div class="dlg"><h3 data-t="replace_t"></h3><p class="sm t2" data-t="replace_b"></p>
+    <button class="pill g" style="margin-top:10px" data-t="replace"></button><button class="pill o" data-t="cancel"></button></div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 8 LIBRARY -->
+<figure><figcaption><b>8 · Your spots (History)</b><span data-t="c8"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div class="top"><span class="avatar">M</span><span class="h-sec" style="flex:1" data-t="tab_lib"></span><svg class="s"><use href="#i-search"/></svg></div>
+  <div class="top" style="padding-top:12px"><span class="chip on" data-t="all"></span><span class="chip" data-t="malls"></span><span class="chip" data-t="streets"></span></div>
+  <div class="lib" style="padding-top:12px">
+    <div class="li"><div class="art" style="--c:var(--art1)"></div><div class="tx"><b class="g">Jl. Sudirman</b><span class="xs t2"><span data-t="active"></span> · 09:12</span></div><svg class="s" style="color:var(--green)"><use href="#i-walk"/></svg></div>
+    <div class="swipe"><div class="acts"><span class="u"><svg class="s" style="width:16px"><use href="#i-redo"/></svg><span data-t="use_again"></span></span><span class="d"><svg class="s" style="width:16px"><use href="#i-trash"/></svg><span data-t="delete"></span></span></div>
+      <div class="li"><div class="art" style="--c:var(--art2)"></div><div class="tx"><b>Grand Indonesia</b><span class="xs t2" data-t="t_gi"></span></div><span class="fl">B2</span></div></div>
+    <div class="li"><div class="art" style="--c:var(--art3)"></div><div class="tx"><b>Plaza Senayan</b><span class="xs t2" data-t="t_ps"></span></div><span class="fl">P3</span></div>
+    <div class="li"><div class="art" style="--c:var(--art4)"></div><div class="tx"><b>Jl. Kemang Raya</b><span class="xs t2" data-t="t_kr"></span></div></div>
+    <div class="li"><div class="art" style="--c:var(--art5)"></div><div class="tx"><b data-t="noloc"></b><span class="xs t2" data-t="t_nl"></span></div><span class="fl">B1</span></div>
+  </div>
+  <div class="np"><div class="art" style="--c:var(--art1)"></div><div class="tx"><b>Jl. Sudirman</b><span class="t2">84 m · <span data-t="saved_ago"></span></span></div><svg class="s" style="color:var(--green)"><use href="#i-walk"/></svg><div class="prog"><i></i></div></div>
+  <div class="tabbar"><span class="tab"><svg class="s"><use href="#i-home"/></svg><span data-t="tab_home"></span></span><span class="tab on"><svg class="s"><use href="#i-lib"/></svg><span data-t="tab_lib"></span></span></div>
+  <div class="home"></div>
+</div></div></figure>
+
+<!-- 9 PERMISSION -->
+<figure><figcaption><b>9 · Camera access denied</b><span data-t="c9"></span></figcaption>
+<div class="phone"><div class="scr">
+  <div class="status"><span>9:41</span><span class="isl"></span><span>100%</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:0 26px">
+    <span class="circ solid" style="width:76px;height:76px"><svg class="s" style="width:36px;height:36px;color:var(--t2)"><use href="#i-camoff"/></svg></span>
+    <h2 class="h-sec" data-t="cam_t"></h2><p class="sm t2" data-t="cam_b"></p></div>
+  <div style="padding:0 18px 30px;display:flex;flex-direction:column;gap:10px"><button class="pill g" data-t="open_settings"></button><button class="pill o" data-t="not_now"></button></div>
+  <div class="home"></div>
+</div></div></figure>
+
+</div>
+
+<div class="notes">
+  <p><b>What changed from v2.</b> Layout, colour and feel all follow Spotify now. There's a bottom tab bar (Home, Your spots). A "now parked" mini bar sits above it while a spot is active, like Spotify's now-playing bar, and tapping it opens Find. Find is laid out like the Now Playing screen: big square "album art" (your photo), title, a progress bar for the walk back, and a row of round controls with a green centre button.</p>
+  <p><b>Colour.</b> Near-black surfaces (#121212, #181818, #1f1f1f, #252525). Green #1ed760 only on actions: Park, the shutter, Found it, Done, the active spot. Spotify takes colour from album art; ParkSpot takes it from your photo, so each Find screen gets its own gradient (here sample colours).</p>
+  <p><b>Type and shapes.</b> Bold/regular contrast, compact sizes, UPPERCASE pill buttons with wide letter spacing, circles for icon controls, 6–8 px radius on photos and cards, heavy shadows on sheets and dialogs. Mockup uses DM Sans as the stand-in for Spotify's Circular.</p>
+  <p><b>Still Apple-standard underneath.</b> Tab bar, sheet with grabber, swipe actions, system camera, MapKit, 44 pt+ targets, Dynamic Type (custom font registered with <code>relativeTo:</code> text styles), VoiceOver labels.</p>
+  <p><b>Gen-Z touches kept.</b> Casual copy in both languages, filter chips (All / Malls / Streets) like Spotify's, recent spots as a shelf of cover-art tiles.</p>
+  <p><b>Sample data.</b> Places, distances, times and photo colours are examples. Striped tiles stand in for your photos. Icons approximate SF Symbols.</p>
+  <p><b>Navigation (MVVM + C).</b> AppCoordinator now owns a TabView (Home, Your spots) and the now-parked bar. Save coordinator: Park → Camera → Details sheet. Find coordinator: full-screen Find → Map. History coordinator under the second tab.</p>
+  <p><b>Not designed yet.</b> App icon, location-denied screen (same pattern as 9), photo viewer, Settings (avatar menu).</p>
+</div>
+
+<script>
+const T={
+ en:{all:"All",malls:"Malls",streets:"Streets",hello:"Where'd you leave it?",park_here:"Park here",recent:"Recent spots",tab_home:"Home",tab_lib:"Your spots",
+  t_gi:"Yesterday · B2",t_ps:"Sat · P3",t_kr:"Fri · Street",t_nl:"Thu · 08:30",
+  loc_locked:"Location locked · ±8\u00a0m",photo_hint:"Snap the pillar sign or something you'll remember",cancel:"Cancel",spot_saved:"Spot saved",improving:"Sharpening GPS… ±12\u00a0m",
+  floor:"Floor",note:"Note",note_ph:"Near the blue elevator",done:"Done",finding:"Finding your car",ahead:"Ahead, slightly right",saved_0912:"Saved 09:12",your_car:"Your car",
+  map:"Map",directions:"Directions",found:"Found it",share:"Share",floor_b2:"Floor B2",about:"~40 m",rough:"Arrow's off in here (GPS ±45 m). Go by the photo.",
+  walk:"1 min walk",directions_maps:"Walk there in Maps",replace_t:"Replace your current spot?",replace_b:"Jl. Sudirman moves to Your spots.",replace:"Replace",
+  saved_ago:"saved 2 h ago",active:"Active",use_again:"Use again",delete:"Delete",noloc:"No location",
+  cam_t:"Camera's off",cam_b:"Every spot gets a photo, so you can find your car even where GPS can't. Turn it on in Settings.",open_settings:"Open Settings",not_now:"Not now",
+  c1:"Greeting, filter chips, one green P button, and recent spots as a cover-art shelf.",c2:"Green shutter. Location is already locked when the camera opens.",
+  c3:"Dark sheet. Spot is saved; floor and note are optional.",c4:"Your photo is the album art, the compass sits on it. Progress bar = walk back.",
+  c5:"Weak GPS: the photo and a big floor badge lead, the arrow hides.",c6:"Dark map, green route, sheet hands off to Apple Maps.",
+  c7:"Dark dialog with pill buttons. The now-parked bar shows what gets replaced.",c8:"Your spots, like Your Library: chips, cover thumbs, swipe actions.",c9:"Photo is required, so saving waits for camera access."},
+ id:{all:"Semua",malls:"Mal",streets:"Jalan",hello:"Mobilmu di mana?",park_here:"Parkir",recent:"Tempat terakhir",tab_home:"Beranda",tab_lib:"Tempatmu",
+  t_gi:"Kemarin · B2",t_ps:"Sab · P3",t_kr:"Jum · Jalan",t_nl:"Kam · 08.30",
+  loc_locked:"Lokasi terkunci · ±8\u00a0m",photo_hint:"Foto tanda pilar atau apa pun yang gampang diingat",cancel:"Batal",spot_saved:"Tersimpan",improving:"Mempertajam GPS… ±12\u00a0m",
+  floor:"Lantai",note:"Catatan",note_ph:"Dekat lift biru",done:"Selesai",finding:"Mencari mobilmu",ahead:"Lurus, agak ke kanan",saved_0912:"Disimpan 09.12",your_car:"Mobilmu",
+  map:"Peta",directions:"Rute",found:"Ketemu",share:"Bagikan",floor_b2:"Lantai B2",about:"~40 m",rough:"Panah meleset di sini (GPS ±45 m). Ikuti fotonya.",
+  walk:"1 mnt jalan",directions_maps:"Jalan ke sana di Peta",replace_t:"Ganti tempat parkir sekarang?",replace_b:"Jl. Sudirman pindah ke Tempatmu.",replace:"Ganti",
+  saved_ago:"disimpan 2 jam lalu",active:"Aktif",use_again:"Pakai lagi",delete:"Hapus",noloc:"Tanpa lokasi",
+  cam_t:"Kamera mati",cam_b:"Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan di Pengaturan.",open_settings:"Buka Pengaturan",not_now:"Nanti saja",
+  c1:"Sapaan, chip filter, satu tombol P hijau, dan tempat terakhir sebagai rak sampul.",c2:"Tombol rana hijau. Lokasi sudah terkunci saat kamera terbuka.",
+  c3:"Sheet gelap. Tempat tersimpan; lantai dan catatan opsional.",c4:"Fotomu jadi sampul album, kompas di atasnya. Bar = jalan kembali.",
+  c5:"GPS lemah: foto dan lencana lantai di depan, panah disembunyikan.",c6:"Peta gelap, rute hijau, lanjut ke Apple Maps.",
+  c7:"Dialog gelap dengan tombol pil. Bar parkir menunjukkan yang diganti.",c8:"Tempatmu, seperti Library: chip, sampul, geser untuk aksi.",c9:"Foto wajib, jadi menunggu izin kamera."}
+};
+function setLang(l){document.documentElement.lang=l;document.querySelectorAll('[data-t]').forEach(e=>{const v=T[l][e.dataset.t];if(v!==undefined)e.textContent=v;else console.warn('missing',e.dataset.t)});}
+const sg=document.getElementById('langSeg');sg.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));setLang(b.dataset.v)});
+setLang('en');
+
+const fl=document.getElementById('floors');
+['B3','B2','B1','G','1','2','+'].forEach(f=>{const s=document.createElement('span');s.className='chip'+(f==='B2'?' on':'');s.textContent=f;s.style.cursor='pointer';
+ s.onclick=()=>{fl.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));s.classList.add('on')};fl.appendChild(s);});
+
+const tk=document.getElementById('ticks');
+for(let i=0;i<60;i++){const big=i%15===0,l=document.createElementNS('http://www.w3.org/2000/svg','line');
+ l.setAttribute('x1',0);l.setAttribute('x2',0);l.setAttribute('y1',-100);l.setAttribute('y2',big?-86:-93);
+ l.setAttribute('stroke','#fff');l.setAttribute('stroke-width',big?3:1.3);l.setAttribute('stroke-linecap','round');l.setAttribute('opacity',big?.95:.35);
+ l.setAttribute('transform','rotate('+(i*6)+')');tk.appendChild(l);}
+
+const arrow=document.getElementById('arrow'),dn=document.getElementById('dnum'),pg=document.getElementById('prog');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;const t0=performance.now();
+function loop(now){const t=(now-t0)/1000;arrow.setAttribute('transform','rotate('+(32+Math.sin(t*.9)*22+Math.sin(t*2.3)*4).toFixed(1)+')');
+ const k=(t%14)/14, d=Math.max(9,Math.round(84-k*75));dn.textContent=d;pg.style.width=(12+k*80).toFixed(1)+'%';if(!reduce)requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
