@@ -15,13 +15,18 @@
 		3170E1D929ED92FEA2A043B4 /* ParkSpotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */; };
 		492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBA04C078C9139220388297 /* Theme.swift */; };
 		5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB303D89712660DF2F4072D9 /* ThemeTests.swift */; };
+		630881F0F5F59BA02318E73D /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */; };
 		644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A406277A597B53A362C2B2B /* GeoTests.swift */; };
+		7A3F504B44E9034A7D431AA9 /* TestImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */; };
+		8AA3ED10388E4C8B08998C81 /* PhotoTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B14DAE83515C18E756A52 /* PhotoTint.swift */; };
 		8DBC03D9F52351EF4A93B809 /* LocationRefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33FB4647CDFB917B9F321C /* LocationRefiner.swift */; };
+		A84F4A1F9C55173E04E41F53 /* PhotoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E70509B76B7D4598BD5DF5 /* PhotoStoreTests.swift */; };
 		ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */; };
 		B55F23DE821309447C4C6F93 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */; };
 		C6D56901052DF79FFE34FD2D /* LocationRefinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBB9367163F200E71023206 /* LocationRefinerTests.swift */; };
 		D53230E511C15355CD2D66F5 /* FindDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */; };
 		E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */; };
+		EA28E3440F9524591FD03004 /* PhotoTintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853ADE3ED97D7C99CD7276CA /* PhotoTintTests.swift */; };
 		FE7B83AC7FD30A65A7C6FDCA /* FindDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740001D1452551A20BD0E97 /* FindDisplayTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImages.swift; sourceTree = "<group>"; };
+		07E70509B76B7D4598BD5DF5 /* PhotoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStoreTests.swift; sourceTree = "<group>"; };
+		122B14DAE83515C18E756A52 /* PhotoTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTint.swift; sourceTree = "<group>"; };
 		1CBA04C078C9139220388297 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1DBB9367163F200E71023206 /* LocationRefinerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRefinerTests.swift; sourceTree = "<group>"; };
 		3A406277A597B53A362C2B2B /* GeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTests.swift; sourceTree = "<group>"; };
@@ -45,6 +53,7 @@
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpotApp.swift; sourceTree = "<group>"; };
 		82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		853ADE3ED97D7C99CD7276CA /* PhotoTintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTintTests.swift; sourceTree = "<group>"; };
 		8A33FB4647CDFB917B9F321C /* LocationRefiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRefiner.swift; sourceTree = "<group>"; };
 		A88E0E578CBBE8AA328B5974 /* GeoTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTypes.swift; sourceTree = "<group>"; };
 		ADD64368E0E5C4CD39BFC8F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +64,7 @@
 		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB303D89712660DF2F4072D9 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
+		ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -83,6 +93,15 @@
 				82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		428F77BA93AA577BB7E463D6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED60F4FF92DB0C375BC88E9E /* PhotoStore.swift */,
+				122B14DAE83515C18E756A52 /* PhotoTint.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8316B6B6B6E0241BBF267ED2 /* UI */ = {
@@ -121,6 +140,7 @@
 				FBEA602CCD12DA4A694CCD41 /* App */,
 				BDA94452B4C8BB4354AC82C4 /* Models */,
 				3B0D5532883D5ADC220CF212 /* Resources */,
+				428F77BA93AA577BB7E463D6 /* Services */,
 				8316B6B6B6E0241BBF267ED2 /* UI */,
 			);
 			path = ParkSpot;
@@ -134,6 +154,9 @@
 				3A406277A597B53A362C2B2B /* GeoTests.swift */,
 				4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */,
 				1DBB9367163F200E71023206 /* LocationRefinerTests.swift */,
+				07E70509B76B7D4598BD5DF5 /* PhotoStoreTests.swift */,
+				853ADE3ED97D7C99CD7276CA /* PhotoTintTests.swift */,
+				02005CB0CBD4BD7E0DA499D3 /* TestImages.swift */,
 				EB303D89712660DF2F4072D9 /* ThemeTests.swift */,
 			);
 			path = ParkSpotTests;
@@ -248,6 +271,8 @@
 				ABE4D9465DDAD05304993F99 /* GeoTypes.swift in Sources */,
 				8DBC03D9F52351EF4A93B809 /* LocationRefiner.swift in Sources */,
 				3170E1D929ED92FEA2A043B4 /* ParkSpotApp.swift in Sources */,
+				630881F0F5F59BA02318E73D /* PhotoStore.swift in Sources */,
+				8AA3ED10388E4C8B08998C81 /* PhotoTint.swift in Sources */,
 				492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +286,9 @@
 				644FE59A0C415AB32261B986 /* GeoTests.swift in Sources */,
 				E1F77EF0B7DA7A706508116D /* LocalizationTests.swift in Sources */,
 				C6D56901052DF79FFE34FD2D /* LocationRefinerTests.swift in Sources */,
+				A84F4A1F9C55173E04E41F53 /* PhotoStoreTests.swift in Sources */,
+				EA28E3440F9524591FD03004 /* PhotoTintTests.swift in Sources */,
+				7A3F504B44E9034A7D431AA9 /* TestImages.swift in Sources */,
 				5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
