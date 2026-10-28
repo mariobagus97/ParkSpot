@@ -1,1030 +1,1046 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "about_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "~%@"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "about_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~%@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "~%@"
-          }
-        }
-      }
-    },
-    "active": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Active"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktif"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~%@"
           }
         }
       }
     },
-    "all": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All"
+    "active" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Semua"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif"
           }
         }
       }
     },
-    "arrived": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You're here. Look around."
+    "all" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sudah dekat. Coba lihat sekitar."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semua"
           }
         }
       }
     },
-    "back": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
+    "arrived" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're here. Look around."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kembali"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sudah dekat. Coba lihat sekitar."
           }
         }
       }
     },
-    "calibrate": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compass needs a sec. Wave your phone in a figure 8."
+    "back" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kompas perlu kalibrasi. Gerakkan ponsel membentuk angka 8."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembali"
           }
         }
       }
     },
-    "cam_b": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every spot gets a photo, so you can find your car even where GPS can't. Turn it on in Settings."
+    "calibrate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compass needs a sec. Wave your phone in a figure 8."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan di Pengaturan."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompas perlu kalibrasi. Gerakkan ponsel membentuk angka 8."
           }
         }
       }
     },
-    "cam_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera's off"
+    "cam_b" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every spot gets a photo, so you can find your car even where GPS can't. Turn it on in Settings."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kamera mati"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setiap tempat disimpan dengan foto, jadi mobilmu tetap ketemu walau GPS tidak sampai. Nyalakan di Pengaturan."
           }
         }
       }
     },
-    "cancel": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "cam_t" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera's off"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Batal"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera mati"
           }
         }
       }
     },
-    "close": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
+    "cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tutup"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batal"
           }
         }
       }
     },
-    "delete": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete"
+    "close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hapus"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutup"
           }
         }
       }
     },
-    "delete_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete this spot?"
+    "delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hapus tempat ini?"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus"
           }
         }
       }
     },
-    "dir_ahead": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ahead"
+    "delete_t" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this spot?"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lurus"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus tempat ini?"
           }
         }
       }
     },
-    "dir_ahead_left": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ahead, slightly left"
+    "dir_ahead" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahead"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lurus, agak ke kiri"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lurus"
           }
         }
       }
     },
-    "dir_ahead_right": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ahead, slightly right"
+    "dir_ahead_left" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahead, slightly left"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lurus, agak ke kanan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lurus, agak ke kiri"
           }
         }
       }
     },
-    "dir_behind": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Behind you"
+    "dir_ahead_right" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahead, slightly right"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Di belakangmu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lurus, agak ke kanan"
           }
         }
       }
     },
-    "dir_left": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To your left"
+    "dir_behind" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behind you"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Di sebelah kirimu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di belakangmu"
           }
         }
       }
     },
-    "dir_right": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To your right"
+    "dir_left" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To your left"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Di sebelah kananmu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di sebelah kirimu"
           }
         }
       }
     },
-    "directions": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Directions"
+    "dir_right" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To your right"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rute"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di sebelah kananmu"
           }
         }
       }
     },
-    "directions_maps": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Walk there in Maps"
+    "directions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Directions"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jalan ke sana di Peta"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rute"
           }
         }
       }
     },
-    "done": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+    "directions_maps" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk there in Maps"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selesai"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jalan ke sana di Peta"
           }
         }
       }
     },
-    "finding": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finding your car"
+    "done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mencari mobilmu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selesai"
           }
         }
       }
     },
-    "floor": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Floor"
+    "finding" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finding your car"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lantai"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mencari mobilmu"
           }
         }
       }
     },
-    "floor_ph": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "e.g. P5 or Rooftop"
+    "floor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Floor"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "mis. P5 atau Rooftop"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantai"
           }
         }
       }
     },
-    "found": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Found it"
+    "floor_ph" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. P5 or Rooftop"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ketemu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mis. P5 atau Rooftop"
           }
         }
       }
     },
-    "gps_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GPS ±%@"
+    "found" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Found it"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GPS ±%@"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ketemu"
           }
         }
       }
     },
-    "hello": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Where'd you leave it?"
+    "gps_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS ±%@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mobilmu di mana?"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS ±%@"
           }
         }
       }
     },
-    "improving_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sharpening GPS… ±%@"
+    "hello" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where'd you leave it?"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mempertajam GPS… ±%@"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mobilmu di mana?"
           }
         }
       }
     },
-    "loc_b": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can still save spots with a photo and floor. Turn on location to get the arrow."
+    "improving_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sharpening GPS… ±%@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kamu tetap bisa simpan tempat dengan foto dan lantai. Nyalakan lokasi untuk panahnya."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mempertajam GPS… ±%@"
           }
         }
       }
     },
-    "loc_locked_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location locked · ±%@"
+    "loc_b" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can still save spots with a photo and floor. Turn on location to get the arrow."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lokasi terkunci · ±%@"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamu tetap bisa simpan tempat dengan foto dan lantai. Nyalakan lokasi untuk panahnya."
           }
         }
       }
     },
-    "loc_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location's off"
+    "loc_locked_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location locked · ±%@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lokasi mati"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasi terkunci · ±%@"
           }
         }
       }
     },
-    "locating": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Getting your location…"
+    "loc_t" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location's off"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mencari lokasimu…"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasi mati"
           }
         }
       }
     },
-    "malls": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Malls"
+    "locating" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting your location…"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mal"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mencari lokasimu…"
           }
         }
       }
     },
-    "map": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map"
+    "malls" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malls"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Peta"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mal"
           }
         }
       }
     },
-    "no_spots": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No spots yet. Park somewhere first."
+    "map" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belum ada tempat. Parkir dulu, ya."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peta"
           }
         }
       }
     },
-    "noloc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No location"
+    "no_spots" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No spots yet. Park somewhere first."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tanpa lokasi"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belum ada tempat. Parkir dulu, ya."
           }
         }
       }
     },
-    "not_now": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not now"
+    "noloc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No location"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nanti saja"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanpa lokasi"
           }
         }
       }
     },
-    "note": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note"
+    "not_now" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not now"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Catatan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nanti saja"
           }
         }
       }
     },
-    "note_ph": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Near the blue elevator"
+    "note" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dekat lift biru"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catatan"
           }
         }
       }
     },
-    "open_settings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Settings"
+    "note_ph" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Near the blue elevator"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buka Pengaturan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dekat lift biru"
           }
         }
       }
     },
-    "other_floor": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other floor"
+    "open_settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lantai lain"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buka Pengaturan"
           }
         }
       }
     },
-    "park_here": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Park here"
+    "other_floor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other floor"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parkir di sini"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lantai lain"
           }
         }
       }
     },
-    "photo_hint": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Snap the pillar sign or something you'll remember"
+    "park_here" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Park here"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Foto tanda pilar atau apa pun yang gampang diingat"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parkir di sini"
           }
         }
       }
     },
-    "photo_only": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No location saved. Go by the photo."
+    "photo_hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap the pillar sign or something you'll remember"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lokasi tidak tersimpan. Ikuti fotonya."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto tanda pilar atau apa pun yang gampang diingat"
           }
         }
       }
     },
-    "photo_required_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A photo is needed to save your spot"
+    "photo_only" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No location saved. Go by the photo."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perlu foto untuk menyimpan tempat parkir"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasi tidak tersimpan. Ikuti fotonya."
           }
         }
       }
     },
-    "recent": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recent spots"
+    "photo_required_t" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A photo is needed to save your spot"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tempat terakhir"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perlu foto untuk menyimpan tempat parkir"
           }
         }
       }
     },
-    "replace": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Replace"
+    "recent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent spots"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ganti"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempat terakhir"
           }
         }
       }
     },
-    "replace_b_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ moves to Your spots."
+    "replace" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ pindah ke Tempatmu."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganti"
           }
         }
       }
     },
-    "replace_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Replace your current spot?"
+    "replace_b_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ moves to Your spots."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ganti tempat parkir sekarang?"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ pindah ke Tempatmu."
           }
         }
       }
     },
-    "rough_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrow's off in here (GPS ±%@). Go by the photo."
+    "replace_t" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace your current spot?"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Panah meleset di sini (GPS ±%@). Ikuti fotonya."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganti tempat parkir sekarang?"
           }
         }
       }
     },
-    "save_failed_b": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free up some storage and try again."
+    "rough_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrow's off in here (GPS ±%@). Go by the photo."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kosongkan sedikit penyimpanan, lalu coba lagi."
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panah meleset di sini (GPS ±%@). Ikuti fotonya."
           }
         }
       }
     },
-    "save_failed_t": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Couldn't save the photo"
+    "save_failed_b" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free up some storage and try again."
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Foto gagal disimpan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kosongkan sedikit penyimpanan, lalu coba lagi."
           }
         }
       }
     },
-    "saved_ago_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "saved %@"
+    "save_failed_t" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't save the photo"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "disimpan %@"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto gagal disimpan"
           }
         }
       }
     },
-    "saved_at_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved %@"
+    "saved_ago_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "saved %@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disimpan %@"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "disimpan %@"
           }
         }
       }
     },
-    "search": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "saved_at_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved %@"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cari"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disimpan %@"
           }
         }
       }
     },
-    "spot_saved": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spot saved"
+    "search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tersimpan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari"
           }
         }
       }
     },
-    "streets": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Streets"
+    "spot_saved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spot saved"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jalan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tersimpan"
           }
         }
       }
     },
-    "tab_home": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Home"
+    "streets" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streets"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beranda"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jalan"
           }
         }
       }
     },
-    "tab_lib": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your spots"
+    "tab_home" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tempatmu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beranda"
           }
         }
       }
     },
-    "take_photo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Take photo"
+    "tab_lib" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your spots"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ambil foto"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempatmu"
           }
         }
       }
     },
-    "unnamed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved spot"
+    "take_photo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take photo"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tempat tersimpan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ambil foto"
           }
         }
       }
     },
-    "use_again": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use again"
+    "unnamed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved spot"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pakai lagi"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempat tersimpan"
           }
         }
       }
     },
-    "walk_fmt": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld min walk"
+    "use_again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use again"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld mnt jalan"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakai lagi"
           }
         }
       }
     },
-    "your_car": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your car"
+    "walk_fmt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min walk"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mobilmu"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld mnt jalan"
+          }
+        }
+      }
+    },
+    "your_car" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your car"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mobilmu"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

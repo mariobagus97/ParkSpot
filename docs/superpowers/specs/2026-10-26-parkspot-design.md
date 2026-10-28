@@ -153,6 +153,7 @@ Source: `design/ParkSpot UI v3.html` (layout, colours, EN/ID copy).
 - **Filter chips** (All / Malls / Streets) on Home and Your spots. A spot with a floor counts as Mall, without as Street **[Hermes's call]**. Your spots also has search over place name and note.
 - **Changed from the mockup [Hermes's call].** The "M" avatar becomes the ParkSpot "P" mark, because there are no accounts. The Share button on the weak-GPS screen becomes Map, because sharing is a non-goal and photos never leave the phone. In-app Settings is out of v1.
 - **Before App Store [Hermes's call].** Swap Spotify's exact green #1ed760 for ParkSpot's own green; it is one token, `Theme.accent`.
+- **Directions hand-off (Mario, after v1).** The Directions button prefers the Google Maps app when it is installed, using the `comgooglemaps://` URL with `directionsmode=walking`, and falls back to Apple Maps otherwise. No SDK and no API key: the app still sends nothing anywhere, and its in-app map stays MapKit.
 - **Platform note.** On iOS 26 and later the system tab bar draws in Apple's glass style rather than the flat bar in the mockup, and the camera keeps Apple's own shutter.
 
 ## 9. Edge cases

@@ -34,6 +34,7 @@ targets:
         NSCameraUsageDescription: "ParkSpot saves a photo with every spot so you can find your car where GPS can't."
         NSLocationWhenInUseUsageDescription: "ParkSpot uses your location to save where you parked and point you back to it. It never leaves your phone."
         ITSAppUsesNonExemptEncryption: false
+        LSApplicationQueriesSchemes: [comgooglemaps]
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
   ParkSpotUITests:

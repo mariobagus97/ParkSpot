@@ -22,6 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>ParkSpot saves a photo with every spot so you can find your car where GPS can't.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
