@@ -30,6 +30,7 @@
 		3E0D5E8526A6EA6B85166648 /* NowParkedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382444F06BA73EBF62B6F9D5 /* NowParkedViewModelTests.swift */; };
 		3F274462FFC4AF280B81E27F /* SpotDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62537C852397D503B4D287FA /* SpotDetailsViewModel.swift */; };
 		3F61F86C27278E117280D542 /* SpotMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CDA667D31894B601E83B02 /* SpotMapView.swift */; };
+		4571C2D1829C398B18019704 /* MockCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFCE8C669E2398CDA5121C7 /* MockCameraView.swift */; };
 		492C6F1122C9703CBBF75C42 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBA04C078C9139220388297 /* Theme.swift */; };
 		4E3518A10322060D70ECA1B9 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30936E83D60665C1CAD40043 /* HomeViewModelTests.swift */; };
 		5FA522935241F3AB128099E9 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB303D89712660DF2F4072D9 /* ThemeTests.swift */; };
@@ -129,7 +130,7 @@
 		4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplay.swift; sourceTree = "<group>"; };
 		548398F8DF8B2050716B8612 /* SpotSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaverTests.swift; sourceTree = "<group>"; };
-		54F3BD728CA61D600ACC5A1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		54F3BD728CA61D600ACC5A1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		557DBEFAFB2A263F642F11C9 /* FakesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakesTests.swift; sourceTree = "<group>"; };
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62537C852397D503B4D287FA /* SpotDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 		71F33D70FD59B341081D936F /* LocalizationUsageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationUsageTests.swift; sourceTree = "<group>"; };
 		72A3C529413C3AC02CCC44F1 /* ParkSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpotApp.swift; sourceTree = "<group>"; };
 		72CDA667D31894B601E83B02 /* SpotMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotMapView.swift; sourceTree = "<group>"; };
+		7BFCE8C669E2398CDA5121C7 /* MockCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCameraView.swift; sourceTree = "<group>"; };
 		7F565A102DFD2492D33AF3F7 /* SaveCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoordinator.swift; sourceTree = "<group>"; };
 		82B13BF04FD78C6D0A9FFB4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		853ADE3ED97D7C99CD7276CA /* PhotoTintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTintTests.swift; sourceTree = "<group>"; };
@@ -174,7 +176,7 @@
 		D511F9C9BA302B9523BE3549 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		D6C0EAF5BFFB6A4CBDE7D94E /* FindCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCoordinator.swift; sourceTree = "<group>"; };
-		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FECA277B03758E5233800B /* FindCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCoordinatorTests.swift; sourceTree = "<group>"; };
 		E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaver.swift; sourceTree = "<group>"; };
 		EB303D89712660DF2F4072D9 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				F77384BFF4FFDDA009C33484 /* CameraPicker.swift */,
+				7BFCE8C669E2398CDA5121C7 /* MockCameraView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				96278CA75F63AF4D07345ECE /* LocationService.swift in Sources */,
 				341A90EA7748CA52E95CF62F /* MapViewModel.swift in Sources */,
 				8981FFCC5E07B410F4E06C09 /* MapsLauncher.swift in Sources */,
+				4571C2D1829C398B18019704 /* MockCameraView.swift in Sources */,
 				A5992E9DC6AC4455EA43964B /* NowParkedBar.swift in Sources */,
 				FF81F0C8817530BB130C03D2 /* NowParkedViewModel.swift in Sources */,
 				3170E1D929ED92FEA2A043B4 /* ParkSpotApp.swift in Sources */,
@@ -681,7 +685,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 88D45GCS66;
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -736,7 +739,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 88D45GCS66;
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

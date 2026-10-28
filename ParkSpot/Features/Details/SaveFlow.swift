@@ -1,5 +1,6 @@
 import OSLog
 import SwiftUI
+import UIKit
 
 extension View {
     /// Attaches everything the save flow presents: its alerts, the camera or camera-denied cover and the details
@@ -89,15 +90,38 @@ private struct SaveFlowModifier: ViewModifier {
     private func coverContent(_ cover: SaveCoordinator.Cover) -> some View {
         switch cover {
         case .camera:
-            CameraPicker(chipText: lockedChip, onPhoto: coordinator.photoTaken, onCancel: coordinator.cameraCancelled)
-                .ignoresSafeArea()
-                .background(Theme.black)
+            camera(chipText: lockedChip,
+                   onPhoto: coordinator.photoTaken,
+                   onCancel: coordinator.cameraCancelled)
         case .cameraDenied:
             PermissionView(titleKey: "cam_t", bodyKey: "cam_b", onNotNow: coordinator.cancel)
         }
     }
 
     /// "Location locked · ±8 m" once there is a position; before that the camera shows no claim.
+    /// The system camera on a device; a stand-in screen in the simulator, which has no camera at all.
+    @ViewBuilder
+    private func camera(chipText: String?, onPhoto: @escaping (UIImage) -> Void,
+                        onCancel: @escaping () -> Void) -> some View {
+        #if DEBUG
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            MockCameraView(chipText: chipText, onPhoto: onPhoto, onCancel: onCancel)
+                .ignoresSafeArea()
+        } else {
+            systemCamera(chipText: chipText, onPhoto: onPhoto, onCancel: onCancel)
+        }
+        #else
+        systemCamera(chipText: chipText, onPhoto: onPhoto, onCancel: onCancel)
+        #endif
+    }
+
+    private func systemCamera(chipText: String?, onPhoto: @escaping (UIImage) -> Void,
+                              onCancel: @escaping () -> Void) -> some View {
+        CameraPicker(chipText: chipText, onPhoto: onPhoto, onCancel: onCancel)
+            .ignoresSafeArea()
+            .background(Theme.black)
+    }
+
     private var lockedChip: String? {
         guard let accuracy = saver.currentAccuracy else { return nil }
         return String(format: String(localized: "loc_locked_fmt"), Formatting.accuracy(accuracy, locale: .current))
