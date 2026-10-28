@@ -19,6 +19,9 @@ struct SpotDetailView: View {
                     Text(verbatim: spot.placeName ?? String(localized: "unnamed"))
                         .font(.title3.weight(.bold))
                         .foregroundStyle(Theme.text1)
+                    Text(verbatim: spot.vehicleKind.name)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.text2)
                     if let floor = spot.floor, !floor.isEmpty {
                         HStack(spacing: 8) {
                             Text("floor")

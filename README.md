@@ -12,7 +12,7 @@ Private project, built from scratch in October 2026.
 - **Find** opens by itself while a spot is active. With a good fix it shows a compass arrow and a live distance. With a poor fix, or in a garage, it leads with the photo, the floor badge, your note and a warning that the arrow cannot be trusted.
 - **Map** shows the car and you, and hands walking directions to **Google Maps** when it is installed, Apple Maps otherwise.
 - **Your spots** lists every spot with search, All/Malls/Streets chips, swipe to reuse or delete, and a detail screen with the note and a small map.
-- **Details** on a saved spot: floor (B3 to 2, plus more and a free-text field) and a note up to 140 characters.
+- **Details** on a saved spot: the vehicle (Car, Motorbike or Bike, defaulting to what you parked last time), floor (B3 to 2, plus more and a free-text field) and a note up to 140 characters. The vehicle shows in the now-parked bar, Your spots and the spot's detail screen.
 - Everything is in **English and Bahasa Indonesia**, follows the phone's language, and follows Dynamic Type.
 
 ## How it is built

@@ -41,6 +41,46 @@ import UIKit
         #expect(SpotDetailsViewModel.noteLimit == 140)
     }
 
+    @Test func vehicleDefaultsToTheLastOneParked() throws {
+        let previous = ParkingSpot(createdAt: clock.now.addingTimeInterval(-600), photoFileName: "old.jpg")
+        previous.vehicleKind = .motorbike
+        container.mainContext.insert(previous)
+        try deps.repository.save()
+
+        let spot = ParkingSpot(createdAt: clock.now, photoFileName: "new.jpg")
+        let viewModel = SpotDetailsViewModel(spot: spot, saver: saver, repository: deps.repository, location: location)
+
+        #expect(viewModel.vehicle == .motorbike)
+    }
+
+    @Test func vehicleFallsBackToACar() {
+        let spot = ParkingSpot(createdAt: clock.now, photoFileName: "a.jpg")
+        let viewModel = SpotDetailsViewModel(spot: spot, saver: saver, repository: deps.repository, location: location)
+
+        #expect(viewModel.vehicle == .car)
+    }
+
+    @Test func pickingAVehicleIsRememberedOnDone() throws {
+        let spot = ParkingSpot(createdAt: clock.now, photoFileName: "a.jpg")
+        let viewModel = SpotDetailsViewModel(spot: spot, saver: saver, repository: deps.repository, location: location)
+
+        viewModel.selectVehicle(.bike)
+        #expect(viewModel.vehicle == .bike)
+        try viewModel.done()
+
+        #expect(spot.vehicleKind == .bike)
+    }
+
+    @Test func tappingTheSelectedVehicleKeepsIt() {
+        let spot = ParkingSpot(createdAt: clock.now, photoFileName: "a.jpg")
+        let viewModel = SpotDetailsViewModel(spot: spot, saver: saver, repository: deps.repository, location: location)
+
+        viewModel.selectVehicle(.car)
+        viewModel.selectVehicle(.car)
+
+        #expect(viewModel.vehicle == .car)
+    }
+
     @Test func noteIsCappedAt140() {
         vm.note = String(repeating: "a", count: 200)
         #expect(vm.note.count == 140)

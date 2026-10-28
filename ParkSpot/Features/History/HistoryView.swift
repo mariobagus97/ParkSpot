@@ -137,6 +137,10 @@ struct HistoryView: View {
                         .frame(minHeight: 24)
                         .overlay { RoundedRectangle(cornerRadius: 4).strokeBorder(Theme.line, lineWidth: 1) }
                 }
+                Text(verbatim: spot.vehicleKind.name)
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(Theme.text2)
+                    .lineLimit(1)
                 if spot.savedLocation == nil {
                     Text("noloc")
                         .font(.caption2.weight(.semibold))

@@ -17,6 +17,8 @@ struct SpotDetailsSheet: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 header
+                label("vehicle")
+                vehicles
                 label("floor")
                 floors
                 label("note")
@@ -82,6 +84,20 @@ struct SpotDetailsSheet: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    // MARK: Vehicle
+
+    private var vehicles: some View {
+        HStack(spacing: 4) {
+            ForEach(Vehicle.allCases, id: \.self) { vehicle in
+                Chip(vehicle.key, isOn: viewModel.vehicle == vehicle) {
+                    viewModel.selectVehicle(vehicle)
+                }
+            }
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text("vehicle"))
     }
 
     private func label(_ key: String) -> some View {

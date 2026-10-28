@@ -156,6 +156,15 @@ Source: `design/ParkSpot UI v3.html` (layout, colours, EN/ID copy).
 - **Directions hand-off (Mario, after v1).** The Directions button prefers the Google Maps app when it is installed, using the `comgooglemaps://` URL with `directionsmode=walking`, and falls back to Apple Maps otherwise. No SDK and no API key: the app still sends nothing anywhere, and its in-app map stays MapKit.
 - **Platform note.** On iOS 26 and later the system tab bar draws in Apple's glass style rather than the flat bar in the mockup, and the camera keeps Apple's own shutter.
 
+## 8d. Vehicle (Mario, after v1)
+
+- Every spot records **what was parked**: Car, Motorbike or Bike. Mario's reason: with more than one vehicle, the thing you forget is which one you took.
+- Picked on the "Spot saved" sheet, above the floor, as three chips. The sheet opens on **the previous spot's vehicle**, so parking the same one again stays a single tap, and there is always exactly one selected (tapping the current one keeps it).
+- Stored as an optional raw string on the spot, so spots saved before this existed still open, as cars **[Hermes's call]**.
+- Shown in three places: the now-parked bar (after the place name), the Your spots row, and the spot's detail screen. Not on Find, where the photo already answers it **[Hermes's call]**.
+- No icons or SF Symbols: the vehicle is a word in the existing chip/type language, which keeps the sets honest across languages and avoids a symbol that may not exist on iOS 17 **[Hermes's call]**.
+- Deliberately not stored in `UserDefaults`: "last used" comes from the newest saved spot, so the privacy manifest keeps declaring no collected data and no required-reason APIs.
+
 ## 9. Edge cases
 
 - Location denied or "approximate location" only: explain and link to Settings; saving still works (photo + floor + note, no coordinates).

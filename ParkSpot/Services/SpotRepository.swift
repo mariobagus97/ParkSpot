@@ -19,6 +19,13 @@ import SwiftData
     }
 
     /// The active spot first, then the rest, newest first.
+    /// The vehicle of the most recent spot, so the picker can default to what the user parked last time.
+    func lastUsedVehicle() throws -> Vehicle? {
+        var descriptor = FetchDescriptor<ParkingSpot>(sortBy: [Self.newestFirst])
+        descriptor.fetchLimit = 1
+        return try context.fetch(descriptor).first?.vehicleKind
+    }
+
     func allSpots() throws -> [ParkingSpot] {
         let spots = try context.fetch(FetchDescriptor<ParkingSpot>(sortBy: [Self.newestFirst]))
         return spots.filter(\.isActive) + spots.filter { !$0.isActive }

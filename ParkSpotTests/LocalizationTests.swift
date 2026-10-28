@@ -27,7 +27,8 @@ struct LocalizationTests {
         "map", "no_spots", "noloc", "not_now", "note", "note_ph", "open_settings", "other_floor", "park_here",
         "photo_hint", "photo_only", "photo_required_t", "recent", "replace", "replace_b_fmt", "replace_t",
         "rough_fmt", "save_failed_b", "save_failed_t", "saved_ago_fmt", "saved_at_fmt", "search", "spot_saved",
-        "streets", "tab_home", "tab_lib", "take_photo", "unnamed", "use_again", "walk_fmt", "your_car",
+        "streets", "tab_home", "tab_lib", "take_photo", "unnamed", "use_again", "vehicle", "vehicle_bike", "vehicle_car",
+        "vehicle_motorbike", "walk_fmt", "your_car",
     ]
 
     /// Every copy key the code builds by name (not as a literal) must exist, or the screen shows the key.

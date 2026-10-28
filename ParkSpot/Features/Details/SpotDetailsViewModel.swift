@@ -9,6 +9,8 @@ import Observation
 
     /// The spot being described; the sheet reads its photo and (once it is looked up) its place name.
     let spot: ParkingSpot
+    /// What was parked. Starts from this spot, else the previous spot's vehicle, else a car.
+    private(set) var vehicle: Vehicle
     private(set) var floor: String?
     /// What the "+" panel's text field shows, exactly as typed. It lives here, not in the view, so a quick-floor
     /// tap empties it in the same step that selects the chip; `setTypedFloor(_:)` is the only way to change it.
@@ -29,6 +31,9 @@ import Observation
         self.saver = saver
         self.repository = repository
         self.location = location
+        vehicle = spot.vehicle == nil
+            ? ((try? repository.lastUsedVehicle()) ?? .car)
+            : spot.vehicleKind
         floor = spot.floor
         note = spot.note ?? ""
     }
@@ -52,6 +57,11 @@ import Observation
         typedFloor = ""
     }
 
+    /// Picks the vehicle. There is always one selected, so tapping the current one keeps it.
+    func selectVehicle(_ value: Vehicle) {
+        vehicle = value
+    }
+
     func selectFloor(_ value: String) {
         typedFloor = ""
         floor = floor == value ? nil : value
@@ -66,6 +76,7 @@ import Observation
 
     /// Writes floor and note to the spot (a blank note is none) and saves.
     func done() throws {
+        spot.vehicleKind = vehicle
         spot.floor = floor
         let trimmed = note.trimmingCharacters(in: .whitespacesAndNewlines)
         spot.note = trimmed.isEmpty ? nil : trimmed

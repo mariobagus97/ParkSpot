@@ -21,10 +21,16 @@ struct NowParkedBar: View {
                 CoverArt(photos: deps.photos, fileName: spot.photoFileName, tint: spot.photoTint, cornerRadius: 4)
                     .frame(width: 40, height: 40)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(verbatim: title)
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(Theme.text1)
-                        .lineLimit(1)
+                    HStack(spacing: 6) {
+                        Text(verbatim: title)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(Theme.text1)
+                            .lineLimit(1)
+                        Text(verbatim: spot.vehicleKind.name)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Theme.text2)
+                            .lineLimit(1)
+                    }
                     Text(verbatim: subtitle)
                         .font(.caption2)
                         .foregroundStyle(Theme.text2)
