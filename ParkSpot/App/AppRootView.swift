@@ -8,20 +8,16 @@ struct AppRootView: View {
     var body: some View {
         TabView(selection: $coordinator.selectedTab) {
             HomeView(coordinator: coordinator)
+                .parkedBar(coordinator)
                 .tabItem { Label("tab_home", systemImage: "house.fill") }
                 .tag(AppCoordinator.Tab.home)
 
             HistoryView(coordinator: coordinator.history, deps: coordinator.deps)
+                .parkedBar(coordinator)
                 .tabItem { Label("tab_lib", systemImage: "rectangle.stack.fill") }
                 .tag(AppCoordinator.Tab.spots)
         }
         .tint(Theme.accent)
-        .safeAreaInset(edge: .bottom) {
-            if let spot = coordinator.activeSpot {
-                NowParkedBar(spot: spot, deps: coordinator.deps) { coordinator.presentFind() }
-                    .id(spot.id)   // a new spot gets a fresh bar, not the old one's distance
-            }
-        }
         .fullScreenCover(isPresented: findPresented) {
             if let find = coordinator.find {
                 FindRootView(coordinator: find, deps: coordinator.deps)
@@ -41,5 +37,19 @@ struct AppRootView: View {
     private var findPresented: Binding<Bool> {
         Binding(get: { coordinator.find != nil },
                 set: { if !$0 { coordinator.dismissFind() } })
+    }
+}
+
+private extension View {
+    /// The now-parked bar, inside the tab's own content rather than wrapped around the whole `TabView`.
+    /// Wrapping the TabView put the inset outside the tab bar's layout, and the bar's labels ended up drawn
+    /// above the floating capsule instead of inside it.
+    func parkedBar(_ coordinator: AppCoordinator) -> some View {
+        safeAreaInset(edge: .bottom) {
+            if let spot = coordinator.activeSpot {
+                NowParkedBar(spot: spot, deps: coordinator.deps) { coordinator.presentFind() }
+                    .id(spot.id)   // a new spot gets a fresh bar, not the old one's distance
+            }
+        }
     }
 }

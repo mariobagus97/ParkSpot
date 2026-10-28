@@ -129,7 +129,7 @@
 		4AE2B2D318F49EECD7A1EE23 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		4D7C774F3CDB8403C24E82BF /* FindDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDisplay.swift; sourceTree = "<group>"; };
 		548398F8DF8B2050716B8612 /* SpotSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaverTests.swift; sourceTree = "<group>"; };
-		54F3BD728CA61D600ACC5A1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		54F3BD728CA61D600ACC5A1D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		557DBEFAFB2A263F642F11C9 /* FakesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakesTests.swift; sourceTree = "<group>"; };
 		60C967AB203FF3692ED942C7 /* ParkSpotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ParkSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62537C852397D503B4D287FA /* SpotDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		D511F9C9BA302B9523BE3549 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		D638F4371E33D4C2BAE3AE52 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		D6C0EAF5BFFB6A4CBDE7D94E /* FindCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCoordinator.swift; sourceTree = "<group>"; };
-		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD272554094424E1FD09D88A /* ParkSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FECA277B03758E5233800B /* FindCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCoordinatorTests.swift; sourceTree = "<group>"; };
 		E7B015F4F2B616B0B2D224BD /* SpotSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotSaver.swift; sourceTree = "<group>"; };
 		EB303D89712660DF2F4072D9 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
@@ -681,6 +681,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88D45GCS66;
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -735,6 +736,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88D45GCS66;
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
